@@ -12,6 +12,7 @@ Source files for the thru wordmark, the mood face and the README visuals. The ru
 | `sheets/` | Exploration and construction sheets as PNG, from the first heart and font studies to the final wordmark |
 | `lab/` | Two interactive pages: `mood-face.html` (recovery score drives the face) and `bowl.html` (curvature combs for the t foot and u bowl) |
 | `assets/` | The app icon and framed screenshots the build scripts read |
+| `brand/` | The salmon brand set: app icons (light, dark, tinted), mark, lockup and wordmarks, see `brand/README.md` |
 
 ## The wordmark
 
