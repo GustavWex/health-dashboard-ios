@@ -168,7 +168,8 @@ wordmark is the only custom lettering and appears only as the logo.
 
 Content is flat: solid cards, square-ended bars, no blur and no shadow, so the data looks built like the wordmark.
 Liquid Glass stays only on system chrome (tab bar, toolbars, sheets, secondary buttons). Decided on 4 Nov 2026
-from the Today mockup (`design/lab/today-mockup.html`, direction B).
+from the Today mockup (`design/lab/today-mockup.html`, direction B). Every other screen, the watch and the widgets
+are drawn in this style in `design/lab/screens-mockup.html`.
 
 | Component | Now (in code) | Redesign rule |
 | --- | --- | --- |
