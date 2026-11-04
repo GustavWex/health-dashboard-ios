@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500" font-family="Inter">
+  <defs>
+    <clipPath id="frame"><rect width="1600" height="500" rx="28"/></clipPath>
+    <radialGradient id="gRed" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#E02E3D" stop-opacity="0.09"/><stop offset="1" stop-color="#E02E3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gOrange" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F78033" stop-opacity="0.11"/><stop offset="1" stop-color="#F78033" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gAmber" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FCC254" stop-opacity="0.16"/><stop offset="1" stop-color="#FCC254" stop-opacity="0"/></radialGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#E8543D" stop-opacity="0.10"/><stop offset="1" stop-color="#E8543D" stop-opacity="0.26"/></linearGradient>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="500" fill="#F9F6ED"/>
+    <circle cx="1450" cy="-40" r="560" fill="url(#gRed)"/>
+    <circle cx="900" cy="300" r="600" fill="url(#gOrange)"/>
+    <circle cx="120" cy="560" r="520" fill="url(#gAmber)"/>
+  </g>
+
+  <text x="80" y="84" font-size="36" font-weight="600" fill="#2B1F1A">The science</text>
+
+  <!-- Tiles -->
+  <g fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5">
+    <rect x="80" y="116" width="344" height="320" rx="26"/>
+    <rect x="445" y="116" width="344" height="320" rx="26"/>
+    <rect x="810" y="116" width="344" height="320" rx="26"/>
+    <rect x="1175" y="116" width="344" height="320" rx="26"/>
+  </g>
+
+  <!-- 1. Bell curve with a dot -->
+  <path d="M124 252H380" stroke="#E6DDCD" stroke-width="1.5"/>
+  <path d="M124 250 C 200 250, 214 160, 252 160 C 290 160, 304 250, 380 250" fill="none" stroke="#2B1F1A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M252 160V250" stroke="#B9A894" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <circle cx="290" cy="186" r="9" fill="#E8543D" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="252" y="276" font-size="14" fill="#7A6A5C" text-anchor="middle">your normal</text>
+
+  <!-- 2. Many p-value dots, a few kept above the line -->
+  <path d="M480 196H756" stroke="#E8543D" stroke-width="2" stroke-dasharray="5 5"/>
+  <g fill="#C9BCA9">
+    <circle cx="490" cy="248" r="5"/><circle cx="504" cy="230" r="5"/><circle cx="518" cy="258" r="5"/>
+    <circle cx="532" cy="238" r="5"/><circle cx="546" cy="214" r="5"/><circle cx="560" cy="252" r="5"/>
+    <circle cx="574" cy="226" r="5"/><circle cx="588" cy="244" r="5"/><circle cx="602" cy="208" r="5"/>
+    <circle cx="616" cy="256" r="5"/><circle cx="630" cy="234" r="5"/><circle cx="644" cy="246" r="5"/>
+    <circle cx="672" cy="222" r="5"/><circle cx="686" cy="254" r="5"/><circle cx="700" cy="236" r="5"/>
+    <circle cx="728" cy="250" r="5"/><circle cx="742" cy="218" r="5"/>
+  </g>
+  <g fill="#E8543D">
+    <circle cx="560" cy="170" r="6"/><circle cx="658" cy="158" r="6"/><circle cx="714" cy="178" r="6"/>
+  </g>
+  <text x="756" y="188" font-size="14" fill="#E8543D" text-anchor="end">kept</text>
+
+  <!-- 3. Forecast line with widening band -->
+  <path d="M1000 206 L1124 170 L1124 250 L1000 214 Z" fill="url(#band)"/>
+  <path d="M850 236 L878 222 L904 230 L930 212 L956 220 L980 204 L1000 210" fill="none" stroke="#2B1F1A" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M1000 210 L1124 210" fill="none" stroke="#E8543D" stroke-width="3" stroke-dasharray="6 6" stroke-linecap="round"/>
+  <path d="M1000 160V262" stroke="#B9A894" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="1000" y="282" font-size="14" fill="#7A6A5C" text-anchor="middle">today</text>
+
+  <!-- 4. Document with a checkmark -->
+  <path d="M1302 150H1368L1392 174V262H1302Z" fill="#FFFFFF" stroke="#2B1F1A" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M1368 150V174H1392" fill="none" stroke="#2B1F1A" stroke-width="2.5" stroke-linejoin="round"/>
+  <g stroke="#C9BCA9" stroke-width="3" stroke-linecap="round">
+    <path d="M1316 190H1360M1316 206H1376M1316 222H1350"/>
+  </g>
+  <circle cx="1392" cy="250" r="22" fill="#E8543D"/>
+  <path d="M1381 250l8 8 14 -15" fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Names -->
+  <g font-size="23" font-weight="600" fill="#2B1F1A">
+    <text x="108" y="342">Personal baselines</text>
+    <text x="473" y="342">Honest insights</text>
+    <text x="838" y="342">Bayesian forecast</text>
+    <text x="1203" y="342">Cited and tested</text>
+  </g>
+  <!-- One lines -->
+  <g font-size="16" fill="#7A6A5C">
+    <text x="108" y="372">Your own last 60 days</text>
+    <text x="473" y="372">10% false discovery rate</text>
+    <text x="838" y="372">Only when it beats a naive guess</text>
+    <text x="1203" y="372">139 golden-vector tests</text>
+  </g>
+</svg>

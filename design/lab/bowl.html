@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>thru Bowl Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --paper:#F9F6ED; --surface:#FFFFFF; --ink:#2B1F1A; --muted:#7A6A5C; --line:#E6DDCD; --grid:#E3D8C4; --grid2:#EFE8DA; --comb:#E0574F; --guide:#5B8DEF; color-scheme: light; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper:#15110F; --surface:#1E1916; --ink:#F4EEE3; --muted:#B3A595; --line:#3A312B; --grid:#3A312B; --grid2:#2A231F; color-scheme: dark; } }
+:root[data-theme="dark"] { --paper:#15110F; --surface:#1E1916; --ink:#F4EEE3; --muted:#B3A595; --line:#3A312B; --grid:#3A312B; --grid2:#2A231F; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--paper); color:var(--ink); font-family:Inter, system-ui, sans-serif; line-height:1.45; }
+main { max-width:1160px; margin:0 auto; padding:32px 16px 56px; }
+h1 { font-size:26px; font-weight:600; margin:0 0 4px; letter-spacing:-0.02em; }
+p.sub { color:var(--muted); margin:0 0 20px; font-size:14px; }
+.controls { display:flex; flex-wrap:wrap; gap:18px 28px; align-items:flex-end; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:16px 18px; margin-bottom:18px; }
+.ctl { display:flex; flex-direction:column; gap:6px; font-size:13px; color:var(--muted); min-width:0; }
+.seg { display:inline-flex; background:var(--grid2); border-radius:10px; padding:3px; }
+.seg button { border:0; background:transparent; color:var(--ink); font:inherit; font-size:13px; padding:6px 11px; border-radius:8px; cursor:pointer; }
+.seg button[aria-pressed="true"] { background:var(--surface); font-weight:600; box-shadow:0 1px 3px rgba(43,31,26,.12); }
+input[type=range] { width:180px; accent-color:var(--ink); }
+.val { color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
+.views { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.3fr); gap:16px; }
+@media (max-width:760px) { .views { grid-template-columns:minmax(0,1fr); } }
+figure { margin:0; background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:12px; }
+figure svg { width:100%; height:auto; display:block; }
+figcaption { font-size:13px; color:var(--muted); margin-top:6px; }
+.preview { margin-top:16px; display:flex; gap:16px; flex-wrap:wrap; }
+.preview figure { flex:1 1 300px; }
+.check { display:inline-flex; gap:8px; align-items:center; font-size:13px; color:var(--ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>thru bowl lab</h1>
+  <p class="sub">Zoomed in on the t foot and the u bowl. The red comb shows curvature: its length is how sharply the outline bends at that point. A sudden jump where a curve meets a straight edge is what reads as a bump.</p>
+
+  <div class="controls">
+    <div class="ctl">Construction
+      <div class="seg" id="modeSeg" role="group" aria-label="Construction">
+        <button type="button" data-mode="circle" aria-pressed="true">Circles (now)</button>
+        <button type="button" data-mode="eased" aria-pressed="false">Eased</button>
+        <button type="button" data-mode="smooth" aria-pressed="false">Superellipse</button>
+      </div>
+    </div>
+    <div class="ctl"><label for="ease">Ease <span class="val" id="easeV">0.50</span></label><input id="ease" type="range" min="0" max="0.95" step="0.05" value="0.5"></div>
+    <div class="ctl"><label for="nOut">Superellipse outer <span class="val" id="nOutV">2.00</span></label><input id="nOut" type="range" min="2" max="4" step="0.05" value="2"></div>
+    <div class="ctl"><label for="nIn">Superellipse inner <span class="val" id="nInV">2.00</span></label><input id="nIn" type="range" min="2" max="5" step="0.05" value="2"></div>
+    <div class="ctl">Curve starts
+      <div class="seg" id="startSeg" role="group" aria-label="Where the curve starts">
+        <button type="button" data-start="low" aria-pressed="true">Below the cut (now)</button>
+        <button type="button" data-start="cut" aria-pressed="false">At the cut</button>
+      </div>
+    </div>
+    <label class="check"><input type="checkbox" id="comb" checked> Curvature comb</label>
+  </div>
+
+  <div class="views">
+    <figure><svg id="tView" viewBox="-6 104 102 82" aria-label="t foot, zoomed"></svg><figcaption>t foot</figcaption></figure>
+    <figure><svg id="uView" viewBox="288 104 130 82" aria-label="u bowl, zoomed"></svg><figcaption>u bowl</figcaption></figure>
+  </div>
+  <div class="preview">
+    <figure><svg id="word" viewBox="-10 -10 425 200" aria-label="thru wordmark preview"></svg><figcaption>Whole wordmark</figcaption></figure>
+    <figure><svg id="wordSmall" viewBox="-10 -10 425 200" style="max-width:120px" aria-label="thru at small size"></svg><figcaption>Small</figcaption></figure>
+  </div>
+</main>
+<script>
+(function () {
+  "use strict";
+  var FROZEN = "M22.5 30 H52.5 V60 H22.5 Z M0 60 H75 V90 H0 Z M90 0 H120 V90 H90 Z M90 120 H120 V180 H90 Z M165 120 H195 V180 H165 Z M120.758 90 A37.5 37.5 0 0 1 194.242 90 Z M210 60 H240 V90 H210 Z M240 90 A30 30 0 0 1 270 60 V90 Z M270 60 H285 V90 H270 Z M210 120 H240 V180 H210 Z M300 60 H330 V90 H300 Z M375 60 H405 V90 H375 Z";
+  var S = { mode: "circle", nOut: 2, nIn: 2, start: "low", comb: true };
+
+  // Superellipse arc from angle a0 to a1 (y down), centre (cx,cy), semi-axes a,b, exponent n. n = 2 is a circle or ellipse.
+  function se(cx, cy, a, b, n, a0, a1, steps) {
+    var pts = [], e = 2 / n;
+    for (var i = 0; i <= steps; i++) {
+      var t = a0 + (a1 - a0) * i / steps, c = Math.cos(t), s = Math.sin(t);
+      pts.push([cx + a * Math.sign(c) * Math.pow(Math.abs(c), e), cy + b * Math.sign(s) * Math.pow(Math.abs(s), e)]);
+    }
+    return pts;
+  }
+  // Eased turn: curvature ramps linearly from 0 up to a constant, then back to 0 (a clothoid-style transition).
+  // Canonical: starts at (0,0) heading down, turns toward +x by angle th. p = share of the turn spent in the ramps.
+  // Returned points are then stretched to hit the same grid tangent points as the circle (x to w, y to depth).
+  function easedTurn(th, p, steps) {
+    var sT = p * th, sA = (1 - p) * th, L = 2 * sT + sA, ds = L / steps;
+    var x = 0, y = 0, phi = Math.PI / 2, pts = [[0, 0]];
+    for (var i = 0; i < steps; i++) {
+      var s = (i + 0.5) * ds, k = sT > 0 ? Math.min(1, s / sT, (L - s) / sT) : 1;
+      phi -= k * ds;
+      x += Math.cos(phi) * ds; y += Math.sin(phi) * ds; pts.push([x, y]);
+    }
+    return pts;
+  }
+  function fitTurn(pts, x0, y0, w, depth) {
+    var X = pts[pts.length - 1][0], Y = 0;
+    pts.forEach(function (q) { if (q[1] > Y) Y = q[1]; });
+    return pts.map(function (q) { return [x0 + q[0] * w / X, y0 + q[1] * depth / Y]; });
+  }
+  function line(p, q, steps) { var o = []; for (var i = 0; i <= steps; i++) o.push([p[0] + (q[0] - p[0]) * i / steps, p[1] + (q[1] - p[1]) * i / steps]); return o; }
+  function join(parts) { var o = []; parts.forEach(function (p) { p.forEach(function (q, i) { if (!(o.length && i === 0)) o.push(q); }); }); return o; }
+
+  // Outlines, clockwise. cy = where the curves start.
+  function tFoot() {
+    var cy = S.start === "cut" ? 120 : 135, nO = S.mode === "circle" ? 2 : S.nOut, nI = S.mode === "circle" ? 2 : S.nIn;
+    if (S.mode === "eased") {
+      var inner = fitTurn(easedTurn(Math.PI / 2, S.ease, 600), 52.5, cy, 15, 150 - cy);
+      var outer = fitTurn(easedTurn(Math.PI / 2, S.ease, 900), 22.5, cy, 45, 180 - cy).reverse();
+      return join([
+        line([22.5, 120], [52.5, 120], 30), line([52.5, 120], [52.5, cy], 20), inner,
+        line([67.5, 150], [75, 150], 10), line([75, 150], [75, 180], 30), line([75, 180], [67.5, 180], 10),
+        outer, line([22.5, cy], [22.5, 120], 20)
+      ]);
+    }
+    return join([
+      line([22.5, 120], [52.5, 120], 30), line([52.5, 120], [52.5, cy], 20),
+      se(67.5, cy, 15, 150 - cy, nI, Math.PI, Math.PI / 2, 400),
+      line([67.5, 150], [75, 150], 10), line([75, 150], [75, 180], 30), line([75, 180], [67.5, 180], 10),
+      se(67.5, cy, 45, 180 - cy, nO, Math.PI / 2, Math.PI, 600),
+      line([22.5, cy], [22.5, 120], 20)
+    ]);
+  }
+  function uBowl() {
+    var cy = S.start === "cut" ? 120 : 127.5, nO = S.mode === "circle" ? 2 : S.nOut, nI = S.mode === "circle" ? 2 : S.nIn;
+    if (S.mode === "eased") {
+      // Keep the curve's natural proportions: exact width and bottom; it may start inside the cut, where it is hidden.
+      var bowl = function (xL, w, bottom, steps) {
+        var c = easedTurn(Math.PI, S.ease, steps), X = c[c.length - 1][0], Y = 0;
+        c.forEach(function (q) { if (q[1] > Y) Y = q[1]; });
+        var s = w / X, y0 = bottom - Y * s;
+        var pts = c.map(function (q) { return [xL + q[0] * s, y0 + q[1] * s]; }).filter(function (q) { return q[1] >= 120; });
+        if (y0 > 120) { pts.unshift([xL, 120]); pts.push([xL + w, 120]); }
+        return pts;
+      };
+      var inner = bowl(330, 45, 150, 1600), outer = bowl(300, 105, 180, 2400).reverse();
+      return join([[outer[outer.length - 1], inner[0]], inner, [inner[inner.length - 1], outer[0]], outer]);
+    }
+    return join([
+      line([300, 120], [330, 120], 30), line([330, 120], [330, cy], 10),
+      se(352.5, cy, 22.5, 150 - cy, nI, Math.PI, 0, 800),
+      line([375, cy], [375, 120], 10), line([375, 120], [405, 120], 30), line([405, 120], [405, cy], 10),
+      se(352.5, cy, 52.5, 180 - cy, nO, 0, Math.PI, 1200),
+      line([300, cy], [300, 120], 10)
+    ]);
+  }
+  function toPath(pts) { return "M" + pts.map(function (p) { return p[0].toFixed(3) + " " + p[1].toFixed(3); }).join(" L") + " Z"; }
+
+  // Resample by arc length, then curvature from point triples.
+  function resample(pts, step) {
+    var out = [pts[0]], acc = 0;
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i - 1], b = pts[i], d = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      while (acc + d >= step) {
+        var t = (step - acc) / d; a = [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+        out.push(a); d = Math.hypot(b[0] - a[0], b[1] - a[1]); acc = 0;
+      }
+      acc += d;
+    }
+    return out;
+  }
+  function combSVG(pts, scale) {
+    var r = resample(pts, 0.25), m = 4, ticks = "", tips = [], N = r.length;
+    for (var i = m; i < N - m; i += 2) {
+      var p0 = r[i - m], p1 = r[i], p2 = r[i + m];
+      var ax = p1[0] - p0[0], ay = p1[1] - p0[1], bx = p2[0] - p1[0], by = p2[1] - p1[1];
+      var cross = ax * by - ay * bx, la = Math.hypot(ax, ay), lb = Math.hypot(bx, by), lc = Math.hypot(p2[0] - p0[0], p2[1] - p0[1]);
+      var k = 2 * cross / (la * lb * lc);               // signed curvature
+      if (Math.abs(k) > 0.2) { tips.push(null); continue; } // a sharp corner, not a curve
+      var tx = (p2[0] - p0[0]) / lc, ty = (p2[1] - p0[1]) / lc, nx = ty, ny = -tx; // normal pointing out of the ink
+      var L = Math.abs(k) * scale, ex = p1[0] + nx * L, ey = p1[1] + ny * L;
+      if (Math.abs(k) > 1e-4) ticks += "M" + p1[0].toFixed(2) + " " + p1[1].toFixed(2) + "L" + ex.toFixed(2) + " " + ey.toFixed(2);
+      tips.push(Math.abs(k) > 1e-4 ? [ex, ey] : null);
+    }
+    var spine = "", open = false;
+    tips.forEach(function (t) { if (t) { spine += (open ? "L" : "M") + t[0].toFixed(2) + " " + t[1].toFixed(2); open = true; } else open = false; });
+    return '<path d="' + ticks + '" stroke="var(--comb)" stroke-width="0.15" stroke-opacity="0.55" fill="none"/>' +
+           '<path d="' + spine + '" stroke="var(--comb)" stroke-width="0.35" fill="none"/>';
+  }
+  function grid(x0, y0, x1, y1) {
+    var g = "";
+    for (var x = Math.ceil(x0 / 7.5) * 7.5; x <= x1; x += 7.5) g += '<line x1="' + x + '" y1="' + y0 + '" x2="' + x + '" y2="' + y1 + '" stroke="' + (x % 30 === 0 ? "var(--grid)" : "var(--grid2)") + '" stroke-width="0.2"/>';
+    for (var y = Math.ceil(y0 / 7.5) * 7.5; y <= y1; y += 7.5) g += '<line x1="' + x0 + '" y1="' + y + '" x2="' + x1 + '" y2="' + y + '" stroke="' + (y % 30 === 0 ? "var(--grid)" : "var(--grid2)") + '" stroke-width="0.2"/>';
+    return g;
+  }
+  function render() {
+    var t = tFoot(), u = uBowl();
+    var tt = grid(-6, 104, 96, 186) + '<path d="M0 60 H75 V90 H0 Z" fill="var(--ink)" opacity="0.15"/><path d="' + toPath(t) + '" fill="var(--ink)" fill-opacity="0.9"/>' + (S.comb ? combSVG(t, 260) : "");
+    var uu = grid(288, 104, 418, 186) + '<path d="' + toPath(u) + '" fill="var(--ink)" fill-opacity="0.9"/>' + (S.comb ? combSVG(u, 260) : "");
+    document.getElementById("tView").innerHTML = tt;
+    document.getElementById("uView").innerHTML = uu;
+    var w = '<path fill="var(--ink)" d="' + FROZEN + " " + toPath(t) + " " + toPath(u) + '"/>';
+    document.getElementById("word").innerHTML = w;
+    document.getElementById("wordSmall").innerHTML = w;
+    document.getElementById("nOutV").textContent = (+S.nOut).toFixed(2);
+    document.getElementById("nInV").textContent = (+S.nIn).toFixed(2);
+    document.getElementById("nOut").disabled = document.getElementById("nIn").disabled = S.mode !== "smooth";
+    document.getElementById("ease").disabled = S.mode !== "eased";
+    document.getElementById("easeV").textContent = (+S.ease).toFixed(2);
+  }
+  S.ease = 0.5;
+  document.getElementById("ease").addEventListener("input", function (e) { S.ease = +e.target.value; render(); });
+  function seg(id, key) {
+    var btns = document.getElementById(id).querySelectorAll("button");
+    Array.prototype.forEach.call(btns, function (b) {
+      b.addEventListener("click", function () {
+        S[key] = b.getAttribute("data-" + key);
+        Array.prototype.forEach.call(btns, function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+        render();
+      });
+    });
+  }
+  seg("modeSeg", "mode"); seg("startSeg", "start");
+  document.getElementById("nOut").addEventListener("input", function (e) { S.nOut = +e.target.value; render(); });
+  document.getElementById("nIn").addEventListener("input", function (e) { S.nIn = +e.target.value; render(); });
+  document.getElementById("comb").addEventListener("change", function (e) { S.comb = e.target.checked; render(); });
+  window.bowlLab = { state: S, render: render, tFoot: tFoot, uBowl: uBowl, toPath: toPath };
+  render();
+})();
+</script>
+</body>
+</html>

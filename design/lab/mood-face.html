@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>thru Mood Face</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F9F6ED;
+  --surface: #FFFFFF;
+  --tile: #EFE8DA;
+  --ink: #2B1F1A;
+  --muted: #7A6A5C;
+  --line: #E6DDCD;
+  --accent: #E8553F;
+  --good: #3DAA6B;
+  --steady: #F2A33A;
+  --easy: #E0574F;
+  --sleep: #9470F2;
+  --food: #E3598F;
+  --train: #2978F2;
+  --face-ink: #FFFFFF;
+  --dark-tile: #0D1117;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15110F;
+    --surface: #1E1916;
+    --tile: #2A231F;
+    --ink: #F4EEE3;
+    --muted: #B3A595;
+    --line: #3A312B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15110F;
+  --surface: #1E1916;
+  --tile: #2A231F;
+  --ink: #F4EEE3;
+  --muted: #B3A595;
+  --line: #3A312B;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.45;
+}
+main { max-width: 1120px; margin: 0 auto; padding: 40px 16px 64px; }
+header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+h1 { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px; }
+h2 { font-size: 20px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.01em; }
+p.lead { margin: 0; color: var(--muted); max-width: 640px; }
+.sub { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+section { margin-top: 48px; }
+.theme-btn {
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 14px; cursor: pointer;
+}
+
+/* Playground */
+.play {
+  display: grid; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); gap: 32px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+}
+@media (max-width: 760px) { .play { grid-template-columns: minmax(0, 1fr); padding: 20px; } }
+.stage { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.stage svg { width: 100%; max-width: 300px; height: auto; display: block; }
+.state-name { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 0; text-align: center; }
+.state-line { color: var(--muted); margin: 0; text-align: center; font-size: 15px; min-height: 2.9em; }
+.controls { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.score-row { display: flex; justify-content: space-between; align-items: baseline; }
+.score-row label { font-weight: 600; }
+.score-val { font-size: 34px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+input[type="range"] { width: 100%; accent-color: var(--ink); height: 28px; }
+.scale { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+.seg { display: inline-flex; background: var(--tile); border-radius: 12px; padding: 3px; flex-wrap: wrap; }
+.seg button {
+  border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 14px;
+  padding: 7px 12px; border-radius: 9px; cursor: pointer;
+}
+.seg button[aria-pressed="true"] { background: var(--surface); box-shadow: 0 1px 3px rgba(43,31,26,.12); font-weight: 600; }
+.ctl-label { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.btn {
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  border-radius: 10px; padding: 8px 14px; font: inherit; font-size: 14px; cursor: pointer;
+}
+.check { display: inline-flex; gap: 8px; align-items: center; font-size: 14px; cursor: pointer; }
+
+.sizes { display: flex; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+.sizes figure { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.sizes figcaption { font-size: 12px; color: var(--muted); }
+.word-wrap { display: flex; gap: 16px; flex-wrap: wrap; }
+.word-card { border-radius: 16px; padding: 18px 22px; display: flex; align-items: center; }
+.word-card.light { background: #F9F6ED; border: 1px solid var(--line); }
+.word-card.dark { background: var(--dark-tile); }
+.word-card svg { height: 64px; width: auto; display: block; }
+
+/* Library */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 18px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 14px; }
+.card svg { width: 100%; height: auto; display: block; }
+.card h3 { font-size: 15px; font-weight: 600; margin: 12px 0 2px; }
+.card p { font-size: 13px; color: var(--muted); margin: 0; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; font-size: 13px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; }
+.swatch { display: inline-block; width: 12px; height: 12px; border-radius: 4px; vertical-align: -1px; margin-right: 6px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>thru mood face</h1>
+      <p class="lead">The u in the wordmark is already a face: the top stubs are the eyes, the cut is the gap, the bowl is the smile. Here it carries the day's state.</p>
+    </div>
+    <button class="theme-btn" id="themeBtn" type="button">Dark page</button>
+  </header>
+
+  <section aria-labelledby="play-h">
+    <h2 id="play-h">Recovery drives the mouth</h2>
+    <p class="sub">Drag the score. The mouth morphs from frown through flat to smile, and the colour follows. Sample values only.</p>
+    <div class="play">
+      <div class="stage">
+        <svg id="bigFace" viewBox="0 0 200 200" role="img" aria-labelledby="stateName"></svg>
+        <p class="state-name" id="stateName" aria-live="polite">Good day to push</p>
+        <p class="state-line" id="stateLine">Recovery is above your usual. A hard session fits today.</p>
+      </div>
+      <div class="controls">
+        <div>
+          <div class="score-row"><label for="score">Recovery</label><span class="score-val" id="scoreVal">78</span></div>
+          <input type="range" id="score" min="0" max="100" value="78" aria-describedby="scaleHint">
+          <div class="scale" id="scaleHint"><span>0 Take it easy</span><span>50 Steady</span><span>100 Push</span></div>
+        </div>
+        <div>
+          <p class="ctl-label">Eyes</p>
+          <div class="seg" role="group" aria-label="Eye style" id="eyeSeg">
+            <button type="button" data-eye="open" aria-pressed="true">Open</button>
+            <button type="button" data-eye="dot" aria-pressed="false">Round</button>
+            <button type="button" data-eye="happy" aria-pressed="false">Happy</button>
+            <button type="button" data-eye="closed" aria-pressed="false">Asleep</button>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn" type="button" id="winkBtn">Wink</button>
+          <button class="btn" type="button" id="blinkBtn">Blink</button>
+          <label class="check"><input type="checkbox" id="autoBlink" checked> Blink every few seconds</label>
+        </div>
+        <div>
+          <p class="ctl-label">At real sizes</p>
+          <div class="sizes" id="sizes"></div>
+        </div>
+        <div>
+          <p class="ctl-label">In the wordmark</p>
+          <div class="word-wrap">
+            <div class="word-card light"><svg id="wordLight" viewBox="-10 -10 470 195" aria-label="thru wordmark with the u as the face"></svg></div>
+            <div class="word-card dark"><svg id="wordDark" viewBox="-10 -10 470 195" aria-label="thru wordmark on dark"></svg></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="lib-h">
+    <h2 id="lib-h">Expression set</h2>
+    <p class="sub">Every face uses only wordmark parts: 31.25 wide stems, 25 unit bars, circles of radius 50 and 25. Each state has its own shape, so none relies on colour alone.</p>
+    <div class="grid" id="library"></div>
+  </section>
+
+  <section aria-labelledby="rules-h">
+    <h2 id="rules-h">Grammar</h2>
+    <p class="sub">Units are the wordmark master: the u is 112.5 wide, eyes sit on 50 to 75, the cut is 75 to 100, the mouth sits on 100 to 175.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Part</th><th>Form</th><th>Built from</th><th>Used for</th></tr></thead>
+        <tbody>
+          <tr><td>Eyes</td><td>Open</td><td>The u top stubs, 31.25 x 25</td><td>Default</td></tr>
+          <tr><td></td><td>Round</td><td>Circles 31.25 across</td><td>Friendlier icon variant</td></tr>
+          <tr><td></td><td>Happy</td><td>Slices of a radius 15.6 circle, flat at 75, like the h arch</td><td>New record, streaks</td></tr>
+          <tr><td></td><td>Asleep</td><td>Lower half of the stub, 12.5 tall</td><td>Sleep, bedtime</td></tr>
+          <tr><td></td><td>Wink</td><td>One stub at half height</td><td>Saved, synced</td></tr>
+          <tr><td>Mouth</td><td>Smile</td><td>The u bowl: radius 50 outside, 25 inside</td><td>Good recovery</td></tr>
+          <tr><td></td><td>Flat</td><td>A bar 112.5 x 25 on 125 to 150</td><td>Steady</td></tr>
+          <tr><td></td><td>Frown</td><td>The u bowl turned over</td><td>Take it easy</td></tr>
+          <tr><td>Colour</td><td><span class="swatch" style="background:var(--good)"></span>Good <span class="swatch" style="background:var(--steady);margin-left:10px"></span>Steady <span class="swatch" style="background:var(--easy);margin-left:10px"></span>Easy</td><td>Placeholder colours, to match the app's recovery colours</td><td>Recovery tiles</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+
+  // Mouth keyframes: identical command structure so they can be interpolated.
+  // Each is a list of numbers in order; cmds says how to print them.
+  var CMDS = ["M",2,"L",2,"L",2,"C",6,"C",6,"L",2,"L",2,"L",2,"C",6,"L",2,"C",6];
+  var SMILE = [0,100, 31.25,100, 31.25,125, 31.25,138.81,42.44,150,56.25,150, 70.06,150,81.25,138.81,81.25,125, 81.25,100, 112.5,100, 112.5,125, 112.5,152.61,90.11,175,62.5,175, 50,175, 22.39,175,0,152.61,0,125];
+  var FLAT  = [0,125, 31.25,125, 31.25,125, 31.25,125,42.44,125,56.25,125, 70.06,125,81.25,125,81.25,125, 81.25,125, 112.5,125, 112.5,150, 100,150,80,150,62.5,150, 50,150, 30,150,0,150,0,150];
+  function mirror(a) { return a.map(function (v, i) { return i % 2 ? 275 - v : v; }); }
+  var FROWN = mirror(SMILE), FLATN = mirror(FLAT);
+
+  function lerp(a, b, t) { return a.map(function (v, i) { return v + (b[i] - v) * t; }); }
+  function toPath(nums) {
+    var out = "", k = 0;
+    for (var i = 0; i < CMDS.length; i += 2) {
+      out += CMDS[i];
+      for (var j = 0; j < CMDS[i + 1]; j++) out += (j ? " " : "") + (+nums[k++].toFixed(2));
+      out += " ";
+    }
+    return out + "Z";
+  }
+  function mouthPath(t) {
+    t = Math.max(-1, Math.min(1, t));
+    var e = t * t * (3 - 2 * Math.abs(t)) * Math.sign(t); // ease in and out
+    return toPath(e >= 0 ? lerp(FLAT, SMILE, e) : lerp(FLATN, FROWN, -e));
+  }
+
+  // Eyes, in u units. lid 0..1 closes the eye from the top down.
+  function eyes(style, lid, wink) {
+    var s = "";
+    [[0, 31.25], [81.25, 112.5]].forEach(function (x, i) {
+      var w = x[1] - x[0], cx = x[0] + w / 2;
+      var l = (i === 0 && wink) ? Math.max(lid, 0.5) : lid;
+      if (style === "dot") {
+        var ry = 15.625 * (1 - l * 0.8);
+        s += '<ellipse cx="' + cx + '" cy="62.5" rx="15.625" ry="' + ry.toFixed(2) + '"/>';
+      } else if (style === "happy") {
+        var r = 15.625, h = r * (1 - l * 0.6);
+        s += '<path d="M' + x[0] + ' 75 A' + r + ' ' + h.toFixed(2) + ' 0 0 1 ' + x[1] + ' 75 Z"/>';
+      } else if (style === "closed") {
+        s += '<rect x="' + x[0] + '" y="62.5" width="' + w + '" height="12.5"/>';
+      } else {
+        var hh = 25 * (1 - l * 0.75);
+        s += '<rect x="' + x[0] + '" y="' + (75 - hh).toFixed(2) + '" width="' + w + '" height="' + hh.toFixed(2) + '"/>';
+      }
+    });
+    return s;
+  }
+
+  // Colour: hand-picked stops from red through amber to green; blending only between
+  // neighbours keeps every in-between colour clean (no olive, no neon lime).
+  function hex(c) { return [1, 3, 5].map(function (i) { return parseInt(c.substr(i, 2), 16); }); }
+  var STOPS = [[0, "#D9483F"], [25, "#E8713D"], [50, "#F2A33A"], [68, "#B5AE45"], [84, "#3DAA6B"], [100, "#2F9A5D"]]
+    .map(function (s) { return [s[0], hex(s[1])]; });
+  function scoreColour(v) {
+    for (var i = 1; i < STOPS.length; i++) {
+      if (v <= STOPS[i][0]) {
+        var a = STOPS[i - 1], b = STOPS[i], t = (v - a[0]) / (b[0] - a[0]);
+        return "rgb(" + a[1].map(function (c, j) { return Math.round(c + (b[1][j] - c) * t); }).join(",") + ")";
+      }
+    }
+    return "rgb(" + STOPS[STOPS.length - 1][1].join(",") + ")";
+  }
+
+  // A face tile. size in viewBox 0..200; the u (112.5 x 125) is centred.
+  function faceSVG(opts) {
+    var k = opts.k || 1.08;
+    var ox = (200 - 112.5 * k) / 2, oy = (200 - 125 * k) / 2 - 50 * k;
+    var bg = opts.tile ? '<rect width="200" height="200" rx="45" fill="' + opts.tile + '"/>' : "";
+    return bg + '<g transform="translate(' + ox.toFixed(2) + ' ' + oy.toFixed(2) + ') scale(' + k + ')" fill="' + (opts.ink || "#FFFFFF") + '">' +
+      eyes(opts.eye || "open", opts.lid || 0, !!opts.wink) +
+      '<path d="' + mouthPath(opts.t == null ? 1 : opts.t) + '"/></g>';
+  }
+
+  // Wordmark without the u, from the grid master.
+  var WORD = "M25 25 H56.25 V50 H25 Z M0 50 H87.5 V75 H0 Z M25 100 H56.25 V125 A25 25 0 0 0 81.25 150 H87.5 V175 H75 A50 50 0 0 1 25 125 Z M106.25 0 H137.5 V75 H106.25 Z M137.5 75 A50 50 0 0 1 224.103 75 Z M106.25 100 H137.5 V175 H106.25 Z M192.853 100 H224.103 V175 H192.853 Z M249.103 50 H280.353 V75 H249.103 Z M280.353 75 A50 50 0 0 1 323.654 50 V75 Z M249.103 100 H280.353 V175 H249.103 Z";
+  function wordSVG(ink, uCol, st) {
+    return '<path fill="' + ink + '" d="' + WORD + '"/>' +
+      '<g transform="translate(336.154 0)" fill="' + uCol + '">' + eyes(st.eye, st.lid, st.wink) + '<path d="' + mouthPath(st.t) + '"/></g>';
+  }
+
+  // State
+  var st = { score: 78, eye: "open", lid: 0, wink: false, t: 1 };
+  var el = function (id) { return document.getElementById(id); };
+  var big = el("bigFace"), sizes = el("sizes");
+  var SIZES = [180, 64, 32, 16];
+  sizes.innerHTML = SIZES.map(function (s) {
+    return '<figure><svg width="' + s + '" height="' + s + '" viewBox="0 0 200 200" aria-hidden="true"></svg><figcaption>' + s + ' px</figcaption></figure>';
+  }).join("");
+
+  function stateText(s) {
+    if (s >= 67) return ["Good day to push", "Recovery is above your usual. A hard session fits today."];
+    if (s >= 34) return ["Steady", "About your usual. Train, but keep it moderate."];
+    return ["Take it easy", "Below your usual. A walk or rest helps more than a hard session."];
+  }
+
+  function render() {
+    st.t = Math.max(-1, Math.min(1, (st.score - 50) / 30));
+    var col = scoreColour(st.score);
+    big.innerHTML = faceSVG({ t: st.t, eye: st.eye, lid: st.lid, wink: st.wink, tile: col });
+    Array.prototype.forEach.call(sizes.querySelectorAll("svg"), function (svg) {
+      svg.innerHTML = faceSVG({ t: st.t, eye: st.eye, lid: st.lid, wink: st.wink, tile: col });
+    });
+    el("wordLight").innerHTML = wordSVG("#2B1F1A", col, st);
+    el("wordDark").innerHTML = wordSVG("#F9F6ED", col, st);
+    var tx = stateText(st.score);
+    el("scoreVal").textContent = st.score;
+    if (el("stateName").textContent !== tx[0]) el("stateName").textContent = tx[0];
+    el("stateLine").textContent = tx[1];
+  }
+
+  el("score").addEventListener("input", function (e) { st.score = +e.target.value; render(); });
+  Array.prototype.forEach.call(el("eyeSeg").querySelectorAll("button"), function (b) {
+    b.addEventListener("click", function () {
+      st.eye = b.getAttribute("data-eye");
+      Array.prototype.forEach.call(el("eyeSeg").querySelectorAll("button"), function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      render();
+    });
+  });
+
+  // Blink and wink animations
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function animateLid(peak, ms, onlyWink) {
+    if (reduce) { if (onlyWink) { st.wink = true; render(); setTimeout(function () { st.wink = false; render(); }, 700); } return; }
+    var start = null;
+    function step(ts) {
+      if (start == null) start = ts;
+      var p = (ts - start) / ms;
+      var v = p < 0.5 ? p * 2 : Math.max(0, 2 - p * 2);
+      if (onlyWink) { st.wink = v > 0.15; } else { st.lid = v * peak; }
+      render();
+      if (p < 1) requestAnimationFrame(step); else { st.lid = 0; st.wink = false; render(); }
+    }
+    requestAnimationFrame(step);
+  }
+  el("blinkBtn").addEventListener("click", function () { animateLid(1, 240); });
+  el("winkBtn").addEventListener("click", function () { animateLid(1, 900, true); });
+  var timer = null;
+  function schedule() {
+    clearTimeout(timer);
+    if (!el("autoBlink").checked || reduce) return;
+    timer = setTimeout(function () { if (st.eye !== "closed") animateLid(1, 220); schedule(); }, 2800 + Math.random() * 2600);
+  }
+  el("autoBlink").addEventListener("change", schedule);
+
+  // Library
+  var LIB = [
+    { name: "Good", line: "Recovery high. Smile, open eyes.", t: 1, eye: "open", tile: "#3DAA6B" },
+    { name: "Steady", line: "Around your usual. Flat mouth.", t: 0, eye: "open", tile: "#F2A33A" },
+    { name: "Take it easy", line: "Recovery low. The bowl turned over.", t: -1, eye: "open", tile: "#E0574F" },
+    { name: "Asleep", line: "Sleep screen and bedtime. Eyes shut, a content half smile.", t: 0.4, eye: "closed", tile: "#9470F2" },
+    { name: "Saved", line: "Logged food, synced data. Wink.", t: 1, eye: "open", wink: true, lid: 1, tile: "#E3598F" },
+    { name: "New record", line: "A PR or a streak. Happy eyes.", t: 1, eye: "happy", tile: "#2978F2" },
+    { name: "Mono on paper", line: "Ink only, for print and the README.", t: 1, eye: "open", tile: "#EFE8DA", ink: "#2B1F1A" },
+    { name: "On dark", line: "Paper on GitHub dark.", t: 1, eye: "open", tile: "#0D1117", ink: "#F9F6ED" }
+  ];
+  el("library").innerHTML = LIB.map(function (f) {
+    return '<div class="card"><svg viewBox="0 0 200 200" role="img" aria-label="' + f.name + ' face">' +
+      faceSVG({ t: f.t, eye: f.eye, wink: f.wink, lid: f.wink ? 0 : 0, tile: f.tile, ink: f.ink }) +
+      '</svg><h3>' + f.name + '</h3><p>' + f.line + '</p></div>';
+  }).join("");
+
+  // Theme toggle
+  var root = document.documentElement;
+  function isDark() {
+    var a = root.getAttribute("data-theme");
+    if (a) return a === "dark";
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function syncThemeBtn() { el("themeBtn").textContent = isDark() ? "Light page" : "Dark page"; }
+  el("themeBtn").addEventListener("click", function () {
+    root.setAttribute("data-theme", isDark() ? "light" : "dark");
+    syncThemeBtn();
+  });
+  syncThemeBtn();
+
+  render();
+  schedule();
+})();
+</script>
+</body>
+</html>

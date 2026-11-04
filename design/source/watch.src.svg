@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="700" viewBox="0 0 1600 700" font-family="Inter">
+  <defs>
+    <clipPath id="frame"><rect width="1600" height="700" rx="28"/></clipPath>
+    <radialGradient id="gRed" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#E02E3D" stop-opacity="0.09"/><stop offset="1" stop-color="#E02E3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gOrange" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F78033" stop-opacity="0.11"/><stop offset="1" stop-color="#F78033" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gAmber" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FCC254" stop-opacity="0.16"/><stop offset="1" stop-color="#FCC254" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="700" fill="#F9F6ED"/>
+    <circle cx="1450" cy="0" r="600" fill="url(#gRed)"/>
+    <circle cx="1000" cy="380" r="700" fill="url(#gOrange)"/>
+    <circle cx="100" cy="760" r="560" fill="url(#gAmber)"/>
+  </g>
+
+  <!-- Header -->
+  <text x="80" y="96" font-size="44" font-weight="600" fill="#2B1F1A">Apple Watch</text>
+
+  <!-- Cards -->
+  <g>
+    <rect x="80" y="166" width="464" height="446" rx="24" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+    <rect x="568" y="166" width="464" height="446" rx="24" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+    <rect x="1056" y="166" width="464" height="446" rx="24" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  </g>
+
+  <!-- Names and one-liners -->
+  <g font-size="26" font-weight="600" fill="#2B1F1A">
+    <text x="112" y="466">Smart alarm</text>
+    <text x="600" y="466">Smart nap</text>
+    <text x="1088" y="466">Desk mode</text>
+  </g>
+  <g font-size="17" fill="#7A6A5C">
+    <text x="112" y="494">Wakes you in light sleep, up to 30 min early</text>
+    <text x="600" y="494">Counted from sleep, 30 min at most</text>
+    <text x="1088" y="494">Wrist still and heart rate dropping</text>
+  </g>
+
+  <!-- Sketch 1: movement mostly flat, spike before the deadline -->
+  <path d="M112 586H512" stroke="#E6DDCD" stroke-width="1.5"/>
+  <path d="M112 584 l20 -2 l16 3 l20 -1 l18 2 l22 -3 l20 2 l18 -1 l24 2 l18 -2 l16 1 l10 -26 l8 30 l10 -4 l14 1" fill="none" stroke="#E89B1E" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="316" cy="560" r="6" fill="#E89B1E" stroke="#FFFFFF" stroke-width="2.5"/>
+  <text x="302" y="554" font-size="14" font-weight="600" fill="#E89B1E" text-anchor="end">light sleep, wake now</text>
+  <path d="M470 540V594" stroke="#7A6A5C" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <text x="470" y="532" font-size="14" fill="#7A6A5C" text-anchor="middle">deadline</text>
+
+  <!-- Sketch 2: movement settles, asleep marker, 15 min bracket -->
+  <path d="M600 586H1000" stroke="#E6DDCD" stroke-width="1.5"/>
+  <path d="M600 572 l10 -12 l10 18 l10 -16 l10 14 l12 -10 l10 12 l12 -6 l14 6 l16 -3 l18 2 l20 -1 l28 1 l40 0 l60 0 l110 0" fill="none" stroke="#9470F2" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M770 548V594" stroke="#9470F2" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <circle cx="770" cy="582" r="6" fill="#9470F2" stroke="#FFFFFF" stroke-width="2.5"/>
+  <text x="770" y="540" font-size="14" font-weight="600" fill="#9470F2" text-anchor="middle">asleep</text>
+  <path d="M778 556V550H960V556" fill="none" stroke="#7A6A5C" stroke-width="1.5"/>
+  <text x="869" y="542" font-size="14" fill="#7A6A5C" text-anchor="middle">15 min</text>
+
+  <!-- Sketch 3: heart rate drifts below baseline, movement flat, tap where they cross -->
+  <path d="M1088 560H1488" stroke="#2978F2" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <text x="1488" y="552" font-size="14" fill="#7A6A5C" text-anchor="end">usual heart rate</text>
+  <path d="M1088 588H1488" stroke="#B9A894" stroke-width="2" stroke-linecap="round"/>
+  <path d="M1088 548 C 1150 546, 1190 552, 1240 556 C 1290 560, 1300 572, 1340 578 C 1390 584, 1430 584, 1488 585" fill="none" stroke="#2978F2" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="1268" cy="562" r="13" fill="#FFFFFF" stroke="#2978F2" stroke-width="2"/>
+  <circle cx="1268" cy="562" r="4" fill="#2978F2"/>
+  <path d="M1250 544a24 24 0 0 0 0 36M1286 544a24 24 0 0 1 0 36" fill="none" stroke="#2978F2" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="1488" y="606" font-size="14" fill="#7A6A5C" text-anchor="end">wrist still</text>
+
+  <!-- Footer -->
+  <g fill="none" stroke-width="5">
+    <circle cx="96" cy="652" r="13" stroke="#33B378"/>
+    <circle cx="132" cy="652" r="13" stroke="#9470F2"/>
+    <circle cx="168" cy="652" r="13" stroke="#2978F2"/>
+  </g>
+  <text x="196" y="658" font-size="18" fill="#2B1F1A">Complications for day status, sleep and strain on any watch face.</text>
+</svg>

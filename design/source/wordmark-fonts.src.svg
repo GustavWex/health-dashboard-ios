@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="940" viewBox="0 0 1600 940" font-family="Inter">
+  <defs>
+    <clipPath id="frame"><rect width="1600" height="940" rx="28"/></clipPath>
+    <radialGradient id="gRed" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#E02E3D" stop-opacity="0.09"/><stop offset="1" stop-color="#E02E3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gOrange" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F78033" stop-opacity="0.11"/><stop offset="1" stop-color="#F78033" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gAmber" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FCC254" stop-opacity="0.16"/><stop offset="1" stop-color="#FCC254" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="940" fill="#F9F6ED"/>
+    <circle cx="1400" cy="0" r="700" fill="url(#gRed)"/>
+    <circle cx="1000" cy="520" r="760" fill="url(#gOrange)"/>
+    <circle cx="100" cy="960" r="620" fill="url(#gAmber)"/>
+  </g>
+  <text x="80" y="76" font-size="34" font-weight="600" fill="#2B1F1A">thru wordmark, five fonts</text>
+  <rect id="card-f1" x="80" y="110" width="464" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-f2" x="568" y="110" width="464" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-f3" x="1056" y="110" width="464" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-f4" x="80" y="510" width="708" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-f5" x="812" y="510" width="708" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <text id="w1" x="312" y="310" font-family="Geist" font-size="170" font-weight="600" letter-spacing="-7.65" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="108" y="410" font-size="18" font-weight="600" fill="#2B1F1A">1  Geist SemiBold</text><text x="108" y="434" font-size="15" fill="#7A6A5C">Sharp and neutral, Vercel's typeface</text>
+  <text id="w2" x="800" y="310" font-family="Manrope" font-size="170" font-weight="700" letter-spacing="-6.80" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="596" y="410" font-size="18" font-weight="600" fill="#2B1F1A">2  Manrope Bold</text><text x="596" y="434" font-size="15" fill="#7A6A5C">Geometric, open and friendly</text>
+  <text id="w3" x="1288" y="310" font-family="Space Grotesk" font-size="170" font-weight="700" letter-spacing="-6.80" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="1084" y="410" font-size="18" font-weight="600" fill="#2B1F1A">3  Space Grotesk Bold</text><text x="1084" y="434" font-size="15" fill="#7A6A5C">Quirky details in t and r</text>
+  <text id="w4" x="434" y="720" font-family="Instrument Sans" font-size="190" font-weight="600" letter-spacing="-6.65" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="108" y="810" font-size="18" font-weight="600" fill="#2B1F1A">4  Instrument Sans SemiBold</text><text x="108" y="834" font-size="15" fill="#7A6A5C">Tight and editorial</text>
+  <image x="600" y="774" width="44" height="44" xlink:href="../assets/AppIcon.png" href="../assets/AppIcon.png"/>
+  <text x="655" y="812" font-family="Instrument Sans" font-size="40" font-weight="600" letter-spacing="-1.40" fill="#2B1F1A">thru</text>
+  <text id="w5" x="1166" y="720" font-family="Fraunces" font-size="190" font-weight="600" letter-spacing="-5.70" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="840" y="810" font-size="18" font-weight="600" fill="#2B1F1A">5  Fraunces SemiBold</text><text x="840" y="834" font-size="15" fill="#7A6A5C">Soft, warm serif</text>
+  <image x="1330" y="774" width="44" height="44" xlink:href="../assets/AppIcon.png" href="../assets/AppIcon.png"/>
+  <text x="1385" y="812" font-family="Fraunces" font-size="40" font-weight="600" letter-spacing="-1.20" fill="#2B1F1A">thru</text>
+</svg>

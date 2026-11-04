@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="940" viewBox="0 0 1600 940" font-family="Inter">
+  <defs>
+    <clipPath id="frame"><rect width="1600" height="940" rx="28"/></clipPath>
+    <radialGradient id="gRed" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#E02E3D" stop-opacity="0.09"/><stop offset="1" stop-color="#E02E3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gOrange" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F78033" stop-opacity="0.11"/><stop offset="1" stop-color="#F78033" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gAmber" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FCC254" stop-opacity="0.16"/><stop offset="1" stop-color="#FCC254" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="940" fill="#F9F6ED"/>
+    <circle cx="1400" cy="0" r="700" fill="url(#gRed)"/>
+    <circle cx="1000" cy="520" r="760" fill="url(#gOrange)"/>
+    <circle cx="100" cy="960" r="620" fill="url(#gAmber)"/>
+  </g>
+  <text x="80" y="76" font-size="34" font-weight="600" fill="#2B1F1A">thru wordmark, five directions</text>
+
+  <rect id="card-w1" x="80" y="110" width="464" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-w2" x="568" y="110" width="464" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-w3" x="1056" y="110" width="464" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-w4" x="80" y="510" width="708" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <rect id="card-w5" x="812" y="510" width="708" height="360" rx="22" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+
+  <!-- 1 Soft monoline: drawn with round strokes, like SF Rounded -->
+  <g transform="translate(142 352)" fill="none" stroke="#2B1F1A" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 -130 V-24 Q20 0 44 0 H54 M0 -90 H54"/>
+      <path d="M86 -140 V0 M86 -54 Q86 -90 121 -90 Q156 -90 156 -54 V0"/>
+      <path d="M190 -90 V0 M190 -48 Q190 -90 232 -90 H240"/>
+      <path d="M270 -90 V-36 Q270 0 305 0 Q340 0 340 -36 V-90 M340 -90 V0"/>
+  </g>
+  <text x="108" y="442" font-size="18" font-weight="600" fill="#7A6A5C">1  Soft monoline</text>
+
+  <!-- 2 Rest to strain: weight rises letter by letter (weights set in VectorCraft) -->
+  <text id="ramp" x="800" y="350" font-family="Segoe UI Variable" font-size="160" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="596" y="442" font-size="18" font-weight="600" fill="#7A6A5C">2  Rest to strain</text>
+
+  <!-- 3 See-through: a heavy grotesk with a slit cut through it (cut in VectorCraft) -->
+  <text id="cut" x="1288" y="350" font-size="170" font-weight="600" letter-spacing="-6" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="1084" y="442" font-size="18" font-weight="600" fill="#7A6A5C">3  See-through cut</text>
+
+  <!-- 4 Warm serif -->
+  <text x="434" y="760" font-family="Constantia" font-weight="bold" font-size="190" letter-spacing="-4" text-anchor="middle" fill="#2B1F1A">thru</text>
+  <text x="108" y="842" font-size="18" font-weight="600" fill="#7A6A5C">4  Warm serif</text>
+
+  <!-- 5 One line: the whole word in a single stroke, starting from a data point -->
+  <g transform="translate(990 752)" fill="none" stroke="#2B1F1A" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 -130 V-24 Q20 0 44 0 C 70 0 88 -96 88 -140 V0 V-54 Q88 -90 123 -90 Q158 -90 158 -54 V-12 Q158 0 168 0 Q182 0 182 -16 V-90 V-48 Q182 -90 222 -90 Q182 -90 182 -48 V0 C 186 8 236 6 256 -30 V-90 V-36 Q256 0 291 0 Q326 0 326 -36 V-90 V-14 Q326 0 344 0"/>
+    <path d="M0 -90 H52"/>
+  </g>
+  <circle cx="1010" cy="622" r="11" fill="#E8543D"/>
+  <text x="840" y="842" font-size="18" font-weight="600" fill="#7A6A5C">5  One line</text>
+</svg>

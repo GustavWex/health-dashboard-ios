@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1200" viewBox="0 0 1400 1200" font-family="Inter">
+<rect width="1400" height="1200" fill="#F9F6ED"/>
+<text x="40" y="60" font-size="28" font-weight="600" fill="#2B1F1A">Baseline and two tweaks</text>
+<text x="40" y="124" font-size="18" font-weight="600" fill="#2B1F1A">Baseline</text>
+<text x="40" y="146" font-size="13" fill="#7A6A5C">t 60, h arch a pointed slice, r arm from the same circle, r 60</text>
+<line x1="60.00" y1="170.00" x2="60.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="81.75" y1="170.00" x2="81.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="103.50" y1="170.00" x2="103.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="125.25" y1="170.00" x2="125.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="147.00" y1="170.00" x2="147.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="168.75" y1="170.00" x2="168.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="190.50" y1="170.00" x2="190.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="212.25" y1="170.00" x2="212.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="234.00" y1="170.00" x2="234.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="255.75" y1="170.00" x2="255.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="277.50" y1="170.00" x2="277.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="299.25" y1="170.00" x2="299.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="321.00" y1="170.00" x2="321.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="342.75" y1="170.00" x2="342.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="364.50" y1="170.00" x2="364.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="386.25" y1="170.00" x2="386.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="408.00" y1="170.00" x2="408.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="429.75" y1="170.00" x2="429.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="451.50" y1="170.00" x2="451.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="473.25" y1="170.00" x2="473.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="495.00" y1="170.00" x2="495.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="516.75" y1="170.00" x2="516.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="538.50" y1="170.00" x2="538.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="560.25" y1="170.00" x2="560.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="582.00" y1="170.00" x2="582.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="603.75" y1="170.00" x2="603.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="625.50" y1="170.00" x2="625.50" y2="431.00" stroke="#D6C9B2"/>
+<line x1="647.25" y1="170.00" x2="647.25" y2="431.00" stroke="#ECE4D4"/>
+<line x1="669.00" y1="170.00" x2="669.00" y2="431.00" stroke="#D6C9B2"/>
+<line x1="690.75" y1="170.00" x2="690.75" y2="431.00" stroke="#ECE4D4"/>
+<line x1="60.00" y1="170.00" x2="690.75" y2="170.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="191.75" x2="690.75" y2="191.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="213.50" x2="690.75" y2="213.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="235.25" x2="690.75" y2="235.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="257.00" x2="690.75" y2="257.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="278.75" x2="690.75" y2="278.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="300.50" x2="690.75" y2="300.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="322.25" x2="690.75" y2="322.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="344.00" x2="690.75" y2="344.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="365.75" x2="690.75" y2="365.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="387.50" x2="690.75" y2="387.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="409.25" x2="690.75" y2="409.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="431.00" x2="690.75" y2="431.00" stroke="#D6C9B2"/>
+<rect x="60.00" y="300.50" width="630.75" height="43.5" fill="#E0574F" fill-opacity="0.06"/>
+<g transform="translate(60 170) scale(1.45)" fill="#2B1F1A"><path d="M15 30 H45 V60 H15 Z M0 60 H60 V90 H0 Z M15 120 H45 V135 A15 15 0 0 0 60 150 V180 A45 45 0 0 1 15 135 Z M75 0 H105 V90 H75 Z M105 90 A38.4375 38.4375 0 0 1 180 90 Z M75 120 H105 V180 H75 Z M150 120 H180 V180 H150 Z M195 60 H225 V90 H195 Z M225 90 A38.4375 38.4375 0 0 1 255 60.738 V90 Z M195 120 H225 V180 H195 Z M270 60 H300 V90 H270 Z M345 60 H375 V90 H345 Z M270 120 H300 V127.5 A22.5 22.5 0 0 0 345 127.5 V120 H375 V127.5 A52.5 52.5 0 0 1 270 127.5 Z" /></g>
+<circle cx="147.00" cy="365.75" r="65.25" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="147.00" cy="365.75" r="21.75" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="266.62" cy="312.73" r="55.7344" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="440.62" cy="312.73" r="55.7344" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="527.62" cy="354.88" r="76.125" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="527.62" cy="354.88" r="32.625" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<path d="M60.00 441 v6 H147.00 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="103.5" y="461" font-size="12" fill="#5B8DEF" text-anchor="middle">60</text>
+<path d="M168.75 441 v6 H321.00 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="244.875" y="461" font-size="12" fill="#5B8DEF" text-anchor="middle">105</text>
+<path d="M342.75 441 v6 H429.75 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="386.25" y="461" font-size="12" fill="#5B8DEF" text-anchor="middle">60</text>
+<path d="M451.50 441 v6 H603.75 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="527.625" y="461" font-size="12" fill="#5B8DEF" text-anchor="middle">105</text>
+<g transform="translate(760 222.00) scale(0.60000)" fill="#2B1F1A"><path d="M15 30 H45 V60 H15 Z M0 60 H60 V90 H0 Z M15 120 H45 V135 A15 15 0 0 0 60 150 V180 A45 45 0 0 1 15 135 Z M75 0 H105 V90 H75 Z M105 90 A38.4375 38.4375 0 0 1 180 90 Z M75 120 H105 V180 H75 Z M150 120 H180 V180 H150 Z M195 60 H225 V90 H195 Z M225 90 A38.4375 38.4375 0 0 1 255 60.738 V90 Z M195 120 H225 V180 H195 Z M270 60 H300 V90 H270 Z M345 60 H375 V90 H345 Z M270 120 H300 V127.5 A22.5 22.5 0 0 0 345 127.5 V120 H375 V127.5 A52.5 52.5 0 0 1 270 127.5 Z" /></g>
+<g transform="translate(1060 274.68) scale(0.22400)" fill="#2B1F1A"><path d="M15 30 H45 V60 H15 Z M0 60 H60 V90 H0 Z M15 120 H45 V135 A15 15 0 0 0 60 150 V180 A45 45 0 0 1 15 135 Z M75 0 H105 V90 H75 Z M105 90 A38.4375 38.4375 0 0 1 180 90 Z M75 120 H105 V180 H75 Z M150 120 H180 V180 H150 Z M195 60 H225 V90 H195 Z M225 90 A38.4375 38.4375 0 0 1 255 60.738 V90 Z M195 120 H225 V180 H195 Z M270 60 H300 V90 H270 Z M345 60 H375 V90 H345 Z M270 120 H300 V127.5 A22.5 22.5 0 0 0 345 127.5 V120 H375 V127.5 A52.5 52.5 0 0 1 270 127.5 Z" /></g>
+<g transform="translate(1220 284.84) scale(0.11200)" fill="#2B1F1A"><path d="M15 30 H45 V60 H15 Z M0 60 H60 V90 H0 Z M15 120 H45 V135 A15 15 0 0 0 60 150 V180 A45 45 0 0 1 15 135 Z M75 0 H105 V90 H75 Z M105 90 A38.4375 38.4375 0 0 1 180 90 Z M75 120 H105 V180 H75 Z M150 120 H180 V180 H150 Z M195 60 H225 V90 H195 Z M225 90 A38.4375 38.4375 0 0 1 255 60.738 V90 Z M195 120 H225 V180 H195 Z M270 60 H300 V90 H270 Z M345 60 H375 V90 H345 Z M270 120 H300 V127.5 A22.5 22.5 0 0 0 345 127.5 V120 H375 V127.5 A52.5 52.5 0 0 1 270 127.5 Z" /></g>
+<line x1="40" y1="450" x2="1360" y2="450" stroke="#E6DDCD"/>
+<text x="40" y="484" font-size="18" font-weight="600" fill="#2B1F1A">A  r ends in a full cell</text>
+<text x="40" y="506" font-size="13" fill="#7A6A5C">t 90, h half circle d90, r quarter circle d60 plus one cell: r = t = 90</text>
+<line x1="60.00" y1="530.00" x2="60.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="81.75" y1="530.00" x2="81.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="103.50" y1="530.00" x2="103.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="125.25" y1="530.00" x2="125.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="147.00" y1="530.00" x2="147.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="168.75" y1="530.00" x2="168.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="190.50" y1="530.00" x2="190.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="212.25" y1="530.00" x2="212.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="234.00" y1="530.00" x2="234.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="255.75" y1="530.00" x2="255.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="277.50" y1="530.00" x2="277.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="299.25" y1="530.00" x2="299.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="321.00" y1="530.00" x2="321.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="342.75" y1="530.00" x2="342.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="364.50" y1="530.00" x2="364.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="386.25" y1="530.00" x2="386.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="408.00" y1="530.00" x2="408.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="429.75" y1="530.00" x2="429.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="451.50" y1="530.00" x2="451.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="473.25" y1="530.00" x2="473.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="495.00" y1="530.00" x2="495.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="516.75" y1="530.00" x2="516.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="538.50" y1="530.00" x2="538.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="560.25" y1="530.00" x2="560.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="582.00" y1="530.00" x2="582.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="603.75" y1="530.00" x2="603.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="625.50" y1="530.00" x2="625.50" y2="791.00" stroke="#D6C9B2"/>
+<line x1="647.25" y1="530.00" x2="647.25" y2="791.00" stroke="#ECE4D4"/>
+<line x1="669.00" y1="530.00" x2="669.00" y2="791.00" stroke="#D6C9B2"/>
+<line x1="690.75" y1="530.00" x2="690.75" y2="791.00" stroke="#ECE4D4"/>
+<line x1="60.00" y1="530.00" x2="690.75" y2="530.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="551.75" x2="690.75" y2="551.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="573.50" x2="690.75" y2="573.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="595.25" x2="690.75" y2="595.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="617.00" x2="690.75" y2="617.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="638.75" x2="690.75" y2="638.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="660.50" x2="690.75" y2="660.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="682.25" x2="690.75" y2="682.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="704.00" x2="690.75" y2="704.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="725.75" x2="690.75" y2="725.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="747.50" x2="690.75" y2="747.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="769.25" x2="690.75" y2="769.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="791.00" x2="690.75" y2="791.00" stroke="#D6C9B2"/>
+<rect x="60.00" y="660.50" width="630.75" height="43.5" fill="#E0574F" fill-opacity="0.06"/>
+<g transform="translate(60 530) scale(1.45)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H315 V90 H285 Z M225 120 H255 V180 H225 Z M330 60 H360 V90 H330 Z M405 60 H435 V90 H405 Z M330 120 H360 V127.5 A22.5 22.5 0 0 0 405 127.5 V120 H435 V127.5 A52.5 52.5 0 0 1 330 127.5 Z" /></g>
+<circle cx="168.75" cy="725.75" r="65.25" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="168.75" cy="725.75" r="21.75" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="299.25" cy="682.25" r="65.25" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="299.25" cy="682.25" r="21.75" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="473.25" cy="660.50" r="43.5" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="614.62" cy="714.88" r="76.125" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="614.62" cy="714.88" r="32.625" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<path d="M60.00 801 v6 H190.50 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="125.25" y="821" font-size="12" fill="#5B8DEF" text-anchor="middle">90</text>
+<path d="M212.25 801 v6 H364.50 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="288.375" y="821" font-size="12" fill="#5B8DEF" text-anchor="middle">105</text>
+<path d="M386.25 801 v6 H516.75 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="451.5" y="821" font-size="12" fill="#5B8DEF" text-anchor="middle">90</text>
+<path d="M538.50 801 v6 H690.75 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="614.625" y="821" font-size="12" fill="#5B8DEF" text-anchor="middle">105</text>
+<g transform="translate(760 582.00) scale(0.60000)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H315 V90 H285 Z M225 120 H255 V180 H225 Z M330 60 H360 V90 H330 Z M405 60 H435 V90 H405 Z M330 120 H360 V127.5 A22.5 22.5 0 0 0 405 127.5 V120 H435 V127.5 A52.5 52.5 0 0 1 330 127.5 Z" /></g>
+<g transform="translate(1060 634.68) scale(0.22400)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H315 V90 H285 Z M225 120 H255 V180 H225 Z M330 60 H360 V90 H330 Z M405 60 H435 V90 H405 Z M330 120 H360 V127.5 A22.5 22.5 0 0 0 405 127.5 V120 H435 V127.5 A52.5 52.5 0 0 1 330 127.5 Z" /></g>
+<g transform="translate(1220 644.84) scale(0.11200)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H315 V90 H285 Z M225 120 H255 V180 H225 Z M330 60 H360 V90 H330 Z M405 60 H435 V90 H405 Z M330 120 H360 V127.5 A22.5 22.5 0 0 0 405 127.5 V120 H435 V127.5 A52.5 52.5 0 0 1 330 127.5 Z" /></g>
+<line x1="40" y1="810" x2="1360" y2="810" stroke="#E6DDCD"/>
+<text x="40" y="844" font-size="18" font-weight="600" fill="#2B1F1A">B  r ends in half a cell</text>
+<text x="40" y="866" font-size="13" fill="#7A6A5C">Same, but the r ends in a 15 wide bar: r 75, t 90</text>
+<line x1="60.00" y1="890.00" x2="60.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="81.75" y1="890.00" x2="81.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="103.50" y1="890.00" x2="103.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="125.25" y1="890.00" x2="125.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="147.00" y1="890.00" x2="147.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="168.75" y1="890.00" x2="168.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="190.50" y1="890.00" x2="190.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="212.25" y1="890.00" x2="212.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="234.00" y1="890.00" x2="234.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="255.75" y1="890.00" x2="255.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="277.50" y1="890.00" x2="277.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="299.25" y1="890.00" x2="299.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="321.00" y1="890.00" x2="321.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="342.75" y1="890.00" x2="342.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="364.50" y1="890.00" x2="364.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="386.25" y1="890.00" x2="386.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="408.00" y1="890.00" x2="408.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="429.75" y1="890.00" x2="429.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="451.50" y1="890.00" x2="451.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="473.25" y1="890.00" x2="473.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="495.00" y1="890.00" x2="495.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="516.75" y1="890.00" x2="516.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="538.50" y1="890.00" x2="538.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="560.25" y1="890.00" x2="560.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="582.00" y1="890.00" x2="582.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="603.75" y1="890.00" x2="603.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="625.50" y1="890.00" x2="625.50" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="647.25" y1="890.00" x2="647.25" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="669.00" y1="890.00" x2="669.00" y2="1151.00" stroke="#D6C9B2"/>
+<line x1="690.75" y1="890.00" x2="690.75" y2="1151.00" stroke="#ECE4D4"/>
+<line x1="60.00" y1="890.00" x2="690.75" y2="890.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="911.75" x2="690.75" y2="911.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="933.50" x2="690.75" y2="933.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="955.25" x2="690.75" y2="955.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="977.00" x2="690.75" y2="977.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="998.75" x2="690.75" y2="998.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="1020.50" x2="690.75" y2="1020.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="1042.25" x2="690.75" y2="1042.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="1064.00" x2="690.75" y2="1064.00" stroke="#D6C9B2"/>
+<line x1="60.00" y1="1085.75" x2="690.75" y2="1085.75" stroke="#ECE4D4"/>
+<line x1="60.00" y1="1107.50" x2="690.75" y2="1107.50" stroke="#D6C9B2"/>
+<line x1="60.00" y1="1129.25" x2="690.75" y2="1129.25" stroke="#ECE4D4"/>
+<line x1="60.00" y1="1151.00" x2="690.75" y2="1151.00" stroke="#D6C9B2"/>
+<rect x="60.00" y="1020.50" width="630.75" height="43.5" fill="#E0574F" fill-opacity="0.06"/>
+<g transform="translate(60 890) scale(1.45)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H300 V90 H285 Z M225 120 H255 V180 H225 Z M315 60 H345 V90 H315 Z M390 60 H420 V90 H390 Z M315 120 H345 V127.5 A22.5 22.5 0 0 0 390 127.5 V120 H420 V127.5 A52.5 52.5 0 0 1 315 127.5 Z" /></g>
+<circle cx="168.75" cy="1085.75" r="65.25" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="168.75" cy="1085.75" r="21.75" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="299.25" cy="1042.25" r="65.25" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="299.25" cy="1042.25" r="21.75" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="473.25" cy="1020.50" r="43.5" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="592.88" cy="1074.88" r="76.125" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<circle cx="592.88" cy="1074.88" r="32.625" fill="none" stroke="#E0574F" stroke-width="1" stroke-opacity="0.75"/>
+<path d="M60.00 1161 v6 H190.50 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="125.25" y="1181" font-size="12" fill="#5B8DEF" text-anchor="middle">90</text>
+<path d="M212.25 1161 v6 H364.50 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="288.375" y="1181" font-size="12" fill="#5B8DEF" text-anchor="middle">105</text>
+<path d="M386.25 1161 v6 H495.00 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="440.625" y="1181" font-size="12" fill="#5B8DEF" text-anchor="middle">75</text>
+<path d="M516.75 1161 v6 H669.00 v-6" fill="none" stroke="#5B8DEF" stroke-width="1.3"/>
+<text x="592.875" y="1181" font-size="12" fill="#5B8DEF" text-anchor="middle">105</text>
+<g transform="translate(760 942.00) scale(0.60000)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H300 V90 H285 Z M225 120 H255 V180 H225 Z M315 60 H345 V90 H315 Z M390 60 H420 V90 H390 Z M315 120 H345 V127.5 A22.5 22.5 0 0 0 390 127.5 V120 H420 V127.5 A52.5 52.5 0 0 1 315 127.5 Z" /></g>
+<g transform="translate(1060 994.68) scale(0.22400)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H300 V90 H285 Z M225 120 H255 V180 H225 Z M315 60 H345 V90 H315 Z M390 60 H420 V90 H390 Z M315 120 H345 V127.5 A22.5 22.5 0 0 0 390 127.5 V120 H420 V127.5 A52.5 52.5 0 0 1 315 127.5 Z" /></g>
+<g transform="translate(1220 1004.84) scale(0.11200)" fill="#2B1F1A"><path d="M30 30 H60 V60 H30 Z M0 60 H90 V90 H0 Z M30 120 H60 V135 A15 15 0 0 0 75 150 H90 V180 H75 A45 45 0 0 1 30 135 Z M105 0 H135 V90 H105 Z M122.574 90 A45 45 0 0 1 207.426 90 Z M105 120 H135 V180 H105 Z M180 120 H210 V180 H180 Z M225 60 H255 V90 H225 Z M255 90 A30 30 0 0 1 285 60 V90 Z M285 60 H300 V90 H285 Z M225 120 H255 V180 H225 Z M315 60 H345 V90 H315 Z M390 60 H420 V90 H390 Z M315 120 H345 V127.5 A22.5 22.5 0 0 0 390 127.5 V120 H420 V127.5 A52.5 52.5 0 0 1 315 127.5 Z" /></g>
+<line x1="40" y1="1170" x2="1360" y2="1170" stroke="#E6DDCD"/>
+</svg>

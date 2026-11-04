@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="800" viewBox="0 0 1600 800" font-family="Inter">
+  <defs>
+    <clipPath id="frame"><rect width="1600" height="800" rx="28"/></clipPath>
+    <radialGradient id="gRed" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#E02E3D" stop-opacity="0.09"/><stop offset="1" stop-color="#E02E3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gOrange" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F78033" stop-opacity="0.11"/><stop offset="1" stop-color="#F78033" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gAmber" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FCC254" stop-opacity="0.16"/><stop offset="1" stop-color="#FCC254" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="800" fill="#F9F6ED"/>
+    <circle cx="1320" cy="0" r="720" fill="url(#gRed)"/>
+    <circle cx="1080" cy="470" r="820" fill="url(#gOrange)"/>
+    <circle cx="60" cy="900" r="640" fill="url(#gAmber)"/>
+  </g>
+
+  <g clip-path="url(#frame)">
+    <image x="700" y="150" width="300" height="558" transform="rotate(-6 850 429)" xlink:href="../assets/today-split.png" href="../assets/today-split.png"/>
+    <image x="1130" y="150" width="300" height="558" transform="rotate(6 1280 429)" xlink:href="../assets/trends.png" href="../assets/trends.png"/>
+    <image x="886" y="70" width="360" height="670" xlink:href="../assets/today.png" href="../assets/today.png"/>
+  </g>
+
+  <image id="app-icon" x="80" y="110" width="207" height="207" xlink:href="../assets/AppIcon.png" href="../assets/AppIcon.png"/>
+  <text x="108" y="400" font-size="104" font-weight="600" letter-spacing="-3" fill="#2B1F1A">thru</text>
+  <text transform="translate(112 470) skewX(-12)" font-size="36" font-weight="600" fill="#E8543D">Intelligent</text>
+  <text x="300" y="470" font-size="36" font-weight="500" fill="#2B1F1A">recovery, sleep and</text>
+  <text x="110" y="516" font-size="36" font-weight="500" fill="#2B1F1A">strain you can see</text>
+  <text x="110" y="562" font-size="36" font-weight="500" fill="#2B1F1A">right through</text>
+  <text x="110" y="624" font-size="24" fill="#7A6A5C">Every number explained.</text>
+  <text x="110" y="658" font-size="24" fill="#7A6A5C">Everything on device.</text>
+</svg>
