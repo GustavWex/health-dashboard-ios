@@ -158,10 +158,10 @@ enum InsightText {
     static func headline(_ i: Insight) -> String {
         let more = i.r > 0 ? "higher" : "lower"
         if i.feature.kind == .flag {
-            return "\(i.feature.name) goes with \(more) \(i.outcome.name.lowercased()) \(when(i))"
+            return "\(i.feature.name) goes with \(more) \(i.outcome.name.inSentence) \(when(i))"
         }
-        let what = i.feature.kind == .clock ? "A later \(i.feature.name.lowercased())" : "More \(i.feature.name.lowercased())"
-        return "\(what) goes with \(more) \(i.outcome.name.lowercased()) \(when(i))"
+        let what = i.feature.kind == .clock ? "A later \(i.feature.name.inSentence)" : "More \(i.feature.name.inSentence)"
+        return "\(what) goes with \(more) \(i.outcome.name.inSentence) \(when(i))"
     }
 
     static func comparison(_ i: Insight) -> String {
@@ -172,7 +172,7 @@ enum InsightText {
         let t = value(i.threshold ?? 0, i.feature.kind)
         let clock = i.feature.kind == .clock
         let (low, high) = clock ? ("before \(t)", "later") : ("under \(t)", "more")
-        return "\(i.feature.name) \(low)\(context(i, low: true)): \(o.name.lowercased()) \(outcome(i.lowMean, o)). "
+        return "\(i.feature.name) \(low)\(context(i, low: true)): \(o.name.inSentence) \(outcome(i.lowMean, o)). "
             + "\(high.prefix(1).uppercased() + high.dropFirst())\(context(i, low: false)): \(outcome(i.highMean, o)). (\(i.lowN) and \(i.highN) days)"
     }
 
@@ -229,7 +229,7 @@ struct InsightDetailView: View {
                         }
                     }
                     .frame(height: 220)
-                    Text("Each dot is one day: \(insight.feature.name.lowercased()) against \(insight.outcome.name.lowercased()) \(InsightText.when(insight)).")
+                    Text("Each dot is one day: \(insight.feature.name.inSentence) against \(insight.outcome.name.inSentence) \(InsightText.when(insight)).")
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                 }
@@ -339,5 +339,14 @@ struct WeekReportCard: View {
     private func color(_ r: Row) -> Color {
         guard let better = r.higherIsBetter, let t = r.c.thisWeek, let u = r.c.usual, u != 0, abs(t - u) / abs(u) > 0.05 else { return .primary }
         return (t > u) == better ? Zone.push.color : Zone.recover.color
+    }
+}
+
+extension String {
+    /// Lowercase for the middle of a sentence, keeping abbreviations like HR, HRV and CO2 as they are.
+    var inSentence: String {
+        split(separator: " ", omittingEmptySubsequences: false).map { w in
+            w.count > 1 && w.allSatisfy { $0.isUppercase || $0.isNumber } ? String(w) : w.lowercased()
+        }.joined(separator: " ")
     }
 }

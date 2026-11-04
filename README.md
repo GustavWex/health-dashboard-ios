@@ -1,11 +1,16 @@
-# Health Dashboard
+# thru
 
-A personal, Whoop-style health dashboard for iPhone and Apple Watch. It reads Apple Watch, Withings scale and food logging data from Apple Health and turns it into recovery, sleep, strain, nutrition and body composition scores, with explanations for every number. Everything is computed on the device: no server and no accounts.
+***Intelligent*** **recovery, sleep and strain you can see right through.**
+
+A personal, Whoop-style health app for iPhone and Apple Watch. It reads Apple Watch, smart scale, food logging and lifting data and turns it into recovery, sleep, strain, nutrition and body composition scores, with explanations for every number. Everything is computed on the device: no server and no accounts.
 
 ```
-Apple Watch ──────────┐
-Withings scale ───────┼──> Apple Health ──> HealthKit (read only) ──> this app ──> watch app, widgets
-Food logging app ─────┘
+Apple Watch ─────────────┐
+Any smart scale app ─────┼──> Apple Health ──> HealthKit (read only) ──┐
+Any food logging app ────┘                                             │
+Withings API (body composition) ───────────────────────────────────────┼──> this app ──> watch app, widgets
+Scale app CSV (Renpho, Eufy, Garmin, Fitbit, Zepp, Withings) ──────────┤
+Strong or Hevy CSV (sets, reps, weights) ──────────────────────────────┘
 ```
 
 ## Highlights
@@ -13,9 +18,10 @@ Food logging app ─────┘
 - **Explainable by design.** Today's recovery breaks down into exact Shapley values (the idea behind SHAP), with what-if lines and plain-language reasons.
 - **Bayesian forecast.** A conjugate Normal regression learns how workouts move your recovery over the next days, shown only where it beats a naive baseline in a rolling backtest.
 - **Insights with honest statistics.** Habits are tested against next-morning outcomes with autocorrelation-corrected sample sizes and Benjamini-Hochberg false discovery control.
-- **Nutrition and body.** Diet quality over all 33 Apple Health nutrients, adaptive energy expenditure from intake and trend weight, and Withings body composition through its API.
+- **Nutrition and body.** Diet quality over all 33 Apple Health nutrients, adaptive energy expenditure from intake and trend weight, and body composition from the Withings API or any scale app's CSV export, matched by column name rather than brand.
+- **Strength log.** Strong and Hevy exports, with volume load, estimated 1RM progress and each session matched to its watch workout.
 - **Apple Watch app.** Complications, a movement-based smart alarm, a smart nap that counts from sleep onset, and a desk mode that taps you when you start nodding off.
-- **Every formula has a citation and a golden-vector test.** 131 tests in the `HealthCore` package.
+- **Every formula has a citation and a golden-vector test.** 139 tests in the `HealthCore` package.
 
 ## Tech
 SwiftUI, Swift Charts, SwiftData, HealthKit, WidgetKit, WatchKit and WatchConnectivity, App Intents, Core Motion, Swift 6 concurrency. iOS 17 and watchOS 10. The project is generated with XcodeGen.
@@ -79,7 +85,7 @@ The Simulator has no Health data, so debug builds there show 180 days of made-up
 
 **Effort load.** Rate a workout's effort on your Apple Watch afterwards and the app multiplies it by the minutes (session RPE, Foster et al. 2001). Heart rate undercounts heavy lifting, so this is the fairer load for strength sessions.
 
-**Strength log.** Import a Strong export (Settings, Strength log). Volume load is weight × reps over working sets (Haff 2010). Estimated 1RM is the Epley formula, weight × (1 + reps / 30), on the best set of each session up to 10 reps (LeSuer et al. 1997). Each workout's detail shows the sets logged during it.
+**Strength log.** Import a Strong or Hevy export (Settings, Strength log); the format is detected from the header. Volume load is weight × reps over working sets (Haff 2010). Estimated 1RM is the Epley formula, weight × (1 + reps / 30), on the best set of each session up to 10 reps (LeSuer et al. 1997). Each workout's detail shows the sets logged during it.
 
 **Training load.** Acute:chronic ratio of active energy (7 vs 28 days), shown as load against your recent normal, not as injury risk. Your training rhythm is detected from strength workouts over the last 8 weeks: fixed weekdays, or an interval like every other day. Trends shows this week's activities against your usual week.
 
@@ -98,6 +104,8 @@ The Simulator has no Health data, so debug builds there show 180 days of made-up
 **Export and Ask your data.** Settings, Your data, Export data makes a CSV and JSON file with one row per day to share or analyze elsewhere. Ask your data (the speech bubble on Trends) sends your question plus a summary of your data to a provider you pick in Settings, Assistant: Google Gemini, Groq, Ollama on your own Mac, or any OpenAI-compatible service. It is off until you allow it, and you can read exactly what is sent first. Free tiers may use what you send to improve their models.
 
 **Withings body composition.** Apple Health has no place for muscle mass, body water, bone mass or visceral fat, so the app can read them straight from Withings: Settings, Withings, Connect. It needs your own Withings developer app; put its client ID and secret in `data/withings.env` and run `scripts/withings-secrets.sh` before building. Under Withings' current terms the API may require Withings+.
+
+**Other smart scales.** Any scale whose app writes to Apple Health gives weight, body fat and lean mass with no setup. For the rest, export a CSV from the scale's app and import it in Settings, Other smart scales. Columns are matched by name ("Weight (kg)", "Body Fat(%)", "Hydration", "Visceral Fat"), units are read from headers or cells, pounds are converted, and percentages of water or muscle become kg using that weigh-in's weight. Imports only fill days Apple Health and Withings left empty.
 
 **Balance.** The big blob on Today is your balance: last night's sleep score (45%), yesterday's food (30%) and yesterday's strain against the target your recovery set (25%), each 0 to 100. Sleep weighs most because short sleep undermines muscle building and body composition (Nedeltcheva et al. 2010; Lamon et al. 2021). Food combines diet quality (nutrient density adapted from the Nutrient Rich Foods index), protein against your target and calories against the intake your weight goal needs. Rest days don't count against you. Tap it to split it into its parts.
 

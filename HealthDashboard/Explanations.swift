@@ -71,15 +71,15 @@ struct ForecastExplanation: View {
 enum InsightAction {
     static func suggestion(_ i: Insight) -> String {
         let moreIsGood = (i.r > 0) == i.outcome.higherIsBetter
-        let name = i.feature.name.lowercased()
+        let name = i.feature.name.inSentence
         if i.feature.kind == .flag {
             return moreIsGood
-                ? "Your data suggests days with \(name) help. If it fits your week, keep them and watch whether \(i.outcome.name.lowercased()) follows."
-                : "Try a couple of weeks with fewer \(name) days and see whether \(i.outcome.name.lowercased()) improves."
+                ? "Your data suggests days with \(name) help. If it fits your week, keep them and watch whether \(i.outcome.name.inSentence) follows."
+                : "Try a couple of weeks with fewer \(name) days and see whether \(i.outcome.name.inSentence) improves."
         }
         let t = InsightText.value(i.threshold ?? 0, i.feature.kind)
         let side = i.feature.kind == .clock ? (moreIsGood ? "after \(t)" : "before \(t)") : (moreIsGood ? "above \(t)" : "under \(t)")
-        return "Try keeping \(name) \(side) for two weeks and see whether \(i.outcome.name.lowercased()) follows."
+        return "Try keeping \(name) \(side) for two weeks and see whether \(i.outcome.name.inSentence) follows."
     }
 
 }

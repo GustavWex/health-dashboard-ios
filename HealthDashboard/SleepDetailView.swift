@@ -35,7 +35,7 @@ extension SleepComponentKind {
     func valueText(_ c: SleepComponent, night: SleepNight) -> String {
         switch self {
         case .duration: fmt(c.value, 1, " h")
-        case .interruptions: "\(night.awakenings) times"
+        case .interruptions: night.awakenings == 1 ? "1 time" : "\(night.awakenings) times"
         case .regularity: fmt(c.value, 0)
         case .hrv: fmt(c.value, 0, " ms")
         case .heartRate: fmt(c.value, 0, " bpm")
@@ -152,8 +152,8 @@ struct NightView: View {
                 RecoveryRing(score: score.score, color: Palette.sleep, caption: "sleep")
                 VStack(alignment: .leading, spacing: 4) {
                     Text(fmt(night.asleep / 3600, 1, " h asleep")).font(.headline)
-                    Text(night.start.formatted(date: .omitted, time: .shortened) + " to "
-                         + night.end.formatted(date: .omitted, time: .shortened))
+                    Text(SleepPlanText.clock(SleepPlan.clock(night.start)) + " to "
+                         + SleepPlanText.clock(SleepPlan.clock(night.end)))
                         .foregroundStyle(.secondary)
                     Text("Our own score, built from the same parts as the Withings one.")
                         .font(.caption)

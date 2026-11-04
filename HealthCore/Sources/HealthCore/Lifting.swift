@@ -165,6 +165,67 @@ public enum StrongCSV {
     }
 }
 
+/// Reads the CSV that Hevy exports (Profile, Settings, Export and import data). One row per set with columns
+/// title, start_time, end_time, description, exercise_title, superset_id, exercise_notes, set_index, set_type,
+/// weight_kg (or weight_lbs), reps, distance_km, duration_seconds, rpe. Warm-up sets are kept and marked; rows
+/// without reps are skipped, as for Strong.
+public enum HevyCSV {
+    public static func parse(_ text: String, timeZone: TimeZone = .current) throws -> [LiftSession] {
+        var rows = StrongCSV.records(text, delimiter: ",")
+        guard !rows.isEmpty else { throw StrongImportError.noSets }
+        let header = rows.removeFirst().map { $0.trimmingCharacters(in: .whitespaces).lowercased() }
+        func column(_ name: String) -> Int? { header.firstIndex(of: name) }
+        let weightCol = column("weight_kg") ?? column("weight_lbs")
+        let missing = ["start_time", "exercise_title", "reps"].filter { column($0) == nil } + (weightCol == nil ? ["weight_kg"] : [])
+        guard missing.isEmpty else { throw StrongImportError.missingColumns(missing) }
+        let start = column("start_time")!, exercise = column("exercise_title")!, reps = column("reps")!, weight = weightCol!
+        let title = column("title"), end = column("end_time"), type = column("set_type"), rpe = column("rpe")
+        let toKg = column("weight_kg") == nil ? WeightUnit.lbs.toKg : 1
+
+        let formatters = ["d MMM yyyy, HH:mm", "d MMM yyyy, HH:mm:ss", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd'T'HH:mm:ssZ", "yyyy-MM-dd HH:mm"].map { f in
+            let d = DateFormatter()
+            d.locale = Locale(identifier: "en_US_POSIX")
+            d.timeZone = timeZone
+            d.dateFormat = f
+            return d
+        }
+        func date(_ s: String) -> Date? { formatters.lazy.compactMap { $0.date(from: s) }.first }
+        func field(_ row: [String], _ i: Int?) -> String {
+            guard let i, i < row.count else { return "" }
+            return row[i].trimmingCharacters(in: .whitespaces)
+        }
+
+        var keys: [String] = []
+        var grouped: [String: (start: Date, duration: TimeInterval?, name: String, sets: [LiftSet])] = [:]
+        for row in rows {
+            let r = Int(StrongCSV.number(field(row, reps)) ?? 0)
+            let startText = field(row, start)
+            guard r > 0, let begin = date(startText) else { continue }
+            let set = LiftSet(exercise: field(row, exercise), weight: max(0, (StrongCSV.number(field(row, weight)) ?? 0) * toKg),
+                              reps: r, isWarmup: field(row, type).lowercased() == "warmup", rpe: StrongCSV.number(field(row, rpe)))
+            let key = startText + "|" + field(row, title)
+            if grouped[key] == nil {
+                keys.append(key)
+                let duration = date(field(row, end)).map { $0.timeIntervalSince(begin) }.flatMap { $0 > 0 ? $0 : nil }
+                grouped[key] = (begin, duration, field(row, title), [])
+            }
+            grouped[key]!.sets.append(set)
+        }
+        guard !keys.isEmpty else { throw StrongImportError.noSets }
+        return keys.compactMap { grouped[$0] }
+            .map { LiftSession(start: $0.start, duration: $0.duration, name: $0.name, sets: $0.sets) }
+            .sorted { $0.start > $1.start }
+    }
+}
+
+/// Picks the parser from the header, so one import button takes a Strong or a Hevy export.
+public enum LiftCSV {
+    public static func parse(_ text: String, unit: WeightUnit = .kg) throws -> [LiftSession] {
+        let header = text.prefix { $0 != "\n" && $0 != "\r\n" && $0 != "\r" }.lowercased()
+        return header.contains("exercise_title") ? try HevyCSV.parse(text) : try StrongCSV.parse(text, unit: unit)
+    }
+}
+
 public struct ExerciseProgress: Identifiable, Sendable {
     public let name: String
     /// Best estimated 1RM per session, oldest first.

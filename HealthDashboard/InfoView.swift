@@ -48,7 +48,7 @@ struct InfoView: View {
                 } header: {
                     Text("Raw data")
                 } footer: {
-                    Text("Straight from Apple Health, Withings and Strong, before any scoring. Newest first.")
+                    Text("Straight from Apple Health, your scale and your lifting log, before any scoring. Newest first.")
                 }
             }
             .ambientList()

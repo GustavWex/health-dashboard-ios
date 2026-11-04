@@ -351,6 +351,7 @@ struct SettingsView: View {
                 }
                 StrongImportSection(model: model)
                 WithingsSection(model: model)
+                ScaleImportSection(model: model)
                 Section("Your data") {
                     NavigationLink("Export data") { ExportView(model: model) }
                     NavigationLink("Assistant") { AssistantSettingsView() }
@@ -362,8 +363,9 @@ struct SettingsView: View {
                 #endif
                 Section("Data sources") {
                     Text("Apple Watch: HRV, resting heart rate, sleep, workouts and energy.")
-                    Text("Withings Body Smart: weight, body fat and lean mass through Apple Health.")
-                    Text("Food: any app that writes calories and protein to Apple Health.")
+                    Text("Smart scale: weight, body fat and lean mass from any scale app that writes to Apple Health; more from the Withings API or a CSV export.")
+                    Text("Food: any app that writes nutrition to Apple Health, like Cronometer, MyFitnessPal or Lose It.")
+                    Text("Lifting: Strong or Hevy CSV exports.")
                 }
                 .font(.footnote)
             }

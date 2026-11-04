@@ -2,16 +2,21 @@ import SwiftUI
 import Charts
 import HealthCore
 
-/// The latest Strong export, kept as the raw file in Application Support. Strong exports the full history every
-/// time, so a new import replaces the old file. Stays on device.
+/// The latest Strong or Hevy export, kept as the raw file in Application Support. Both apps export the full
+/// history every time, so a new import replaces the old file. Stays on device.
 enum LiftStore {
     static var url: URL {
+        URL.applicationSupportDirectory.appendingPathComponent("lifts.csv")
+    }
+    /// Where imports went before Hevy was supported.
+    static var legacyURL: URL {
         URL.applicationSupportDirectory.appendingPathComponent("strong.csv")
     }
 
     static func load() -> [LiftSession] {
-        guard let text = try? String(contentsOf: url, encoding: .utf8) else { return [] }
-        return (try? StrongCSV.parse(text)) ?? []
+        guard let text = (try? String(contentsOf: url, encoding: .utf8)) ?? (try? String(contentsOf: legacyURL, encoding: .utf8))
+        else { return [] }
+        return (try? LiftCSV.parse(text)) ?? []
     }
 
     /// Parses first, so a wrong file never replaces a good one.
@@ -19,19 +24,21 @@ enum LiftStore {
         let scoped = source.startAccessingSecurityScopedResource()
         defer { if scoped { source.stopAccessingSecurityScopedResource() } }
         let text = try String(contentsOf: source, encoding: .utf8)
-        let sessions = try StrongCSV.parse(text)
+        let sessions = try LiftCSV.parse(text)
         try FileManager.default.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true)
         try Data(text.utf8).write(to: url, options: [.atomic, .completeFileProtection])
+        try? FileManager.default.removeItem(at: legacyURL)
         return sessions
     }
 
     static func remove() {
         try? FileManager.default.removeItem(at: url)
+        try? FileManager.default.removeItem(at: legacyURL)
     }
 
     static func message(for error: Error) -> String {
         switch error as? StrongImportError {
-        case .missingColumns(let c)?: "This doesn't look like a Strong export. Missing: \(c.joined(separator: ", "))."
+        case .missingColumns(let c)?: "This doesn't look like a Strong or Hevy export. Missing: \(c.joined(separator: ", "))."
         case .noSets?: "No sets with reps found in this file."
         case nil: "Couldn't read the file: \(error.localizedDescription)"
         }
@@ -192,7 +199,7 @@ struct StrongImportSection: View {
 
     var body: some View {
         Section {
-            Button("Import Strong export") { picking = true }
+            Button("Import Strong or Hevy export") { picking = true }
             if !model.lifts.isEmpty {
                 LabeledContent("Workouts", value: "\(model.lifts.count)")
                 if let last = model.lifts.first {
@@ -209,7 +216,7 @@ struct StrongImportSection: View {
         } header: {
             Text("Strength log")
         } footer: {
-            Text("In Strong: Settings, Export data, then save the CSV to Files and pick it here. Weights are read as kg. Import again whenever you want to update.")
+            Text("In Strong: Settings, Export data. In Hevy: Profile, Settings, Export and import data. Save the CSV to Files and pick it here. Import again whenever you want to update.")
         }
         .fileImporter(isPresented: $picking, allowedContentTypes: [.commaSeparatedText, .plainText]) { result in
             do {

@@ -46,6 +46,7 @@ final class DashboardModel {
         let started = Date.now
         guard var s = await loadSnapshot(days: historyDays) else { return }
         await addWithings(to: &s)
+        BodyImport.apply(BodyStore.load(), to: &s)
         s.room = RoomStore.load()
         #if DEBUG && targetEnvironment(simulator)
         if s.room.isEmpty { s.room = MockData.room(sleep: s.sleep) }
