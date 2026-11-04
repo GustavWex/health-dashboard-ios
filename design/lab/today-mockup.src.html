@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>thru Today mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: #EFEBE0; --page-ink: #2B1F1A; --page-sub: #6E6058; --page-line: rgba(43,31,26,.12); --seg: rgba(43,31,26,.07);
+  --paper: #F9F6ED; --ink: #2B1F1A; --salmon: #F07B62;
+  --push: #33B378; --moderate: #EDAB2E; --recover: #DB454C;
+  --sleep: #9470F2; --strain: #2978F2; --nutrition: #E3598F;
+  --sys: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --page: #141110; --page-ink: #F9F6ED; --page-sub: #B5A99F; --page-line: rgba(249,246,237,.14); --seg: rgba(249,246,237,.08); }
+}
+:root[data-theme="dark"] { --page: #141110; --page-ink: #F9F6ED; --page-sub: #B5A99F; --page-line: rgba(249,246,237,.14); --seg: rgba(249,246,237,.08); }
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--page-ink); font-family: var(--sys); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 40px 16px 64px; }
+h1 { font-size: 28px; line-height: 36px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em; }
+.lede { color: var(--page-sub); font-size: 16px; line-height: 24px; margin: 0 0 24px; max-width: 680px; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; margin-bottom: 32px; }
+.seg { display: inline-flex; background: var(--seg); border-radius: 12px; padding: 3px; }
+.seg button { font: 500 14px/20px var(--sys); color: var(--page-ink); background: none; border: 0; padding: 8px 16px; border-radius: 9px; cursor: pointer; min-height: 36px; }
+.seg button[aria-pressed="true"] { background: var(--page-ink); color: var(--page); }
+.seg button:focus-visible { outline: 2px solid var(--salmon); outline-offset: 2px; }
+.ctl-label { font-size: 13px; color: var(--page-sub); margin-right: 8px; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; justify-items: center; }
+@media (max-width: 860px) { .pair { grid-template-columns: 1fr; } }
+.col { width: 100%; max-width: 390px; }
+.col h2 { font-size: 17px; line-height: 24px; font-weight: 600; margin: 0 0 4px; }
+.col .tag { color: var(--page-sub); font-size: 14px; line-height: 20px; margin: 0 0 16px; }
+.notes { font-size: 14px; line-height: 20px; color: var(--page-sub); padding-left: 18px; margin: 20px 0 0; }
+.notes li { margin-bottom: 6px; }
+
+/* ---------- Phone ---------- */
+.phone { width: 100%; max-width: 390px; aspect-ratio: 390 / 844; border-radius: 48px; border: 10px solid #15110F; position: relative; overflow: hidden; background: var(--paper); color: var(--ink); box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); container-type: inline-size; }
+.screen { position: absolute; inset: 0; overflow-y: auto; scrollbar-width: none; }
+.screen::-webkit-scrollbar { display: none; }
+.glows { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.glows i { position: absolute; border-radius: 50%; transition: background .8s ease; }
+.glows .g1 { width: 380px; height: 380px; left: -120px; top: -100px; }
+.glows .g2 { width: 320px; height: 320px; right: -140px; top: 160px; background: radial-gradient(closest-side, rgba(252,194,84,.20), rgba(252,194,84,0)); }
+.glows .g3 { width: 340px; height: 340px; left: -60px; top: 520px; background: radial-gradient(closest-side, rgba(247,128,51,.12), rgba(247,128,51,0)); }
+.content { position: relative; padding: 52px 24px 120px; }
+.status { position: absolute; top: 14px; left: 30px; right: 30px; display: flex; justify-content: space-between; font: 600 15px/20px var(--sys); }
+.status .dots { display: flex; gap: 4px; align-items: center; }
+.status .dots b { width: 16px; height: 10px; background: var(--ink); display: block; border-radius: 2px; }
+.status .dots b:first-child { width: 14px; border-radius: 0; clip-path: polygon(0 100%, 100% 0, 100% 100%); }
+.head { display: flex; justify-content: space-between; align-items: flex-end; margin: 12px 0 24px; }
+.head .wm { height: 24px; display: block; }
+.head .date { font-size: 13px; line-height: 18px; color: rgba(43,31,26,.6); }
+.card { border-radius: 24px; padding: 24px; margin-bottom: 24px; position: relative; }
+.label { font-size: 13px; line-height: 18px; color: rgba(43,31,26,.6); }
+.heading { font-size: 17px; line-height: 24px; font-weight: 600; margin: 0 0 12px; }
+.num { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* Hero */
+.hero { display: flex; gap: 24px; align-items: center; }
+.tile { width: 112px; height: 112px; flex: none; display: block; }
+.tile rect.bg { transition: fill .6s ease; }
+.hero .score { font-size: 48px; line-height: 48px; letter-spacing: -0.02em; margin: 4px 0 6px; }
+.zone { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; line-height: 20px; font-weight: 500; }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex: none; display: inline-block; }
+.advice { font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.015em; margin: 24px 0 0; }
+
+/* Score bars */
+.bars { display: grid; gap: 12px; margin-top: 24px; }
+.barrow { display: grid; grid-template-columns: 76px 1fr 44px; align-items: center; gap: 12px; }
+.barrow .v { text-align: right; font-size: 17px; line-height: 24px; }
+.track { height: 12px; background: rgba(43,31,26,.10); position: relative; }
+.fill { position: absolute; left: 0; top: 0; bottom: 0; transition: width .6s ease, background .6s ease; }
+.tick { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); }
+
+/* Why rows */
+.why { display: grid; gap: 12px; }
+.why div { display: grid; grid-template-columns: 6px 1fr; gap: 12px; align-items: baseline; font-size: 15px; line-height: 22px; }
+.why .dot { transform: translateY(-2px); }
+
+/* Food + streak */
+.split { display: flex; justify-content: space-between; align-items: baseline; margin-top: 12px; }
+.value { font-size: 22px; line-height: 24px; }
+.streak { display: flex; gap: 6px; margin-top: 12px; }
+.streak span { flex: 1; height: 24px; background: rgba(43,31,26,.08); }
+.streak span.on { background: var(--sleep); }
+.cta { display: block; width: 100%; min-height: 48px; border: 0; font: 600 17px/24px var(--sys); color: var(--ink); background: var(--salmon); cursor: pointer; }
+
+/* Tab bar */
+.tabbar { position: absolute; left: 16px; right: 16px; bottom: 20px; height: 64px; border-radius: 32px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; background: rgba(255,255,255,.55); -webkit-backdrop-filter: blur(24px) saturate(1.6); backdrop-filter: blur(24px) saturate(1.6); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 8px 24px -8px rgba(43,31,26,.25); }
+.tabbar div { display: grid; justify-items: center; gap: 2px; font-size: 10px; line-height: 12px; font-weight: 500; color: rgba(43,31,26,.45); }
+.tabbar div.on { color: var(--ink); }
+.tabbar svg { width: 24px; height: 24px; fill: currentColor; }
+
+/* ---------- Direction A: glass ---------- */
+.glass .card { background: rgba(255,255,255,.42); -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4); border: 1px solid rgba(255,255,255,.95); box-shadow: 0 10px 30px -12px rgba(43,31,26,.22); }
+.glass .track, .glass .fill { border-radius: 6px; }
+.glass .streak span { border-radius: 6px; }
+.glass .cta { border-radius: 24px; }
+
+/* ---------- Direction B: flat ---------- */
+.flat .card { background: #FFFDF8; border: 1px solid rgba(43,31,26,.08); }
+.flat .track, .flat .fill { border-radius: 0; }
+.flat .streak span { border-radius: 0; }
+.flat .cta { border-radius: 24px; }
+.flat .hero-card { background: transparent; border: 0; padding: 0; }
+
+@media (prefers-reduced-motion: reduce) { .fill, .glows i, .tile rect.bg { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Today, two ways</h1>
+  <p class="lede">The Today screen redesigned on the thru system, in two card styles. Same grid, type, face and content; only the card material and bar ends differ. Demo data only.</p>
+  <div class="controls">
+    <div><span class="ctl-label">Recovery</span>
+      <div class="seg" role="group" aria-label="Recovery state">
+        <button type="button" data-state="push" aria-pressed="true">Push</button>
+        <button type="button" data-state="moderate" aria-pressed="false">Moderate</button>
+        <button type="button" data-state="recover" aria-pressed="false">Recover</button>
+      </div>
+    </div>
+  </div>
+  <div class="pair">
+    <section class="col">
+      <h2>A. Glass cards</h2>
+      <p class="tag">As the design doc says today</p>
+      <div class="phone glass" id="phoneA"></div>
+      <ul class="notes">
+        <li>Frosted white cards with a hairline and a soft shadow; the glows blur through.</li>
+        <li>Bars and streak squares with rounded ends.</li>
+        <li>Closest to the current app and to iOS 26 Liquid Glass.</li>
+      </ul>
+    </section>
+    <section class="col">
+      <h2>B. Flat cards</h2>
+      <p class="tag">Recommended: glass only for the tab bar</p>
+      <div class="phone flat" id="phoneB"></div>
+      <ul class="notes">
+        <li>Solid paper-white cards with a 1 pt ink hairline; no blur, no shadow.</li>
+        <li>The face sits straight on the page, like the logo; bars end square, like the letters.</li>
+        <li>Liquid Glass stays on system chrome: the tab bar and sheets.</li>
+      </ul>
+    </section>
+  </div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="wm-ink" d="M22.5 30 H52.5 V60 H22.5 Z M0 60 H75 V90 H0 Z M90 0 H120 V90 H90 Z M90 120 H120 V180 H90 Z M165 120 H195 V180 H165 Z M120.758 90 A37.5 37.5 0 0 1 194.242 90 Z M210 60 H240 V90 H210 Z M240 90 A30 30 0 0 1 270 60 V90 Z M270 60 H285 V90 H270 Z M210 120 H240 V180 H210 Z __TFOOT__"/>
+    <path id="wm-u" d="M300 60 H330 V90 H300 Z M375 60 H405 V90 H375 Z __UBOWL__"/>
+  </defs>
+</svg>
+
+<script>
+var BOWL = "__UBOWL__";
+
+// ---------- Mouth geometry (face box 105 x 120; the u moved by -300, -60) ----------
+function parsePts(d) {
+  var n = d.match(/-?\d+(\.\d+)?/g).map(Number), p = [];
+  for (var i = 0; i < n.length; i += 2) p.push([n[i] - 300, n[i + 1] - 60]);
+  return p;
+}
+function resample(pts, m) { // m points evenly along an open polyline
+  var len = [0];
+  for (var i = 1; i < pts.length; i++) len.push(len[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  var total = len[len.length - 1], out = [], j = 1;
+  for (var k = 0; k < m; k++) {
+    var s = total * k / (m - 1);
+    while (j < len.length - 1 && len[j] < s) j++;
+    var a = pts[j - 1], b = pts[j], t = (s - len[j - 1]) / ((len[j] - len[j - 1]) || 1);
+    out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]);
+  }
+  return out;
+}
+var raw = parsePts(BOWL);
+function idx(x, y) { for (var i = 0; i < raw.length; i++) if (Math.abs(raw[i][0] - x) < .01 && Math.abs(raw[i][1] - y) < .01) return i; return -1; }
+var i1 = idx(30, 60), i2 = idx(75, 60), i3 = idx(105, 60);
+var N = [6, 90, 6, 140];
+var smileParts = [raw.slice(0, i1 + 1), raw.slice(i1, i2 + 1), raw.slice(i2, i3 + 1), raw.slice(i3).concat([raw[0]])];
+var flatParts = [[[0, 75], [30, 75]], [[30, 75], [75, 75]], [[75, 75], [105, 75]], [[105, 75], [105, 105], [0, 105], [0, 75]]];
+function build(parts) { var out = []; parts.forEach(function (p, k) { out = out.concat(resample(p, N[k])); }); return out; }
+var SMILE = build(smileParts), FLAT = build(flatParts);
+var FROWN = SMILE.map(function (p) { return [p[0], 180 - p[1]]; });
+var FLATM = FLAT.map(function (p) { return [p[0], 180 - p[1]]; });
+function mouth(t) { // t: -1 frown, 0 flat, 1 smile
+  var A = t >= 0 ? FLAT : FLATM, B = t >= 0 ? SMILE : FROWN, e = Math.abs(t), s = "M";
+  for (var i = 0; i < A.length; i++) s += (i ? "L" : "") + (A[i][0] + (B[i][0] - A[i][0]) * e).toFixed(2) + " " + (A[i][1] + (B[i][1] - A[i][1]) * e).toFixed(2);
+  return s + "Z";
+}
+
+// ---------- Demo data ----------
+var STATES = {
+  push: { t: 1, col: "#33B378", glow: "51,179,120", word: "Push", rec: 78, sleep: 84, strain: 11.2, target: 15, advice: "Good day to push",
+    why: [["push", "HRV 62 ms, above your usual 54 ms"], ["push", "Slept 7 h 48 min, 22 min more than you need"], ["moderate", "Resting HR 52 bpm, about your usual"]] },
+  moderate: { t: 0, col: "#EDAB2E", glow: "237,171,46", word: "Moderate", rec: 55, sleep: 71, strain: 8.4, target: 11, advice: "Keep it steady today",
+    why: [["moderate", "HRV 53 ms, about your usual 54 ms"], ["recover", "Slept 6 h 55 min, 31 min less than you need"], ["push", "Resting HR 50 bpm, a little below your usual"]] },
+  recover: { t: -1, col: "#DB454C", glow: "219,69,76", word: "Recover", rec: 28, sleep: 52, strain: 4.1, target: 7, advice: "Take it easy today",
+    why: [["recover", "HRV 41 ms, well below your usual 54 ms"], ["recover", "Slept 5 h 40 min, 1 h 46 min less than you need"], ["recover", "Resting HR 58 bpm, 6 above your usual"]] }
+};
+var ZC = { push: "var(--push)", moderate: "var(--moderate)", recover: "var(--recover)" };
+
+// ---------- Phone markup ----------
+var TABS = [
+  ["Today", '<rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><path d="M3 15h6c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 5-4 9-9 9s-9-4-9-9z"/>'],
+  ["Trends", '<rect x="3" y="12" width="5" height="9"/><rect x="9.5" y="7" width="5" height="14"/><rect x="16" y="3" width="5" height="18"/>'],
+  ["Workouts", '<rect x="2" y="7" width="4" height="10"/><rect x="18" y="7" width="4" height="10"/><rect x="6" y="10" width="12" height="4"/>'],
+  ["Nutrition", '<path d="M2 9h20c0 6-4.5 11-10 11S2 15 2 9z"/><rect x="11" y="2" width="2" height="6"/>'],
+  ["Info", '<path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm-1.5 8v8h3v-8zm0-4v3h3V6z"/>']
+];
+function phoneHTML() {
+  return '<div class="screen"><div class="glows"><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>' +
+  '<div class="status"><span>09:41</span><span class="dots"><b></b><b></b></span></div>' +
+  '<div class="content">' +
+    '<div class="head"><svg class="wm" viewBox="0 0 405 180" role="img" aria-label="thru"><use href="#wm-ink" fill="#2B1F1A"/><use href="#wm-u" fill="#F07B62"/></svg><span class="date">Wednesday 4 November</span></div>' +
+    '<div class="card hero-card"><div class="hero">' +
+      '<svg class="tile" viewBox="0 0 200 200" role="img" data-k="face"><rect class="bg" width="200" height="200" rx="45"/>' +
+        '<g transform="translate(51 44) scale(0.93333)" fill="#F9F6ED"><g class="eyes"><rect class="eye" x="0" y="0" width="30" height="30"/><rect class="eye" x="75" y="0" width="30" height="30"/></g><path class="mouth"/></g></svg>' +
+      '<div><div class="label">Recovery</div><div class="score num" data-k="rec"></div><div class="zone"><span class="dot" data-k="zdot"></span><span data-k="word"></span></div></div>' +
+    '</div><p class="advice" data-k="advice"></p>' +
+    '<div class="bars">' +
+      bar("Sleep", "sleep", "var(--sleep)") + bar("Recovery", "recb", "") + bar("Strain", "strain", "var(--strain)", true) +
+    '</div></div>' +
+    '<div class="card"><p class="heading">Why</p><div class="why" data-k="why"></div></div>' +
+    '<div class="card"><p class="heading">Food yesterday</p>' +
+      '<div class="barrow"><span class="label">Quality</span><div class="track"><div class="fill" style="width:72%;background:var(--nutrition)"></div><div class="tick" style="left:80%"></div></div><span class="v num">72</span></div>' +
+      '<div class="split"><div><div class="value num">2 340</div><div class="label">kcal</div></div><div><div class="value num">128 g</div><div class="label">protein</div></div><div><div class="value num">31 g</div><div class="label">fibre</div></div></div>' +
+    '</div>' +
+    '<div class="card"><p class="heading">Sleep streak</p><div class="label">5 nights over 7 h this week</div><div class="streak"><span class="on"></span><span class="on"></span><span></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></div>' +
+    '<button class="cta" type="button">Log food</button>' +
+  '</div></div>' +
+  '<nav class="tabbar">' + TABS.map(function (t, i) { return '<div' + (i ? '' : ' class="on"') + '><svg viewBox="0 0 24 24" aria-hidden="true">' + t[1] + '</svg>' + t[0] + '</div>'; }).join("") + '</nav>';
+}
+function bar(name, key, col, target) {
+  return '<div class="barrow"><span class="label">' + name + '</span><div class="track"><div class="fill" data-k="' + key + 'f"' + (col ? ' style="background:' + col + '"' : '') + '></div>' +
+    (target ? '<div class="tick" data-k="tick"></div>' : '') + '</div><span class="v num" data-k="' + key + 'v"></span></div>';
+}
+var phones = [document.getElementById("phoneA"), document.getElementById("phoneB")];
+phones.forEach(function (p) { p.innerHTML = phoneHTML(); });
+function q(p, k) { return p.querySelector('[data-k="' + k + '"]'); }
+
+// ---------- Render and animate ----------
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var curT = 1, anim = null;
+function setMouth(t) { var d = mouth(t); phones.forEach(function (p) { p.querySelector(".mouth").setAttribute("d", d); }); }
+function morphTo(t) {
+  if (anim) cancelAnimationFrame(anim);
+  if (reduce) { curT = t; setMouth(t); return; }
+  var from = curT, t0 = performance.now(), dur = 600;
+  (function step(now) {
+    var p = Math.min(1, (now - t0) / dur), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    curT = from + (t - from) * e; setMouth(curT);
+    if (p < 1) anim = requestAnimationFrame(step);
+  })(t0);
+}
+function render(key) {
+  var s = STATES[key];
+  phones.forEach(function (p) {
+    p.querySelector(".tile rect.bg").setAttribute("fill", s.col);
+    q(p, "face").setAttribute("aria-label", "Recovery " + s.rec + ", " + s.word.toLowerCase());
+    q(p, "rec").textContent = s.rec;
+    q(p, "zdot").style.background = ZC[key];
+    q(p, "word").textContent = s.word;
+    q(p, "advice").textContent = s.advice;
+    q(p, "sleepf").style.width = s.sleep + "%"; q(p, "sleepv").textContent = s.sleep;
+    q(p, "recbf").style.width = s.rec + "%"; q(p, "recbf").style.background = ZC[key]; q(p, "recbv").textContent = s.rec;
+    q(p, "strainf").style.width = (s.strain / 21 * 100) + "%"; q(p, "strainv").textContent = s.strain.toFixed(1);
+    q(p, "tick").style.left = (s.target / 21 * 100) + "%";
+    q(p, "why").innerHTML = s.why.map(function (w) { return '<div><span class="dot" style="background:' + ZC[w[0]] + '"></span><span>' + w[1] + '</span></div>'; }).join("");
+    p.querySelector(".g1").style.background = "radial-gradient(closest-side, rgba(" + s.glow + ",.18), rgba(" + s.glow + ",0))";
+  });
+  morphTo(s.t);
+}
+document.querySelectorAll(".seg button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+    render(b.dataset.state);
+  });
+});
+curT = 1; setMouth(1); render("push");
+
+// Blink every 3 to 5 s (eyes close to their lower edge)
+function blink() {
+  if (reduce) return;
+  var t0 = performance.now();
+  (function step(now) {
+    var p = Math.min(1, (now - t0) / 240), lid = Math.sin(p * Math.PI);
+    phones.forEach(function (ph) { ph.querySelectorAll(".eye").forEach(function (e) { e.setAttribute("y", 30 * lid * .9); e.setAttribute("height", 30 * (1 - lid * .9)); }); });
+    if (p < 1) requestAnimationFrame(step); else setTimeout(blink, 3000 + Math.random() * 2000);
+  })(t0);
+}
+setTimeout(blink, 2500);
+</script>
+</body>
+</html>
