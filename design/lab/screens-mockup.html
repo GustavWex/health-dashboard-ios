@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>thru screens mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: #EFEBE0; --page-ink: #2B1F1A; --page-sub: #6E6058; --seg: rgba(43,31,26,.07);
+  --paper: #F9F6ED; --card: #FFFDF8; --ink: #2B1F1A; --ink60: rgba(43,31,26,.6); --hair: rgba(43,31,26,.08); --track: rgba(43,31,26,.10);
+  --salmon: #F07B62; --push: #33B378; --moderate: #EDAB2E; --recover: #DB454C;
+  --sleep: #9470F2; --strain: #2978F2; --heart: #21A8BD; --body: #F29433; --nutrition: #E3598F; --air: #6BBDDB;
+  --sys: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --page: #141110; --page-ink: #F9F6ED; --page-sub: #B5A99F; --seg: rgba(249,246,237,.08); }
+}
+:root[data-theme="dark"] { --page: #141110; --page-ink: #F9F6ED; --page-sub: #B5A99F; --seg: rgba(249,246,237,.08); }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html, body { margin: 0; }
+body { background: var(--page); color: var(--page-ink); font-family: var(--sys); -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 40px 16px 64px; }
+h1 { font-size: 28px; line-height: 36px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.01em; }
+.lede { color: var(--page-sub); font-size: 16px; line-height: 24px; margin: 0 0 24px; max-width: 720px; }
+.bar-top { position: sticky; top: 0; z-index: 5; background: var(--page); padding: 12px 0; margin-bottom: 24px; display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.nav { display: flex; flex-wrap: wrap; gap: 6px; }
+.nav a { font: 500 14px/20px var(--sys); color: var(--page-ink); text-decoration: none; padding: 8px 12px; border-radius: 12px; background: var(--seg); }
+.nav a:hover, .nav a:focus-visible { background: var(--page-ink); color: var(--page); outline: none; }
+.seg { display: inline-flex; background: var(--seg); border-radius: 12px; }
+.seg button { font: 500 14px/20px var(--sys); color: var(--page-ink); background: none; border: 0; padding: 8px 14px; border-radius: 12px; cursor: pointer; min-height: 36px; }
+.seg button[aria-pressed="true"] { background: var(--page-ink); color: var(--page); }
+.seg button:focus-visible { outline: 2px solid var(--salmon); outline-offset: 2px; }
+.ctl-label { font-size: 13px; color: var(--page-sub); margin-right: 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(390px, 100%), 1fr)); gap: 48px 32px; justify-items: center; }
+.block { width: 100%; max-width: 390px; scroll-margin-top: 80px; }
+.block.wide { grid-column: 1 / -1; max-width: none; }
+.block h2 { font-size: 17px; line-height: 24px; font-weight: 600; margin: 0 0 4px; }
+.block .tag { color: var(--page-sub); font-size: 14px; line-height: 20px; margin: 0 0 16px; }
+.notes { font-size: 14px; line-height: 20px; color: var(--page-sub); padding-left: 18px; margin: 20px 0 0; }
+.notes li { margin-bottom: 6px; }
+
+/* ---------- Phone ---------- */
+.phone { width: 100%; max-width: 390px; border-radius: 48px; border: 10px solid #15110F; position: relative; overflow: clip; background: var(--paper); color: var(--ink); box-shadow: 0 30px 60px -30px rgba(0,0,0,.45); }
+.screen { position: relative; min-height: 824px; display: flex; flex-direction: column; }
+.glows { position: absolute; inset: 0 0 auto 0; height: 900px; pointer-events: none; overflow: hidden; }
+.glows i { position: absolute; border-radius: 50%; transition: background .8s ease; }
+.glows .g1 { width: 380px; height: 380px; left: -120px; top: -100px; }
+.glows .g2 { width: 320px; height: 320px; right: -140px; top: 180px; background: radial-gradient(closest-side, rgba(252,194,84,.20), rgba(252,194,84,0)); }
+.glows .g3 { width: 340px; height: 340px; left: -60px; top: 540px; background: radial-gradient(closest-side, rgba(247,128,51,.12), rgba(247,128,51,0)); }
+.content { position: relative; padding: 52px 24px 24px; flex: 1; }
+.status { position: absolute; top: 14px; left: 30px; right: 30px; display: flex; justify-content: space-between; font: 600 15px/20px var(--sys); z-index: 1; }
+.status .sig { display: flex; gap: 4px; align-items: center; }
+.status .sig b { width: 16px; height: 10px; background: var(--ink); display: block; border-radius: 2px; }
+.status .sig b:first-child { width: 14px; border-radius: 0; clip-path: polygon(0 100%, 100% 0, 100% 100%); }
+.navrow { display: flex; justify-content: space-between; align-items: center; margin: 4px 0 12px; font-size: 17px; color: var(--ink); min-height: 24px; }
+.navrow .back { display: inline-flex; align-items: center; gap: 6px; }
+.navrow svg { width: 12px; height: 20px; }
+.title { font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.015em; margin: 12px 0 24px; }
+.head { display: flex; justify-content: space-between; align-items: flex-end; margin: 12px 0 24px; }
+.head .wm { height: 24px; display: block; }
+.card { background: var(--card); border: 1px solid var(--hair); border-radius: 24px; padding: 24px; margin-bottom: 24px; position: relative; }
+.card.tight { padding: 12px; }
+.plain { margin-bottom: 24px; }
+.label { font-size: 13px; line-height: 18px; color: var(--ink60); }
+.heading { font-size: 17px; line-height: 24px; font-weight: 600; margin: 0 0 12px; }
+.heading + .label { margin: -8px 0 12px; }
+.body { font-size: 17px; line-height: 24px; margin: 0 0 12px; }
+.num { font-variant-numeric: tabular-nums; font-weight: 600; }
+.score { font-size: 48px; line-height: 48px; letter-spacing: -0.02em; }
+.value { font-size: 22px; line-height: 24px; }
+.unit { font-size: 13px; font-weight: 400; color: var(--ink60); margin-left: 2px; }
+.dot { width: 6px; height: 6px; border-radius: 50%; flex: none; display: inline-block; }
+.zone { display: inline-flex; align-items: center; gap: 6px; font-size: 15px; line-height: 20px; font-weight: 500; }
+.advice { font-size: 28px; line-height: 36px; font-weight: 600; letter-spacing: -0.015em; margin: 24px 0 0; }
+.hero { display: flex; gap: 24px; align-items: center; }
+.tile { display: block; flex: none; }
+.tile .bg { transition: fill .6s ease; }
+.pseg { display: flex; background: rgba(43,31,26,.06); border-radius: 12px; margin-bottom: 24px; }
+.pseg span { flex: 1; text-align: center; font-size: 13px; line-height: 18px; font-weight: 500; padding: 7px 0; border-radius: 12px; }
+.pseg span.on { background: var(--ink); color: var(--paper); }
+.split { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+.two .card { margin: 0; }
+
+/* Bars */
+.bars { display: grid; gap: 12px; }
+.barrow { display: grid; grid-template-columns: 84px 1fr minmax(44px, auto); align-items: center; gap: 12px; }
+.barrow .v { text-align: right; font-size: 17px; line-height: 24px; }
+.track { height: 12px; background: var(--track); position: relative; }
+.fill { position: absolute; left: 0; top: 0; bottom: 0; transition: width .6s ease, background .6s ease; }
+.tick { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ink); margin-left: -1px; }
+.band { position: absolute; top: 0; bottom: 0; background: rgba(41,120,242,.18); }
+.rows { display: grid; }
+.row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; min-height: 48px; border-top: 1px solid var(--hair); padding: 12px 0; }
+.row:first-child { border-top: 0; padding-top: 0; }
+.row:last-child { padding-bottom: 0; }
+.row .r { text-align: right; }
+.row .main { font-size: 17px; line-height: 24px; }
+.row .withdot { display: grid; grid-template-columns: 6px 1fr; gap: 12px; align-items: baseline; }
+.row .withdot .dot { transform: translateY(-3px); }
+.why { display: grid; gap: 12px; }
+.why div { display: grid; grid-template-columns: 6px 1fr; gap: 12px; align-items: baseline; font-size: 15px; line-height: 22px; }
+.why .dot { transform: translateY(-2px); }
+.chart { display: flex; align-items: flex-end; gap: 3px; height: 96px; position: relative; }
+.chart.g6 { gap: 6px; }
+.chart b { flex: 1; display: block; position: relative; z-index: 1; }
+.chart .line { position: absolute; left: 0; right: 0; border-top: 2px dashed var(--ink); z-index: 2; }
+.chart .bandh { position: absolute; left: 0; right: 0; height: 12px; background: rgba(41,120,242,.16); z-index: 0; }
+.chart .tk { position: absolute; left: -2px; right: -2px; height: 2px; background: var(--ink); }
+.axis { display: flex; justify-content: space-between; margin-top: 6px; }
+.gridl { position: absolute; left: 0; right: 0; border-top: 1px solid var(--hair); }
+.stack { display: flex; height: 12px; }
+.stack i { display: block; height: 100%; }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
+.legend span { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; line-height: 18px; color: var(--ink60); }
+.legend i { width: 12px; height: 12px; display: inline-block; }
+.streak { display: flex; gap: 6px; margin-top: 12px; }
+.streak span { flex: 1; height: 24px; background: rgba(43,31,26,.08); }
+.streak span.on { background: var(--sleep); }
+.cta { display: block; width: 100%; min-height: 48px; border: 0; font: 600 17px/24px var(--sys); color: var(--ink); background: var(--salmon); border-radius: 24px; }
+.ghost { display: block; width: 100%; min-height: 48px; font: 600 17px/24px var(--sys); color: var(--ink); background: rgba(255,255,255,.55); border: 1px solid rgba(255,255,255,.9); border-radius: 24px; box-shadow: 0 6px 18px -8px rgba(43,31,26,.25); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+.sq { width: 24px; height: 24px; flex: none; display: grid; place-items: center; }
+.sq svg { width: 14px; height: 14px; fill: #fff; }
+.irow { display: grid; grid-template-columns: 24px 1fr 12px; gap: 12px; align-items: center; min-height: 48px; border-top: 1px solid var(--hair); padding: 12px 0; }
+.irow:first-child { border-top: 0; padding-top: 0; }
+.irow:last-child { padding-bottom: 0; }
+.chev { width: 8px; height: 14px; stroke: rgba(43,31,26,.35); fill: none; stroke-width: 2; }
+.footnote { font-size: 13px; line-height: 18px; color: var(--ink60); margin: -12px 0 24px; padding: 0 12px; }
+.secthead { font-size: 13px; line-height: 18px; color: var(--ink60); margin: 0 0 6px 12px; }
+
+/* Tab bar: system glass */
+.tabbar { position: sticky; bottom: 16px; margin: 0 16px 20px; height: 64px; border-radius: 32px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: center; background: rgba(255,255,255,.55); -webkit-backdrop-filter: blur(24px) saturate(1.6); backdrop-filter: blur(24px) saturate(1.6); border: 1px solid rgba(255,255,255,.9); box-shadow: 0 8px 24px -8px rgba(43,31,26,.25); z-index: 3; }
+.tabbar a { display: grid; justify-items: center; gap: 2px; font-size: 10px; line-height: 12px; font-weight: 500; color: rgba(43,31,26,.45); text-decoration: none; padding: 6px 0; }
+.tabbar a.on { color: var(--ink); }
+.tabbar svg { width: 24px; height: 24px; fill: currentColor; }
+
+/* Watch and widgets */
+.stage { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; align-items: flex-start; padding: 40px 16px; border-radius: 24px; background: #E6DFD0; }
+.stage.dark { background: #1C1714; }
+.stagewrap { display: grid; gap: 24px; }
+.figure { display: grid; justify-items: center; gap: 12px; }
+.figure .cap { font-size: 13px; line-height: 18px; color: var(--page-sub); }
+.stage .figure .cap { color: rgba(43,31,26,.6); }
+.stage.dark .figure .cap { color: rgba(249,246,237,.6); }
+.watch { width: 208px; height: 250px; border-radius: 56px; background: #2A2624; padding: 10px; box-shadow: 0 20px 40px -20px rgba(0,0,0,.6), inset 0 0 0 2px #3A3532; position: relative; }
+.watch::after { content: ""; position: absolute; right: -8px; top: 64px; width: 8px; height: 40px; background: #3A3532; border-radius: 0 4px 4px 0; }
+.wscreen { width: 100%; height: 100%; border-radius: 46px; background: #000; color: #F9F6ED; padding: 18px 18px; display: flex; flex-direction: column; }
+.wtime { font-size: 40px; line-height: 44px; font-weight: 600; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; text-align: right; }
+.wlabel { font-size: 12px; line-height: 16px; color: rgba(249,246,237,.6); }
+.wrow { display: flex; gap: 12px; align-items: center; margin-top: 12px; }
+.wbar { height: 6px; background: rgba(249,246,237,.18); position: relative; margin-top: 4px; }
+.wbar i { position: absolute; left: 0; top: 0; bottom: 0; }
+.widget { background: var(--card); color: var(--ink); border-radius: 24px; padding: 16px; box-shadow: 0 10px 30px -14px rgba(43,31,26,.35); }
+.widget.small { width: 158px; height: 158px; display: flex; flex-direction: column; justify-content: space-between; }
+.widget.medium { width: 338px; max-width: 100%; height: 158px; display: grid; grid-template-columns: 76px 1fr; gap: 16px; align-items: center; }
+.widget .bars { gap: 8px; }
+.widget .barrow { grid-template-columns: 60px 1fr 32px; gap: 8px; }
+.widget .barrow .v { font-size: 15px; }
+.widget .track { height: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>thru, every screen</h1>
+  <p class="lede">The whole app on the thru system in the flat style: solid cards, square-ended bars, one face per screen, glass only on the tab bar. Content follows the current views. Demo data only.</p>
+  <div class="bar-top">
+    <nav class="nav" aria-label="Screens">
+      <a href="#today">Today</a><a href="#sleep">Sleep</a><a href="#trends">Trends</a><a href="#workouts">Workouts</a><a href="#workout">Workout detail</a><a href="#nutrition">Nutrition</a><a href="#info">Info</a><a href="#explain">Recovery explained</a><a href="#watch">Watch and widgets</a>
+    </nav>
+    <div><span class="ctl-label">Recovery</span>
+      <div class="seg" role="group" aria-label="Recovery state">
+        <button type="button" data-state="push" aria-pressed="true">Push</button>
+        <button type="button" data-state="moderate" aria-pressed="false">Moderate</button>
+        <button type="button" data-state="recover" aria-pressed="false">Recover</button>
+      </div>
+    </div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <path id="wm-ink" d="M22.5 30 H52.5 V60 H22.5 Z M0 60 H75 V90 H0 Z M90 0 H120 V90 H90 Z M90 120 H120 V180 H90 Z M165 120 H195 V180 H165 Z M120.758 90 A37.5 37.5 0 0 1 194.242 90 Z M210 60 H240 V90 H210 Z M240 90 A30 30 0 0 1 270 60 V90 Z M270 60 H285 V90 H270 Z M210 120 H240 V180 H210 Z M22.5 120 L52.5 120 L52.502 135.899 L52.513 136.676 L52.537 137.37 L52.574 137.982 L52.624 138.552 L52.677 138.999 L52.743 139.444 L52.823 139.886 L52.91 140.285 L53.01 140.682 L53.134 141.114 L53.261 141.502 L53.415 141.924 L53.568 142.303 L53.75 142.714 L53.928 143.082 L54.138 143.479 L54.342 143.833 L54.579 144.215 L54.829 144.588 L55.092 144.952 L55.395 145.337 L55.739 145.741 L56.1 146.13 L56.477 146.504 L56.87 146.86 L57.277 147.2 L57.698 147.522 L58.133 147.826 L58.58 148.111 L59.039 148.377 L59.509 148.623 L59.989 148.848 L60.478 149.053 L60.975 149.237 L61.479 149.4 L61.99 149.541 L62.347 149.625 L62.747 149.707 L63.148 149.776 L63.552 149.833 L63.998 149.884 L64.444 149.923 L64.933 149.955 L65.421 149.976 L66.114 149.993 L66.929 150 L75 150 L75 180 L66.195 179.999 L63.666 179.983 L62.28 179.958 L60.976 179.917 L59.753 179.861 L58.614 179.789 L57.313 179.682 L56.664 179.616 L56.015 179.543 L55.368 179.46 L54.803 179.38 L53.675 179.198 L53.114 179.095 L52.554 178.983 L51.996 178.863 L51.439 178.734 L50.412 178.473 L49.861 178.32 L49.314 178.159 L48.691 177.964 L48.071 177.759 L47.455 177.543 L46.843 177.316 L46.235 177.078 L45.632 176.83 L45.032 176.571 L44.438 176.302 L43.848 176.022 L43.263 175.733 L42.683 175.433 L42.109 175.123 L41.54 174.803 L40.976 174.473 L40.419 174.133 L39.868 173.784 L39.322 173.425 L38.783 173.056 L38.251 172.678 L37.725 172.291 L37.206 171.895 L36.694 171.49 L36.189 171.075 L35.692 170.652 L35.201 170.221 L34.719 169.781 L34.244 169.332 L33.777 168.876 L33.318 168.411 L32.868 167.938 L32.425 167.458 L31.991 166.97 L31.618 166.536 L31.252 166.097 L30.893 165.653 L30.491 165.138 L30.146 164.682 L29.761 164.154 L29.431 163.687 L29.064 163.147 L28.749 162.67 L28.399 162.118 L28.101 161.63 L27.769 161.067 L27.487 160.57 L27.174 159.997 L26.908 159.49 L26.614 158.907 L26.364 158.392 L26.123 157.874 L25.89 157.352 L25.633 156.751 L25.417 156.221 L25.18 155.612 L24.981 155.076 L24.764 154.46 L24.582 153.917 L24.386 153.294 L24.222 152.746 L24.046 152.117 L23.9 151.563 L23.745 150.929 L23.617 150.371 L23.482 149.731 L23.301 148.768 L23.143 147.8 L22.997 146.748 L22.874 145.693 L22.767 144.554 L22.683 143.413 L22.614 142.189 L22.565 140.965 L22.54 140.066 L22.521 139.086 L22.502 136.798 Z"/>
+    <path id="wm-u" d="M300 60 H330 V90 H300 Z M375 60 H405 V90 H375 Z M300 120 L330 120 L330.005 122.774 L330.025 124.705 L330.043 125.575 L330.068 126.399 L330.098 127.156 L330.134 127.87 L330.178 128.559 L330.23 129.217 L330.288 129.827 L330.356 130.416 L330.429 130.951 L330.512 131.468 L330.606 131.983 L330.713 132.496 L330.847 133.068 L331 133.649 L331.164 134.214 L331.348 134.785 L331.542 135.34 L331.756 135.901 L331.979 136.445 L332.222 136.994 L332.474 137.525 L332.746 138.061 L333.026 138.577 L333.327 139.098 L333.634 139.599 L333.961 140.102 L334.295 140.586 L334.648 141.071 L335.039 141.577 L335.452 142.081 L335.871 142.563 L336.312 143.043 L336.759 143.5 L337.227 143.953 L337.699 144.384 L338.193 144.809 L338.689 145.211 L339.206 145.607 L339.725 145.98 L340.265 146.346 L340.804 146.688 L341.364 147.022 L341.933 147.339 L342.511 147.639 L343.087 147.917 L343.681 148.183 L344.272 148.427 L344.881 148.659 L345.485 148.868 L346.106 149.064 L346.733 149.242 L347.365 149.401 L347.989 149.539 L348.629 149.662 L349.26 149.763 L349.906 149.849 L350.541 149.914 L351.191 149.962 L351.842 149.99 L352.494 150 L353.132 149.991 L353.783 149.963 L354.421 149.917 L355.069 149.852 L355.703 149.769 L356.346 149.666 L356.974 149.547 L357.61 149.407 L358.23 149.252 L358.857 149.075 L359.467 148.884 L360.083 148.672 L360.681 148.446 L361.283 148.198 L361.879 147.933 L362.466 147.651 L363.033 147.357 L363.603 147.041 L364.153 146.715 L364.703 146.367 L365.233 146.01 L365.763 145.63 L366.281 145.235 L366.788 144.825 L367.272 144.409 L367.754 143.97 L368.214 143.527 L368.67 143.061 L369.104 142.592 L369.532 142.101 L369.945 141.597 L370.344 141.082 L370.691 140.607 L371.032 140.113 L371.353 139.62 L371.667 139.108 L371.961 138.6 L372.248 138.072 L372.514 137.548 L372.772 137.006 L373.011 136.469 L373.24 135.913 L373.449 135.364 L373.648 134.798 L373.828 134.238 L373.997 133.662 L374.15 133.081 L374.287 132.496 L374.394 131.983 L374.488 131.468 L374.571 130.951 L374.644 130.416 L374.712 129.827 L374.77 129.217 L374.822 128.559 L374.866 127.87 L374.902 127.156 L374.932 126.399 L374.957 125.575 L374.975 124.705 L374.995 122.774 L375 120 L405 120 L404.997 122.547 L404.982 124.434 L404.952 126.111 L404.906 127.669 L404.84 129.165 L404.799 129.883 L404.753 130.601 L404.701 131.288 L404.646 131.945 L404.584 132.601 L404.516 133.256 L404.44 133.911 L404.357 134.565 L404.27 135.188 L404.177 135.81 L404.07 136.461 L403.961 137.08 L403.844 137.698 L403.72 138.315 L403.582 138.96 L403.443 139.573 L403.296 140.185 L403.142 140.795 L402.973 141.432 L402.804 142.038 L402.628 142.642 L402.445 143.244 L402.235 143.901 L402.018 144.554 L401.791 145.205 L401.566 145.825 L401.323 146.47 L401.072 147.111 L400.812 147.749 L400.555 148.356 L400.279 148.987 L399.994 149.615 L399.701 150.239 L399.413 150.832 L399.104 151.448 L398.787 152.059 L398.462 152.667 L398.144 153.244 L397.803 153.843 L397.455 154.438 L397.099 155.027 L396.751 155.587 L396.379 156.168 L396 156.743 L395.614 157.314 L395.237 157.855 L394.836 158.415 L394.428 158.97 L394.012 159.519 L393.608 160.04 L393.178 160.579 L392.741 161.112 L392.298 161.639 L391.867 162.137 L391.389 162.675 L390.925 163.185 L390.454 163.688 L389.977 164.184 L389.472 164.696 L388.981 165.18 L388.484 165.657 L387.981 166.128 L387.449 166.612 L386.933 167.069 L386.412 167.519 L385.884 167.962 L385.327 168.417 L384.788 168.846 L384.243 169.268 L383.693 169.683 L383.112 170.107 L382.551 170.507 L381.984 170.899 L381.413 171.284 L380.811 171.677 L380.229 172.046 L379.642 172.407 L379.051 172.761 L378.429 173.122 L377.828 173.459 L377.223 173.789 L376.614 174.111 L375.973 174.438 L375.355 174.743 L374.734 175.04 L374.108 175.329 L373.451 175.621 L372.818 175.893 L372.181 176.156 L371.541 176.411 L370.87 176.669 L370.223 176.906 L369.573 177.135 L368.92 177.356 L368.236 177.577 L367.577 177.78 L366.916 177.974 L366.253 178.16 L365.558 178.344 L364.889 178.512 L364.219 178.67 L363.546 178.82 L362.842 178.967 L362.166 179.099 L361.488 179.222 L360.808 179.336 L360.098 179.445 L359.415 179.541 L358.732 179.627 L358.047 179.705 L357.332 179.776 L356.645 179.836 L355.958 179.886 L355.27 179.927 L354.552 179.96 L353.863 179.982 L353.174 179.996 L352.485 180 L351.766 179.995 L351.077 179.981 L350.388 179.957 L349.7 179.925 L348.982 179.882 L348.295 179.831 L347.609 179.771 L346.923 179.702 L346.209 179.62 L345.525 179.533 L344.843 179.437 L344.162 179.331 L343.453 179.212 L342.775 179.088 L342.099 178.956 L341.424 178.814 L340.723 178.657 L340.052 178.497 L339.384 178.329 L338.718 178.152 L338.026 177.958 L337.365 177.763 L336.707 177.559 L336.051 177.347 L335.37 177.116 L334.721 176.886 L334.074 176.647 L333.431 176.401 L332.763 176.134 L332.127 175.87 L331.494 175.597 L330.865 175.316 L330.212 175.014 L329.591 174.717 L328.973 174.411 L328.36 174.097 L327.724 173.761 L327.12 173.43 L326.519 173.092 L325.923 172.746 L325.307 172.376 L324.72 172.014 L324.139 171.644 L323.562 171.267 L322.966 170.865 L322.4 170.472 L321.839 170.072 L321.283 169.665 L320.709 169.232 L320.165 168.809 L319.626 168.38 L319.093 167.943 L318.543 167.48 L318.022 167.029 L317.506 166.572 L316.997 166.108 L316.473 165.616 L315.976 165.138 L315.486 164.654 L315.002 164.163 L314.525 163.666 L314.054 163.163 L313.591 162.653 L313.133 162.137 L312.683 161.616 L312.24 161.089 L311.803 160.555 L311.392 160.04 L310.97 159.496 L310.554 158.946 L310.146 158.391 L309.763 157.855 L309.369 157.289 L308.983 156.718 L308.604 156.143 L308.249 155.587 L307.886 155.002 L307.53 154.412 L307.182 153.817 L306.856 153.244 L306.523 152.641 L306.199 152.033 L305.882 151.421 L305.587 150.832 L305.286 150.212 L304.993 149.588 L304.709 148.96 L304.445 148.356 L304.177 147.721 L303.917 147.083 L303.666 146.442 L303.434 145.825 L303.199 145.177 L302.973 144.526 L302.755 143.872 L302.555 143.244 L302.363 142.614 L302.188 142.009 L302.019 141.403 L301.858 140.795 L301.697 140.156 L301.55 139.544 L301.411 138.931 L301.28 138.315 L301.15 137.669 L301.034 137.051 L300.925 136.431 L300.823 135.81 L300.73 135.188 L300.643 134.565 L300.56 133.911 L300.484 133.256 L300.416 132.601 L300.354 131.945 L300.299 131.288 L300.247 130.601 L300.201 129.883 L300.16 129.165 L300.094 127.669 L300.048 126.111 L300.018 124.434 L300.003 122.547 Z"/>
+  </defs>
+</svg>
+
+<script>
+var BOWL = "M300 120 L330 120 L330.005 122.774 L330.025 124.705 L330.043 125.575 L330.068 126.399 L330.098 127.156 L330.134 127.87 L330.178 128.559 L330.23 129.217 L330.288 129.827 L330.356 130.416 L330.429 130.951 L330.512 131.468 L330.606 131.983 L330.713 132.496 L330.847 133.068 L331 133.649 L331.164 134.214 L331.348 134.785 L331.542 135.34 L331.756 135.901 L331.979 136.445 L332.222 136.994 L332.474 137.525 L332.746 138.061 L333.026 138.577 L333.327 139.098 L333.634 139.599 L333.961 140.102 L334.295 140.586 L334.648 141.071 L335.039 141.577 L335.452 142.081 L335.871 142.563 L336.312 143.043 L336.759 143.5 L337.227 143.953 L337.699 144.384 L338.193 144.809 L338.689 145.211 L339.206 145.607 L339.725 145.98 L340.265 146.346 L340.804 146.688 L341.364 147.022 L341.933 147.339 L342.511 147.639 L343.087 147.917 L343.681 148.183 L344.272 148.427 L344.881 148.659 L345.485 148.868 L346.106 149.064 L346.733 149.242 L347.365 149.401 L347.989 149.539 L348.629 149.662 L349.26 149.763 L349.906 149.849 L350.541 149.914 L351.191 149.962 L351.842 149.99 L352.494 150 L353.132 149.991 L353.783 149.963 L354.421 149.917 L355.069 149.852 L355.703 149.769 L356.346 149.666 L356.974 149.547 L357.61 149.407 L358.23 149.252 L358.857 149.075 L359.467 148.884 L360.083 148.672 L360.681 148.446 L361.283 148.198 L361.879 147.933 L362.466 147.651 L363.033 147.357 L363.603 147.041 L364.153 146.715 L364.703 146.367 L365.233 146.01 L365.763 145.63 L366.281 145.235 L366.788 144.825 L367.272 144.409 L367.754 143.97 L368.214 143.527 L368.67 143.061 L369.104 142.592 L369.532 142.101 L369.945 141.597 L370.344 141.082 L370.691 140.607 L371.032 140.113 L371.353 139.62 L371.667 139.108 L371.961 138.6 L372.248 138.072 L372.514 137.548 L372.772 137.006 L373.011 136.469 L373.24 135.913 L373.449 135.364 L373.648 134.798 L373.828 134.238 L373.997 133.662 L374.15 133.081 L374.287 132.496 L374.394 131.983 L374.488 131.468 L374.571 130.951 L374.644 130.416 L374.712 129.827 L374.77 129.217 L374.822 128.559 L374.866 127.87 L374.902 127.156 L374.932 126.399 L374.957 125.575 L374.975 124.705 L374.995 122.774 L375 120 L405 120 L404.997 122.547 L404.982 124.434 L404.952 126.111 L404.906 127.669 L404.84 129.165 L404.799 129.883 L404.753 130.601 L404.701 131.288 L404.646 131.945 L404.584 132.601 L404.516 133.256 L404.44 133.911 L404.357 134.565 L404.27 135.188 L404.177 135.81 L404.07 136.461 L403.961 137.08 L403.844 137.698 L403.72 138.315 L403.582 138.96 L403.443 139.573 L403.296 140.185 L403.142 140.795 L402.973 141.432 L402.804 142.038 L402.628 142.642 L402.445 143.244 L402.235 143.901 L402.018 144.554 L401.791 145.205 L401.566 145.825 L401.323 146.47 L401.072 147.111 L400.812 147.749 L400.555 148.356 L400.279 148.987 L399.994 149.615 L399.701 150.239 L399.413 150.832 L399.104 151.448 L398.787 152.059 L398.462 152.667 L398.144 153.244 L397.803 153.843 L397.455 154.438 L397.099 155.027 L396.751 155.587 L396.379 156.168 L396 156.743 L395.614 157.314 L395.237 157.855 L394.836 158.415 L394.428 158.97 L394.012 159.519 L393.608 160.04 L393.178 160.579 L392.741 161.112 L392.298 161.639 L391.867 162.137 L391.389 162.675 L390.925 163.185 L390.454 163.688 L389.977 164.184 L389.472 164.696 L388.981 165.18 L388.484 165.657 L387.981 166.128 L387.449 166.612 L386.933 167.069 L386.412 167.519 L385.884 167.962 L385.327 168.417 L384.788 168.846 L384.243 169.268 L383.693 169.683 L383.112 170.107 L382.551 170.507 L381.984 170.899 L381.413 171.284 L380.811 171.677 L380.229 172.046 L379.642 172.407 L379.051 172.761 L378.429 173.122 L377.828 173.459 L377.223 173.789 L376.614 174.111 L375.973 174.438 L375.355 174.743 L374.734 175.04 L374.108 175.329 L373.451 175.621 L372.818 175.893 L372.181 176.156 L371.541 176.411 L370.87 176.669 L370.223 176.906 L369.573 177.135 L368.92 177.356 L368.236 177.577 L367.577 177.78 L366.916 177.974 L366.253 178.16 L365.558 178.344 L364.889 178.512 L364.219 178.67 L363.546 178.82 L362.842 178.967 L362.166 179.099 L361.488 179.222 L360.808 179.336 L360.098 179.445 L359.415 179.541 L358.732 179.627 L358.047 179.705 L357.332 179.776 L356.645 179.836 L355.958 179.886 L355.27 179.927 L354.552 179.96 L353.863 179.982 L353.174 179.996 L352.485 180 L351.766 179.995 L351.077 179.981 L350.388 179.957 L349.7 179.925 L348.982 179.882 L348.295 179.831 L347.609 179.771 L346.923 179.702 L346.209 179.62 L345.525 179.533 L344.843 179.437 L344.162 179.331 L343.453 179.212 L342.775 179.088 L342.099 178.956 L341.424 178.814 L340.723 178.657 L340.052 178.497 L339.384 178.329 L338.718 178.152 L338.026 177.958 L337.365 177.763 L336.707 177.559 L336.051 177.347 L335.37 177.116 L334.721 176.886 L334.074 176.647 L333.431 176.401 L332.763 176.134 L332.127 175.87 L331.494 175.597 L330.865 175.316 L330.212 175.014 L329.591 174.717 L328.973 174.411 L328.36 174.097 L327.724 173.761 L327.12 173.43 L326.519 173.092 L325.923 172.746 L325.307 172.376 L324.72 172.014 L324.139 171.644 L323.562 171.267 L322.966 170.865 L322.4 170.472 L321.839 170.072 L321.283 169.665 L320.709 169.232 L320.165 168.809 L319.626 168.38 L319.093 167.943 L318.543 167.48 L318.022 167.029 L317.506 166.572 L316.997 166.108 L316.473 165.616 L315.976 165.138 L315.486 164.654 L315.002 164.163 L314.525 163.666 L314.054 163.163 L313.591 162.653 L313.133 162.137 L312.683 161.616 L312.24 161.089 L311.803 160.555 L311.392 160.04 L310.97 159.496 L310.554 158.946 L310.146 158.391 L309.763 157.855 L309.369 157.289 L308.983 156.718 L308.604 156.143 L308.249 155.587 L307.886 155.002 L307.53 154.412 L307.182 153.817 L306.856 153.244 L306.523 152.641 L306.199 152.033 L305.882 151.421 L305.587 150.832 L305.286 150.212 L304.993 149.588 L304.709 148.96 L304.445 148.356 L304.177 147.721 L303.917 147.083 L303.666 146.442 L303.434 145.825 L303.199 145.177 L302.973 144.526 L302.755 143.872 L302.555 143.244 L302.363 142.614 L302.188 142.009 L302.019 141.403 L301.858 140.795 L301.697 140.156 L301.55 139.544 L301.411 138.931 L301.28 138.315 L301.15 137.669 L301.034 137.051 L300.925 136.431 L300.823 135.81 L300.73 135.188 L300.643 134.565 L300.56 133.911 L300.484 133.256 L300.416 132.601 L300.354 131.945 L300.299 131.288 L300.247 130.601 L300.201 129.883 L300.16 129.165 L300.094 127.669 L300.048 126.111 L300.018 124.434 L300.003 122.547 Z";
+var COL = { ink: "#2B1F1A", paper: "#F9F6ED", salmon: "#F07B62", push: "#33B378", moderate: "#EDAB2E", recover: "#DB454C",
+  sleep: "#9470F2", strain: "#2978F2", heart: "#21A8BD", body: "#F29433", nutrition: "#E3598F", air: "#6BBDDB" };
+function rgba(hex, a) { var n = parseInt(hex.slice(1), 16); return "rgba(" + (n >> 16) + "," + (n >> 8 & 255) + "," + (n & 255) + "," + a + ")"; }
+
+// ---------- Mouth: the final u, a flat bar, the u flipped (face box 105 x 120) ----------
+function parsePts(d) { var n = d.match(/-?\d+(\.\d+)?/g).map(Number), p = []; for (var i = 0; i < n.length; i += 2) p.push([n[i] - 300, n[i + 1] - 60]); return p; }
+function resample(pts, m) {
+  var len = [0]; for (var i = 1; i < pts.length; i++) len.push(len[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  var total = len[len.length - 1], out = [], j = 1;
+  for (var k = 0; k < m; k++) { var s = total * k / (m - 1); while (j < len.length - 1 && len[j] < s) j++;
+    var a = pts[j - 1], b = pts[j], t = (s - len[j - 1]) / ((len[j] - len[j - 1]) || 1); out.push([a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t]); }
+  return out;
+}
+var raw = parsePts(BOWL);
+function idx(x, y) { for (var i = 0; i < raw.length; i++) if (Math.abs(raw[i][0] - x) < .01 && Math.abs(raw[i][1] - y) < .01) return i; return -1; }
+var i1 = idx(30, 60), i2 = idx(75, 60), i3 = idx(105, 60), NPTS = [6, 90, 6, 140];
+function build(parts) { var out = []; parts.forEach(function (p, k) { out = out.concat(resample(p, NPTS[k])); }); return out; }
+var SMILE = build([raw.slice(0, i1 + 1), raw.slice(i1, i2 + 1), raw.slice(i2, i3 + 1), raw.slice(i3).concat([raw[0]])]);
+var FLAT = build([[[0, 75], [30, 75]], [[30, 75], [75, 75]], [[75, 75], [105, 75]], [[105, 75], [105, 105], [0, 105], [0, 75]]]);
+var FROWN = SMILE.map(function (p) { return [p[0], 180 - p[1]]; }), FLATM = FLAT.map(function (p) { return [p[0], 180 - p[1]]; });
+function mouth(t) { var A = t >= 0 ? FLAT : FLATM, B = t >= 0 ? SMILE : FROWN, e = Math.abs(t), s = "M";
+  for (var i = 0; i < A.length; i++) s += (i ? "L" : "") + (A[i][0] + (B[i][0] - A[i][0]) * e).toFixed(2) + " " + (A[i][1] + (B[i][1] - A[i][1]) * e).toFixed(2);
+  return s + "Z"; }
+
+// A face tile. o: size, col, t, eyes (open, asleep, wink, record), live (follows the state switch), blink, label
+function face(o) {
+  var e, eyes = o.eyes || "open";
+  if (eyes === "asleep") e = '<rect x="0" y="15" width="30" height="15"/><rect x="75" y="15" width="30" height="15"/>';
+  else if (eyes === "wink") e = '<rect x="0" y="15" width="30" height="15"/><rect x="75" y="0" width="30" height="30"/>';
+  else if (eyes === "record") e = '<path d="M0 30A15 15 0 0 1 30 30Z"/><path d="M75 30A15 15 0 0 1 105 30Z"/>';
+  else e = '<rect class="eye' + (o.blink ? ' blink' : '') + '" x="0" y="0" width="30" height="30"/><rect class="eye' + (o.blink ? ' blink' : '') + '" x="75" y="0" width="30" height="30"/>';
+  return '<svg class="tile' + (o.live ? ' live' : '') + '" width="' + o.size + '" height="' + o.size + '" viewBox="0 0 200 200" role="img" aria-label="' + (o.label || "") + '">' +
+    '<rect class="bg" width="200" height="200" rx="45" fill="' + o.col + '"/><g transform="translate(51 44) scale(0.93333)" fill="' + (o.fg || COL.paper) + '">' + e +
+    '<path class="mouth" d="' + mouth(o.t == null ? 1 : o.t) + '"/></g></svg>';
+}
+
+// ---------- Small builders ----------
+function seeded(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; var t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+function series(seed, n, base, spread, drift) { var r = seeded(seed), v = [], x = base; for (var i = 0; i < n; i++) { x += (r() - .5) * spread + (drift || 0); v.push(x); } return v; }
+function sbar(label, pct, col, val, tick, attrs) {
+  return '<div class="barrow"' + (attrs || "") + '><span class="label">' + label + '</span><div class="track"><div class="fill" style="width:' + pct + '%;background:' + col + '"></div>' +
+    (tick != null ? '<div class="tick" style="left:' + tick + '%"></div>' : '') + '</div><span class="v num">' + val + '</span></div>';
+}
+function spark(vals, col) {
+  var w = 140, h = 40, mn = Math.min.apply(0, vals), mx = Math.max.apply(0, vals), pts = vals.map(function (v, i) { return [i / (vals.length - 1) * (w - 6) + 3, h - 4 - (v - mn) / ((mx - mn) || 1) * (h - 8)]; });
+  var last = pts[pts.length - 1];
+  return '<svg viewBox="0 0 ' + w + ' ' + h + '" width="100%" height="40" preserveAspectRatio="none" aria-hidden="true" style="display:block;margin-top:12px">' +
+    '<polyline fill="none" stroke="' + rgba(col, .35) + '" stroke-width="2" vector-effect="non-scaling-stroke" points="' + pts.slice(0, -6).map(function (p) { return p.join(","); }).join(" ") + '"/>' +
+    '<polyline fill="none" stroke="' + col + '" stroke-width="2" vector-effect="non-scaling-stroke" points="' + pts.slice(-7).map(function (p) { return p.join(","); }).join(" ") + '"/>' +
+    '<rect x="' + (last[0] - 3) + '" y="' + (last[1] - 3) + '" width="6" height="6" fill="' + col + '"/></svg>';
+}
+function barsChart(vals, max, col, opts) {
+  opts = opts || {}; var h = opts.h || 96, out = '<div class="chart' + (opts.g6 ? ' g6' : '') + '" style="height:' + h + 'px">';
+  [.25, .5, .75].forEach(function (g) { out += '<span class="gridl" style="bottom:' + (g * 100) + '%"></span>'; });
+  if (opts.band) out += '<span class="bandh" style="bottom:calc(' + (opts.band / max * 100) + '% - 6px)"></span>';
+  vals.forEach(function (v, i) { var cur = i === vals.length - 1;
+    out += '<b style="height:' + (v / max * 100) + '%;background:' + (cur ? col : rgba(col, .35)) + '">' + (opts.ticks ? '<span class="tk" style="bottom:' + (opts.ticks[i] / v * 100) + '%"></span>' : '') + '</b>'; });
+  if (opts.line) out += '<span class="line" style="bottom:' + (opts.line / max * 100) + '%"></span>';
+  return out + '</div>';
+}
+function axis(labels) { return '<div class="axis">' + labels.map(function (l) { return '<span class="label">' + l + '</span>'; }).join("") + '</div>'; }
+function card(inner, cls) { return '<div class="card' + (cls ? ' ' + cls : '') + '">' + inner + '</div>'; }
+function heading(t, sub) { return '<p class="heading">' + t + '</p>' + (sub ? '<p class="label">' + sub + '</p>' : ''); }
+function pseg(items, on) { return '<div class="pseg">' + items.map(function (s, i) { return '<span' + (i === on ? ' class="on"' : '') + '>' + s + '</span>'; }).join("") + '</div>'; }
+var CHEV = '<svg class="chev" viewBox="0 0 8 14"><path d="M1 1l6 6-6 6"/></svg>';
+var BACK = '<svg viewBox="0 0 12 20" fill="none" stroke="#2B1F1A" stroke-width="2.5"><path d="M10 2L2 10l8 8"/></svg>';
+
+// ---------- Tab bar ----------
+var TABS = [
+  ["Today", "today", '<rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><path d="M3 15h6c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 5-4 9-9 9s-9-4-9-9z"/>'],
+  ["Trends", "trends", '<rect x="3" y="12" width="5" height="9"/><rect x="9.5" y="7" width="5" height="14"/><rect x="16" y="3" width="5" height="18"/>'],
+  ["Workouts", "workouts", '<rect x="2" y="7" width="4" height="10"/><rect x="18" y="7" width="4" height="10"/><rect x="6" y="10" width="12" height="4"/>'],
+  ["Nutrition", "nutrition", '<path d="M2 9h20c0 6-4.5 11-10 11S2 15 2 9z"/><rect x="11" y="2" width="2" height="6"/>'],
+  ["Info", "info", '<path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm-1.5 8v8h3v-8zm0-4v3h3V6z"/>']
+];
+function phone(tab, inner, glow) {
+  return '<div class="phone"><div class="screen"><div class="glows"><i class="g1' + (glow === "live" ? ' liveglow' : '') + '" style="background:radial-gradient(closest-side,' + rgba(glow === "live" ? COL.push : glow, .18) + ',rgba(0,0,0,0))"></i><i class="g2"></i><i class="g3"></i></div>' +
+    '<div class="status"><span>09:41</span><span class="sig"><b></b><b></b></span></div><div class="content">' + inner + '</div>' +
+    '<nav class="tabbar" aria-label="App tabs">' + TABS.map(function (t) { return '<a href="#' + t[1] + '"' + (t[1] === tab ? ' class="on" aria-current="page"' : '') + '><svg viewBox="0 0 24 24" aria-hidden="true">' + t[2] + '</svg>' + t[0] + '</a>'; }).join("") + '</nav></div></div>';
+}
+function block(id, title, tag, body, notes, wide) {
+  return '<section class="block' + (wide ? ' wide' : '') + '" id="' + id + '"><h2>' + title + '</h2><p class="tag">' + tag + '</p>' + body +
+    (notes ? '<ul class="notes">' + notes.map(function (n) { return '<li>' + n + '</li>'; }).join("") + '</ul>' : '') + '</section>';
+}
+
+// ---------- Live state (Today, watch, widgets) ----------
+var STATES = {
+  push: { t: 1, col: COL.push, word: "Push", rec: 78, sleep: 84, strain: 11.2, target: 15, advice: "Good day to push",
+    why: [["push", "HRV 62 ms, above your usual 54 ms"], ["push", "Slept 7 h 28 min, 22 min more than you need"], ["moderate", "Resting HR 52 bpm, about your usual"]] },
+  moderate: { t: 0, col: COL.moderate, word: "Moderate", rec: 55, sleep: 71, strain: 8.4, target: 11, advice: "Keep it steady today",
+    why: [["moderate", "HRV 53 ms, about your usual 54 ms"], ["recover", "Slept 6 h 35 min, 31 min less than you need"], ["push", "Resting HR 50 bpm, a little below your usual"]] },
+  recover: { t: -1, col: COL.recover, word: "Recover", rec: 28, sleep: 52, strain: 4.1, target: 7, advice: "Take it easy today",
+    why: [["recover", "HRV 41 ms, well below your usual 54 ms"], ["recover", "Slept 5 h 20 min, 1 h 46 min less than you need"], ["recover", "Resting HR 58 bpm, 6 above your usual"]] }
+};
+
+// ---------- Screens ----------
+var S = [];
+
+// Today
+S.push(block("today", "Today", "TodayView: the face sets the day",
+  phone("today",
+    '<div class="head"><svg class="wm" viewBox="0 0 405 180" role="img" aria-label="thru"><use href="#wm-ink" fill="#2B1F1A"/><use href="#wm-u" fill="#F07B62"/></svg><span class="label">Thursday 5 November</span></div>' +
+    '<div class="plain"><div class="hero">' + face({ size: 112, col: COL.push, t: 1, live: true, blink: true, label: "Recovery 78, push" }) +
+      '<div><div class="label">Recovery</div><div class="score num" data-live="rec" style="margin:4px 0 6px">78</div><div class="zone"><span class="dot" data-live="zdot" style="background:var(--push)"></span><span data-live="word">Push</span></div></div></div>' +
+      '<p class="advice" data-live="advice">Good day to push</p>' +
+      '<div class="bars" style="margin-top:24px">' + sbar("Sleep", 84, COL.sleep, '<span data-live="sleepv">84</span>', null, ' data-live="sleepb"') +
+        sbar("Recovery", 78, COL.push, '<span data-live="recv">78</span>', null, ' data-live="recb"') +
+        sbar("Strain", 53, COL.strain, '<span data-live="strainv">11.2</span>', 71, ' data-live="strainb"') + '</div></div>' +
+    card(heading("Why") + '<div class="why" data-live="why"></div>') +
+    card(heading("Food yesterday") + sbar("Quality", 72, COL.nutrition, "72", 80) +
+      '<div class="split" style="margin-top:12px"><div><div class="value num">2 340</div><div class="label">kcal</div></div><div><div class="value num">128 g</div><div class="label">protein</div></div><div><div class="value num">31 g</div><div class="label">fibre</div></div></div>') +
+    card(heading("Sleep streak", "5 nights over 7 h this week") + '<div class="streak"><span class="on"></span><span class="on"></span><span></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div>') +
+    '<button class="cta" type="button">Log food</button>', "live"),
+  ["Same as direction B of the Today mockup.", "The switch at the top drives this screen, the watch and the widgets."]));
+
+// Sleep
+(function () {
+  var stages = [["Awake", 0, 6], ["Core", 6, 34], ["Deep", 40, 52], ["Core", 92, 40], ["REM", 132, 22], ["Core", 154, 46], ["Deep", 200, 30], ["Awake", 230, 4], ["Core", 234, 58], ["REM", 292, 34], ["Core", 326, 50], ["REM", 376, 44], ["Core", 420, 38], ["Awake", 458, 8], ["REM", 466, 6]];
+  var rowY = { Awake: 0, REM: 1, Core: 2, Deep: 3 }, opa = { Awake: .22, REM: .45, Core: .7, Deep: 1 }, total = 472, W = 270;
+  var hyp = '<div style="display:grid;grid-template-columns:48px 1fr;gap:12px"><div style="display:grid;grid-template-rows:repeat(4,24px);gap:6px">' +
+    ["Awake", "REM", "Core", "Deep"].map(function (s) { return '<span class="label" style="line-height:24px">' + s + '</span>'; }).join("") + '</div>' +
+    '<svg viewBox="0 0 ' + W + ' 114" width="100%" height="114" preserveAspectRatio="none" aria-label="Sleep stages from 23:12 to 07:04">' +
+    [0, 1, 2, 3].map(function (r) { return '<rect x="0" y="' + (r * 30) + '" width="' + W + '" height="24" fill="rgba(43,31,26,.04)"/>'; }).join("") +
+    stages.map(function (s) { var c = s[0] === "Awake" ? "rgba(43,31,26," + opa.Awake + ")" : rgba(COL.sleep, opa[s[0]]); return '<rect x="' + (s[1] / total * W) + '" y="' + (rowY[s[0]] * 30) + '" width="' + (s[2] / total * W) + '" height="24" fill="' + c + '"/>'; }).join("") +
+    '</svg></div><div style="display:grid;grid-template-columns:48px 1fr;gap:12px"><span></span>' + axis(["23:12", "01:00", "03:00", "05:00", "07:04"]) + '</div>';
+  var markers = [["Duration", "7.5 h", 90], ["Interruptions", "2 times", 80], ["Regularity", "88", 88], ["HRV", "62 ms", 85], ["Heart rate", "51 bpm", 82], ["Depth", "45%", 78]];
+  var lost = [["Depth", 7], ["Interruptions", 4], ["Heart rate", 2], ["Regularity", 2], ["Duration", 1], ["HRV", 0]];
+  var ringR = 52, circ = 2 * Math.PI * ringR;
+  S.push(block("sleep", "Sleep", "SleepDetailView: ring, stages, six markers",
+    phone("today",
+      '<div class="navrow"><span class="back">' + BACK + 'Today</span></div>' +
+      '<div class="title" style="margin-top:0">Sleep</div>' + pseg(["Day", "Week", "Month"], 0) +
+      '<div class="plain"><div class="hero"><svg width="128" height="128" viewBox="0 0 128 128" role="img" aria-label="Sleep score 84 of 100"><circle cx="64" cy="64" r="' + ringR + '" fill="none" stroke="rgba(43,31,26,.10)" stroke-width="12"/>' +
+        '<circle cx="64" cy="64" r="' + ringR + '" fill="none" stroke="' + COL.sleep + '" stroke-width="12" stroke-linecap="round" stroke-dasharray="' + (circ * .84) + ' ' + circ + '" transform="rotate(-90 64 64)"/>' +
+        '<text x="64" y="72" text-anchor="middle" font-size="30" font-weight="600" fill="#2B1F1A" style="font-variant-numeric:tabular-nums">84</text></svg>' +
+        '<div><div class="label">Night to Thu 5 Nov</div><div class="value num" style="margin:6px 0">7 h 28 min</div><div class="label">asleep, 23:12 to 07:04</div></div></div></div>' +
+      card(heading("Stages") + hyp) +
+      '<div class="two">' + markers.map(function (m) { return card('<div class="label">' + m[0] + '</div><div class="value num" style="margin:6px 0 12px">' + m[1] + '</div><div class="track" style="height:6px"><div class="fill" style="width:' + m[2] + '%;background:' + COL.sleep + '"></div></div>', "tight"); }).join("") + '</div>' +
+      card(heading("Where the points went", "16 points off a full night") + '<div class="bars">' + lost.map(function (l) { return sbar(l[0], l[1] / 8 * 100, rgba(COL.sleep, .45), l[1] ? l[1] + (l[1] === 1 ? " pt" : " pts") : "0"); }).join("") + '</div>'),
+      COL.sleep),
+    ["The ring is the one round-ended shape: 12 pt, like the score bars.", "Markers are a 2 x 3 grid of equal cards; each has a thin bar for its own score.", "Stages use one colour, purple, in four strengths."]));
+})();
+
+// Trends
+(function () {
+  var tiles = [["Recovery", "71", "", "+4 on last month", COL.push, series(3, 30, 66, 9, .2)], ["HRV", "58", "ms", "+3 ms", COL.heart, series(5, 30, 54, 6, .12)],
+    ["Resting HR", "52", "bpm", "1 bpm lower", COL.heart, series(9, 30, 54, 2, -.05)], ["Sleep score", "79", "", "+2", COL.sleep, series(11, 30, 76, 10, .1)],
+    ["Strain", "10.6", "", "+0.8", COL.strain, series(13, 30, 9.5, 4, .04)], ["Weight", "78.4", "kg", "0.6 kg lower", COL.body, series(17, 30, 79, .4, -.02)],
+    ["Intake", "2 410", "kcal", "Inside your goal", COL.nutrition, series(19, 30, 2400, 500, 0)], ["Steps", "9 840", "", "+620 a day", COL.strain, series(23, 30, 9000, 3000, 30)]];
+  S.push(block("trends", "Trends", "TrendsView: range, insights, metric tiles",
+    phone("trends",
+      '<div class="title">Trends</div>' + pseg(["7 days", "30 days", "90 days", "1 year"], 1) +
+      card(heading("Week by week", "Weekly averages.") + '<div class="why">' +
+        [["push", "HRV is up 3 ms on last month, after four weeks of earlier bedtimes."], ["push", "Strain rose 0.8 while recovery held, so the extra training is landing well."], ["moderate", "Weight is down 0.6 kg, in line with your goal of 0.25 kg a week."]]
+        .map(function (w) { return '<div><span class="dot" style="background:var(--' + w[0] + ')"></span><span>' + w[1] + '</span></div>'; }).join("") + '</div>') +
+      '<div class="two">' + tiles.map(function (t) { return card('<div class="label">' + t[0] + '</div><div class="value num" style="margin-top:6px">' + t[1] + (t[2] ? '<span class="unit">' + t[2] + '</span>' : '') + '</div>' + spark(t[5], t[4]) + '<div class="label" style="margin-top:6px">' + t[3] + '</div>', "tight"); }).join("") + '</div>' +
+      '<button class="ghost" type="button">Ask about your trends</button>', COL.heart),
+    ["Strict two-column grid: one number and one sparkline per tile.", "The last week of each line is full colour; the rest is history at 35%.", "Insights are ink text with zone dots, never red text."]));
+})();
+
+// Workouts
+(function () {
+  var rs = seeded(29), strain = []; for (var k = 0; k < 28; k++) strain.push(k % 7 === 2 || k % 7 === 5 ? 4 + rs() * 3 : 9 + rs() * 8); strain[27] = 11.2;
+  var days = ["M", "T", "W", "T", "F", "S", "S"];
+  S.push(block("workouts", "Workouts", "WorkoutsView: strain, this week, strength",
+    phone("workouts",
+      '<div class="title">Workouts</div>' +
+      card('<div class="split"><div><div class="label">Day strain</div><div class="score num" style="margin-top:6px">11.2</div></div><div class="label" style="text-align:right">Aim for 14 to 16<br>to match your recovery</div></div>' +
+        '<div class="track" style="margin-top:24px"><div class="band" style="left:66.7%;width:9.5%"></div><div class="fill" style="width:53%;background:' + COL.strain + '"></div></div>' + axis(["0", "7", "14", "21"])) +
+      card(heading("Day strain, 28 days") + barsChart(strain, 21, COL.strain, { band: 15 }) + axis(["9 Oct", "16 Oct", "23 Oct", "30 Oct", "Today"])) +
+      card(heading("This week") + '<div class="split"><div><div class="value num">4</div><div class="label">sessions</div></div><div><div class="value num">3 h 25 min</div><div class="label">training</div></div><div><div class="value num">18.4 t</div><div class="label">volume</div></div></div>' +
+        '<div class="streak" style="margin-top:24px">' + [1, 0, 1, 1, 0, 1, 0].map(function (d) { return '<span style="background:' + (d ? COL.strain : 'rgba(43,31,26,.08)') + '"></span>'; }).join("") + '</div>' +
+        '<div class="axis">' + days.map(function (d) { return '<span class="label" style="flex:1;text-align:center">' + d + '</span>'; }).join("") + '</div>' +
+        '<p class="label" style="margin:12px 0 0">Usual week: 3 sessions, 2 h 50 min</p>') +
+      card(heading("Strength log", "Estimated 1RM, best set in 8 weeks") + '<div class="rows">' +
+        [["Bench press", "92.5 kg", "+2.5"], ["Back squat", "127.5 kg", "+5"], ["Deadlift", "150 kg", "same"], ["Overhead press", "57.5 kg", "+2.5"]]
+        .map(function (r) { return '<div class="row"><span class="main">' + r[0] + '</span><span class="r"><span class="num" style="font-size:17px">' + r[1] + '</span><br><span class="label">' + r[2] + '</span></span></div>'; }).join("") + '</div>') +
+      card(heading("Recent sessions") + '<div class="rows">' +
+        [["Strength training", "Tue 3 Nov, 58 min", "9.4"], ["Run", "Sun 1 Nov, 42 min, 7.1 km", "12.8"], ["Cycling", "Sat 31 Oct, 1 h 15 min", "13.5"]]
+        .map(function (r) { return '<div class="row"><span><span class="main">' + r[0] + '</span><br><span class="label">' + r[1] + '</span></span><span class="r"><span class="num" style="font-size:17px">' + r[2] + '</span><br><span class="label">strain</span></span></div>'; }).join("") + '</div>'), COL.strain),
+    ["Target band is a translucent 12 pt bar behind the value.", "Bars end square; the current day is full colour, history 35%.", "Strength rows: name left, value right aligned, change underneath."]));
+
+  var zones = [["Zone 1", 12], ["Zone 2", 21], ["Zone 3", 15], ["Zone 4", 8], ["Zone 5", 2]];
+  S.push(block("workout", "Workout detail", "TrainingViews and StrengthViews: one session",
+    phone("workouts",
+      '<div class="navrow"><span class="back">' + BACK + 'Workouts</span></div>' +
+      '<div class="title" style="margin:0 0 6px">Strength training</div><p class="label" style="margin:0 0 24px">Tue 3 Nov, 17:42 to 18:40</p>' +
+      '<div class="two">' + [["Duration", "58", "min"], ["Strain", "9.4", ""], ["Average HR", "128", "bpm"], ["Energy", "412", "kcal"]].map(function (m) { return card('<div class="label">' + m[0] + '</div><div class="value num" style="margin-top:6px">' + m[1] + (m[2] ? '<span class="unit">' + m[2] + '</span>' : '') + '</div>', "tight"); }).join("") + '</div>' +
+      card(heading("Heart rate zones") + '<div class="bars">' + zones.map(function (z, i) { return sbar(z[0], z[1] / 21 * 100, rgba(COL.strain, .3 + i * .175), z[1] + " min"); }).join("") + '</div>') +
+      card(heading("Why this strain") + '<div class="why">' + [["moderate", "58 min, with 25 min above zone 2."], ["push", "Heavy lower body volume: 6.2 tonnes in working sets."], ["moderate", "Heart rate settled fast between sets, a sign of good recovery."]]
+        .map(function (w) { return '<div><span class="dot" style="background:var(--' + w[0] + ')"></span><span>' + w[1] + '</span></div>'; }).join("") + '</div>') +
+      card(heading("Working sets") + '<div class="rows">' + [["Back squat", "5 x 5", "120 kg"], ["Romanian deadlift", "3 x 8", "100 kg"], ["Leg press", "3 x 10", "180 kg"], ["Walking lunge", "3 x 12", "2 x 20 kg"]]
+        .map(function (r) { return '<div class="row"><span><span class="main">' + r[0] + '</span><br><span class="label">' + r[1] + '</span></span><span class="r num" style="font-size:17px">' + r[2] + '</span></div>'; }).join("") + '</div>'), COL.strain),
+    ["Zones are one blue in five strengths, darker as effort rises.", "Every strain number gets its why, the same pattern as Today."]));
+})();
+
+// Nutrition
+(function () {
+  var intake = [2280, 2610, 2190, 2450, 2920, 2340, 2410], protein = [118, 131, 109, 140, 122, 128, 135];
+  S.push(block("nutrition", "Nutrition", "NutritionDetailView: quality, limits, energy, protein",
+    phone("nutrition",
+      '<div class="title">Nutrition</div>' + pseg(["Last 7 days", "30 days", "90 days"], 0) +
+      card('<div class="split"><div><div class="label">Food quality</div><div class="score num" style="margin-top:6px">74</div></div><div class="label" style="text-align:right">of 100<br>average this week</div></div>' +
+        '<div class="track" style="margin-top:24px"><div class="fill" style="width:74%;background:' + COL.nutrition + '"></div><div class="tick" style="left:80%"></div></div><p class="label" style="margin:6px 0 0">Target 80</p>') +
+      card(heading("Limits kept", "5 of 7 this week") + '<div class="rows">' +
+        [["recover", "Sugar", "64 g", "limit 50 g"], ["recover", "Saturated fat", "23 g", "limit 20 g"], ["push", "Sodium", "2.1 g", "limit 2.3 g"], ["push", "Caffeine after 15", "None", ""], ["push", "Alcohol", "1 drink", "limit 3"]]
+        .map(function (r) { return '<div class="row"><span class="withdot"><span class="dot" style="background:var(--' + r[0] + ')"></span><span class="main">' + r[1] + '</span></span><span class="r"><span class="num" style="font-size:17px">' + r[2] + '</span>' + (r[3] ? '<br><span class="label">' + r[3] + '</span>' : '') + '</span></div>'; }).join("") + '</div>') +
+      card(heading("Energy", "Dashed line: intake for your weight goal.") + barsChart(intake, 3200, COL.nutrition, { g6: true, line: 2450, ticks: [2650, 2700, 2500, 2600, 2900, 2550, 2620] }) + axis(["F", "S", "S", "M", "T", "W", "T"]) +
+        '<div class="legend"><span><i style="background:' + COL.nutrition + '"></i>Intake</span><span><i style="background:#2B1F1A;height:2px"></i>Burn</span></div>') +
+      card(heading("Protein", "Target 125 g, 1.6 g per kg") + barsChart(protein, 160, COL.nutrition, { g6: true, line: 125 }) + axis(["F", "S", "S", "M", "T", "W", "T"])) +
+      card(heading("Macro split") + '<div class="stack"><i style="width:22%;background:' + COL.nutrition + '"></i><i style="width:46%;background:' + rgba(COL.nutrition, .55) + '"></i><i style="width:32%;background:' + rgba(COL.nutrition, .25) + '"></i></div>' +
+        '<div class="legend"><span><i style="background:' + COL.nutrition + '"></i>Protein 22%</span><span><i style="background:' + rgba(COL.nutrition, .55) + '"></i>Carbs 46%</span><span><i style="background:' + rgba(COL.nutrition, .25) + '"></i>Fat 32%</span></div>') +
+      card('<div class="split"><div><div class="label">Last meal before sleep</div><div class="value num" style="margin-top:6px">3.4 h</div></div><div class="label" style="text-align:right">hours from last meal<br>to sleep, average</div></div>'), COL.nutrition),
+    ["Over-limit items come first with a red dot; nothing else turns red.", "Energy and protein: square bars 6 pt apart, the goal as a dashed ink line, burn as an ink tick.", "One area colour for the whole screen: pink."]));
+})();
+
+// Info
+(function () {
+  function irow(name, col, detail, icon) { return '<div class="irow"><span class="sq" style="background:' + col + '"><svg viewBox="0 0 14 14">' + icon + '</svg></span><span><span class="main" style="font-size:17px;line-height:24px">' + name + '</span><br><span class="label">' + detail + '</span></span>' + CHEV + '</div>'; }
+  var I = { book: '<rect x="2" y="2" width="10" height="10"/>', flag: '<rect x="3" y="2" width="2" height="10"/><rect x="5" y="2" width="6" height="5"/>', air: '<rect x="2" y="3" width="10" height="2"/><rect x="2" y="7" width="7" height="2"/><rect x="2" y="11" width="9" height="2"/>',
+    scale: '<rect x="2" y="7" width="10" height="5"/><path d="M3 7a4 4 0 0 1 8 0z"/>', bed: '<rect x="2" y="6" width="10" height="4"/><rect x="2" y="3" width="4" height="3"/>', ecg: '<path d="M1 7h3l1-3 2 6 1-3h5v1H8.6L7 12 5 6 4.6 8H1z"/>',
+    lift: '<rect x="1" y="4" width="2" height="6"/><rect x="11" y="4" width="2" height="6"/><rect x="3" y="6" width="8" height="2"/>', alarm: '<path d="M7 2a5 5 0 1 1 0 10A5 5 0 0 1 7 2zm-1 2v4h4V7H7V4z"/>', fork: '<path d="M2 5h10c0 3-2.2 6-5 6S2 8 2 5z"/>' };
+  S.push(block("info", "Info", "InfoView: journal, goals, raw data",
+    phone("info",
+      '<div class="title">Info</div>' +
+      '<div class="card">' + irow("Journal", COL.heart, "Last tagged: Late night out, Tue 3 Nov", I.book) + irow("Goals", COL.body, "Weight, body fat and lifting goals", I.flag) +
+        irow("Bedroom", COL.air, "24 nights measured", I.air) + irow("Body", COL.body, "Trend weight 78.4 kg", I.scale) + '</div>' +
+      '<p class="secthead">Raw data</p>' +
+      '<div class="card">' + irow("Nights", COL.sleep, "212 nights", I.bed) + irow("Overnight readings", COL.heart, "HRV, resting HR, breathing, temperature", I.ecg) +
+        irow("Workouts", COL.strain, "164 workouts", I.lift) + irow("Weigh-ins", COL.body, "96 weigh-ins", I.scale) + irow("Alarms, naps and desk mode", COL.sleep, "41 sessions from the watch", I.alarm) +
+        irow("Food", COL.nutrition, "188 logged days", I.fork) + '</div>' +
+      '<p class="footnote">Straight from Apple Health, your scale and your lifting log, before any scoring. Newest first.</p>' +
+      '<p class="secthead">How the scores work</p>' +
+      '<div class="card">' + irow("Recovery", COL.push, "HRV, resting HR and sleep against your usual", I.ecg) + irow("Sleep score", COL.sleep, "Six markers, 100 points", I.bed) + irow("Strain", COL.strain, "Heart rate effort across the day", I.lift) + irow("Food quality", COL.nutrition, "Limits, protein and fibre", I.fork) + '</div>', COL.heart),
+    ["Grouped lists become flat cards with 48 pt rows and square colour badges.", "Each badge carries its area colour; text stays ink."]));
+
+  S.push(block("explain", "Recovery explained", "Explanations: a score page opens with its face",
+    phone("info",
+      '<div class="navrow"><span class="back">' + BACK + 'Info</span></div>' +
+      '<div class="plain"><div class="hero">' + face({ size: 72, col: COL.push, t: 1, label: "Push face" }) + '<div><div class="title" style="margin:0">Recovery</div><div class="label">0 to 100, every morning</div></div></div></div>' +
+      '<p class="body">Recovery compares last night\'s HRV and resting heart rate with your usual for the last 4 weeks, then adds how well you slept.</p>' +
+      card(heading("What goes in") + '<div class="bars">' + sbar("HRV", 50, COL.heart, "50%") + sbar("Resting HR", 25, COL.heart, "25%") + sbar("Sleep", 25, COL.sleep, "25%") + '</div>') +
+      card(heading("Zones") + '<div class="rows">' + [["push", "Push", "from 67"], ["moderate", "Moderate", "34 to 66"], ["recover", "Recover", "below 34"]]
+        .map(function (z) { return '<div class="row"><span class="withdot"><span class="dot" style="background:var(--' + z[0] + ')"></span><span class="main">' + z[1] + '</span></span><span class="r num" style="font-size:17px">' + z[2] + '</span></div>'; }).join("") + '</div>') +
+      card(heading("This morning") + '<div class="why">' + [["push", "HRV 62 ms against your usual 54 ms: 15% above."], ["moderate", "Resting HR 52 bpm, the same as usual."], ["push", "Sleep score 84."]]
+        .map(function (w) { return '<div><span class="dot" style="background:var(--' + w[0] + ')"></span><span>' + w[1] + '</span></div>'; }).join("") + '</div>' +
+        '<div class="split" style="margin-top:24px"><span class="label">Recovery</span><span class="value num">78</span></div>'), COL.push),
+    ["The one face on this screen opens the page, then the formula in Body text.", "Weights are score bars, so the maths reads at a glance."]));
+})();
+
+// Watch and widgets
+S.push(block("watch", "Watch and widgets", "HealthWatch complications and home screen widgets",
+  '<div class="stagewrap"><div class="stage dark">' +
+    '<div class="figure"><div class="watch"><div class="wscreen"><div class="wtime">09:41</div><div class="wrow">' + face({ size: 56, col: COL.push, t: 1, live: true, label: "Recovery 78, push" }) +
+      '<div><div class="num" style="font-size:28px;line-height:30px" data-live="rec">78</div><div class="wlabel" data-live="word">Push</div></div></div>' +
+      '<div style="margin-top:12px"><div class="wlabel">Sleep 84</div><div class="wbar"><i style="width:84%;background:' + COL.sleep + '"></i></div><div class="wlabel" style="margin-top:6px">Strain <span data-live="strainv">11.2</span></div><div class="wbar"><i data-live="wstrain" style="width:53%;background:' + COL.strain + '"></i></div></div></div></div><div class="cap">Day face: the mood face is the complication</div></div>' +
+    '<div class="figure"><div class="watch"><div class="wscreen"><div class="wtime" style="color:rgba(249,246,237,.7)">02:14</div><div class="wrow">' + face({ size: 56, col: COL.sleep, t: .4, eyes: "asleep", label: "Asleep" }) +
+      '<div><div class="num" style="font-size:22px;line-height:26px">06:45</div><div class="wlabel">Alarm, smart window 30 min</div></div></div>' +
+      '<div style="margin-top:12px"><div class="wlabel">Asleep 3 h 02 min</div><div class="wbar"><i style="width:40%;background:' + COL.sleep + '"></i></div></div></div></div><div class="cap">Night face: Asleep, during the sleep window</div></div>' +
+  '</div><div class="stage">' +
+    '<div class="figure"><div class="widget small">' + face({ size: 56, col: COL.push, t: 1, live: true, label: "Recovery 78, push" }) + '<div><div class="score num" style="font-size:34px;line-height:36px" data-live="rec">78</div><div class="zone" style="font-size:13px"><span class="dot" data-live="zdot" style="background:var(--push)"></span><span data-live="word">Push</span></div></div></div><div class="cap">Small</div></div>' +
+    '<div class="figure"><div class="widget medium">' + face({ size: 76, col: COL.push, t: 1, live: true, label: "Recovery 78, push" }) + '<div class="bars">' +
+      sbar("Sleep", 84, COL.sleep, '<span data-live="sleepv">84</span>', null, ' data-live="sleepb"') + sbar("Recovery", 78, COL.push, '<span data-live="recv">78</span>', null, ' data-live="recb"') + sbar("Strain", 53, COL.strain, '<span data-live="strainv">11.2</span>', null, ' data-live="strainb"') +
+    '</div></div><div class="cap">Medium</div></div>' +
+    '<div class="figure"><div class="widget small" style="justify-content:center;align-items:center;gap:12px">' + face({ size: 56, col: COL.nutrition, t: 1, eyes: "wink", label: "Saved" }) + '<div class="label" style="text-align:center">Lunch saved<br>640 kcal</div></div><div class="cap">Saved: wink, in the area colour</div></div>' +
+    '<div class="figure"><div class="widget small" style="justify-content:center;align-items:center;gap:12px">' + face({ size: 56, col: COL.strain, t: 1, eyes: "record", label: "New record" }) + '<div class="label" style="text-align:center">New record<br>Back squat 127.5 kg</div></div><div class="cap">New record: half circle eyes</div></div>' +
+  '</div></div>',
+  ["One face per surface. The day face and widgets follow the recovery switch; Asleep, Saved and New record are fixed states.", "On the watch, colour sits only in the tile and the bars; all text is paper."], true));
+
+document.getElementById("grid").innerHTML = S.join("");
+
+// ---------- State switch ----------
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches, curT = 1, anim = null;
+function setMouth(t) { var d = mouth(t); document.querySelectorAll(".tile.live .mouth").forEach(function (m) { m.setAttribute("d", d); }); }
+function morphTo(t) {
+  if (anim) cancelAnimationFrame(anim);
+  if (reduce) { curT = t; setMouth(t); return; }
+  var from = curT, t0 = performance.now();
+  (function step(now) { var p = Math.min(1, (now - t0) / 600), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; curT = from + (t - from) * e; setMouth(curT); if (p < 1) anim = requestAnimationFrame(step); })(t0);
+}
+function all(k) { return document.querySelectorAll('[data-live="' + k + '"]'); }
+function render(key) {
+  var s = STATES[key], zc = "var(--" + key + ")";
+  document.querySelectorAll(".tile.live").forEach(function (t) { t.querySelector(".bg").setAttribute("fill", s.col); t.setAttribute("aria-label", "Recovery " + s.rec + ", " + s.word.toLowerCase()); });
+  all("rec").forEach(function (e) { e.textContent = s.rec; }); all("recv").forEach(function (e) { e.textContent = s.rec; });
+  all("word").forEach(function (e) { e.textContent = s.word; }); all("zdot").forEach(function (e) { e.style.background = zc; });
+  all("advice").forEach(function (e) { e.textContent = s.advice; });
+  all("sleepv").forEach(function (e) { e.textContent = s.sleep; }); all("strainv").forEach(function (e) { e.textContent = s.strain.toFixed(1); });
+  all("sleepb").forEach(function (e) { e.querySelector(".fill").style.width = s.sleep + "%"; });
+  all("recb").forEach(function (e) { var f = e.querySelector(".fill"); f.style.width = s.rec + "%"; f.style.background = zc; });
+  all("strainb").forEach(function (e) { e.querySelector(".fill").style.width = (s.strain / 21 * 100) + "%"; var t = e.querySelector(".tick"); if (t) t.style.left = (s.target / 21 * 100) + "%"; });
+  all("wstrain").forEach(function (e) { e.style.width = (s.strain / 21 * 100) + "%"; });
+  all("why").forEach(function (e) { e.innerHTML = s.why.map(function (w) { return '<div><span class="dot" style="background:var(--' + w[0] + ')"></span><span>' + w[1] + '</span></div>'; }).join(""); });
+  document.querySelectorAll(".liveglow").forEach(function (g) { g.style.background = "radial-gradient(closest-side," + rgba(s.col, .18) + ",rgba(0,0,0,0))"; });
+  morphTo(s.t);
+}
+document.querySelectorAll(".seg button").forEach(function (b) {
+  b.addEventListener("click", function () { document.querySelectorAll(".seg button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); }); render(b.dataset.state); });
+});
+render("push");
+
+// Blink on Today only, every 3 to 5 s
+function blink() {
+  if (reduce) return; var t0 = performance.now();
+  (function step(now) { var p = Math.min(1, (now - t0) / 240), lid = Math.sin(p * Math.PI);
+    document.querySelectorAll(".eye.blink").forEach(function (e) { e.setAttribute("y", 30 * lid * .9); e.setAttribute("height", 30 * (1 - lid * .9)); });
+    if (p < 1) requestAnimationFrame(step); else setTimeout(blink, 3000 + Math.random() * 2000); })(t0);
+}
+setTimeout(blink, 2500);
+</script>
+</body>
+</html>
