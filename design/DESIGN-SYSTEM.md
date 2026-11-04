@@ -102,6 +102,7 @@ keeps the values, switches the accent to salmon and tightens where each colour m
 | ink | `#2B1F1A` | 0.17, 0.12, 0.10 | All text and the wordmark; secondary text is ink at 60% |
 | accent (salmon) | `#F07B62` | 0.94, 0.48, 0.38 | Brand: the u in the wordmark, the icon tile, one action per screen, links |
 | glow red, orange, amber | `#E02E3D`, `#F78033`, `#FCC254` | as in `Theme.glow` | Soft background glows only, 14 to 18% opacity, never on text or controls |
+| card | `#FFFDF8` | 1.0, 0.992, 0.973 | Card surface, solid, with a 1 pt hairline of ink at 8% |
 | dark surface | `#1C1714` | 0.11, 0.09, 0.08 | Dark icon, dark mode surfaces |
 | push | `#33B378` | as in `Zone` | Recovery push zone, Push face |
 | moderate | `#EDAB2E` | as in `Zone` | Moderate zone, Moderate face |
@@ -165,23 +166,27 @@ wordmark is the only custom lettering and appears only as the logo.
 
 ## Components
 
-Keep the app's glass and paper, but make every component a clear bar, square or circle.
+Content is flat: solid cards, square-ended bars, no blur and no shadow, so the data looks built like the wordmark.
+Liquid Glass stays only on system chrome (tab bar, toolbars, sheets, secondary buttons). Decided on 4 Nov 2026
+from the Today mockup (`design/lab/today-mockup.html`, direction B).
 
 | Component | Now (in code) | Redesign rule |
 | --- | --- | --- |
 | Background | `AmbientBackground`: paper plus three soft glows | Keep. Glows stay behind content; Today tints them with recovery |
-| Card | `glassCard`: radius 18, thin material, white 38%, white hairline, soft shadow | Radius 24, padding 24, gap 24. Keep material and hairline; one hero number per card |
-| Score hero | `BlobCluster` (`Blobs.swift`): merged blobs for sleep, recovery and strain | On Today, replace with the mood face tile; the three part scores become three score bars beneath it |
-| Score bar | Gradient sliders in Food yesterday | Flat 12 pt bar with half-circle ends: area colour for the value, ink 10% for the track, a 2 pt tick for the target |
+| Card | `glassCard`: radius 18, thin material, white 38%, white hairline, soft shadow | `flatCard`: solid card colour `#FFFDF8`, 1 pt hairline ink 8%, no material, no shadow. Radius 24, padding 24, gap 24; one hero number per card |
+| Score hero | `BlobCluster` (`Blobs.swift`): merged blobs for sleep, recovery and strain | On Today, replace with the mood face tile, straight on the page with no card; the advice line and the three score bars follow beneath it, also without a card |
+| Score bar | Gradient sliders in Food yesterday | Flat 12 pt bar with square ends, like the letters: area colour for the value, ink 10% for the track, a 2 pt tick for the target |
 | Chips and segmented controls | System capsules and pickers | Keep system controls; selected state uses ink, not accent |
 | Charts | Swift Charts in area colours | Square-ended bars 6 pt apart, 1 pt grid lines at ink 8%, 13 pt labels; current value full colour, history 35% |
-| Buttons | `glassButton`: Liquid Glass on iOS 26 | Keep Liquid Glass; one prominent button per screen, in accent |
+| Buttons | `glassButton`: Liquid Glass on iOS 26 | One prominent button per screen: solid salmon, ink label, radius 24, 48 tall. Other buttons keep Liquid Glass |
 | Tab bar | System: Today, Trends, Workouts, Nutrition, Info | Keep the five tabs and system glass; selected tint ink. Replace the Today heart icon with a mood face glyph |
 | Why rows | Arrow icon plus coloured sentence | Ink text with a 6 pt dot in the zone colour; the number in Value style |
 
 **Do not**
 
-- Add other corner radii: only 24 (cards), 12 (chips, bars) and full circles.
+- Add other corner radii: only 24 (cards, the prominent button), 12 (chips) and full circles. Bars and streak
+  squares end square; only rings have round ends.
+- Put blur, material or shadows on content cards.
 - Put text on glows or on area colours, except paper on the mood face tile.
 - Use the cut motif inside components; it belongs to the wordmark and the face.
 
