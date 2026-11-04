@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" font-family="Inter">
+  <defs>
+    <clipPath id="frame"><rect width="1600" height="900" rx="28"/></clipPath>
+    <radialGradient id="gRed" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#E02E3D" stop-opacity="0.09"/><stop offset="1" stop-color="#E02E3D" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gOrange" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#F78033" stop-opacity="0.11"/><stop offset="1" stop-color="#F78033" stop-opacity="0"/></radialGradient>
+    <radialGradient id="gAmber" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#FCC254" stop-opacity="0.16"/><stop offset="1" stop-color="#FCC254" stop-opacity="0"/></radialGradient>
+  </defs>
+
+  <g clip-path="url(#frame)">
+    <rect width="1600" height="900" fill="#F9F6ED"/>
+    <circle cx="1400" cy="0" r="700" fill="url(#gRed)"/>
+    <circle cx="1100" cy="480" r="720" fill="url(#gOrange)"/>
+    <circle cx="100" cy="920" r="620" fill="url(#gAmber)"/>
+  </g>
+
+  <!-- Header -->
+  <text x="80" y="100" font-size="46" font-weight="600" fill="#2B1F1A">How the recovery score works</text>
+  <rect x="770" y="66" width="104" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.8" stroke="#B9A894" stroke-width="1.5"/>
+  <text x="822" y="91" font-size="17" font-weight="500" fill="#7A6A5C" text-anchor="middle">example</text>
+
+  <!-- Column labels -->
+  <g font-size="15" font-weight="600" fill="#7A6A5C">
+    <text x="80" y="204">Inputs and weights</text>
+    <text x="420" y="204">Compared with your last 60 days</text>
+  </g>
+
+  <!-- Safety gates strip -->
+  <rect x="712" y="180" width="808" height="40" rx="20" fill="#DB454D" fill-opacity="0.08" stroke="#DB454D" stroke-opacity="0.35" stroke-width="1.5"/>
+  <circle cx="732" cy="200" r="6" fill="#DB454D"/>
+  <text x="746" y="205" font-size="14" fill="#2B1F1A"><tspan font-weight="600">Safety gates</tspan><tspan fill="#7A6A5C">  HRV far below normal, resting HR far above, very short sleep or a fever-like temperature cap the zone</tspan></text>
+
+  <!-- Input cards -->
+  <g>
+    <rect x="80" y="222" width="300" height="62" rx="18" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+    <rect x="80" y="300" width="300" height="62" rx="18" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+    <rect x="80" y="378" width="300" height="62" rx="18" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+    <rect x="80" y="456" width="300" height="62" rx="18" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+    <rect x="96" y="238" width="6" height="30" rx="3" fill="#21A8BD"/>
+    <rect x="96" y="316" width="6" height="30" rx="3" fill="#21A8BD"/>
+    <rect x="96" y="394" width="6" height="30" rx="3" fill="#21A8BD"/>
+    <rect x="96" y="472" width="6" height="30" rx="3" fill="#9470F2"/>
+  </g>
+  <g font-size="19" font-weight="600" fill="#2B1F1A">
+    <text x="118" y="259">HRV</text>
+    <text x="118" y="329">Resting heart rate</text>
+    <text x="118" y="407">Breathing rate</text>
+    <text x="118" y="493">Sleep</text>
+  </g>
+  <g font-size="14" fill="#7A6A5C">
+    <text x="118" y="349">lower is better</text>
+    <text x="118" y="427">lower is better</text>
+  </g>
+  <g font-size="22" font-weight="600" text-anchor="end">
+    <text x="360" y="261" fill="#21A8BD">55%</text>
+    <text x="360" y="339" fill="#21A8BD">20%</text>
+    <text x="360" y="417" fill="#21A8BD">10%</text>
+    <text x="360" y="495" fill="#9470F2">15%</text>
+  </g>
+
+  <!-- Bell curves, sigma = 36 px, centre x = 530 -->
+  <g fill="none" stroke="#B9A894" stroke-width="2">
+    <path d="M422 271 C 482 271, 498 227, 530 227 C 562 227, 578 271, 638 271"/>
+    <path d="M422 349 C 482 349, 498 305, 530 305 C 562 305, 578 349, 638 349"/>
+    <path d="M422 427 C 482 427, 498 383, 530 383 C 562 383, 578 427, 638 427"/>
+    <path d="M422 505 C 482 505, 498 461, 530 461 C 562 461, 578 505, 638 505"/>
+  </g>
+  <g stroke="#B9A894" stroke-width="1.5" stroke-dasharray="3 4">
+    <path d="M530 227V271M530 305V349M530 383V427M530 461V505"/>
+  </g>
+  <!-- today's dots: z = +0.8, -0.5, +0.5, +0.6 -->
+  <g stroke="#FFFFFF" stroke-width="3">
+    <circle cx="559" cy="242" r="8" fill="#33B378"/>
+    <circle cx="512" cy="310" r="8" fill="#33B378"/>
+    <circle cx="548" cy="388" r="8" fill="#DB454D"/>
+    <circle cx="552" cy="469" r="8" fill="#33B378"/>
+  </g>
+  <g font-size="16" fill="#2B1F1A">
+    <text x="652" y="259">z +0.8</text>
+    <text x="652" y="337">z −0.5</text>
+    <text x="652" y="415">z +0.5</text>
+    <text x="652" y="493">z +0.6</text>
+  </g>
+
+  <!-- Into the weighted sum -->
+  <g fill="none" stroke="#B9A894" stroke-width="2" stroke-linecap="round">
+    <path d="M722 253 C 780 253, 790 370, 832 370"/>
+    <path d="M722 331 C 770 331, 790 370, 832 370"/>
+    <path d="M722 409 C 770 409, 790 370, 832 370"/>
+    <path d="M722 487 C 780 487, 790 370, 832 370"/>
+    <path d="M928 370H996"/>
+  </g>
+  <path d="M1004 370l-12 -7v14z" fill="#B9A894"/>
+  <circle cx="880" cy="370" r="48" fill="#FFFFFF" fill-opacity="0.95" stroke="#FFFFFF" stroke-width="2"/>
+  <text x="880" y="384" font-size="38" font-weight="600" fill="#2B1F1A" text-anchor="middle">Σ</text>
+  <text x="880" y="450" font-size="16" font-weight="600" fill="#7A6A5C" text-anchor="middle">Weighted sum</text>
+  <text x="880" y="474" font-size="16" fill="#2B1F1A" text-anchor="middle">0.58</text>
+
+  <!-- Normal CDF -->
+  <rect x="1010" y="262" width="240" height="216" rx="20" fill="#FFFFFF" fill-opacity="0.42" stroke="#FFFFFF" stroke-opacity="0.95" stroke-width="1.5"/>
+  <g stroke="#E6DDCD" stroke-width="1.5">
+    <path d="M1030 452H1230M1030 288H1230"/>
+  </g>
+  <path d="M1030 452 C 1100 452, 1110 448, 1130 400 C 1150 340, 1160 288, 1230 288" fill="none" stroke="#2B1F1A" stroke-width="3" stroke-linecap="round"/>
+  <path d="M1144 452V335H1230" fill="none" stroke="#33B378" stroke-width="2" stroke-dasharray="4 5"/>
+  <circle cx="1144" cy="335" r="7" fill="#33B378" stroke="#FFFFFF" stroke-width="3"/>
+  <g font-size="13" fill="#7A6A5C">
+    <text x="1236" y="456">0</text>
+    <text x="1236" y="292">100</text>
+  </g>
+  <text x="1130" y="510" font-size="16" font-weight="600" fill="#7A6A5C" text-anchor="middle">Normal CDF</text>
+  <text x="1130" y="534" font-size="16" fill="#2B1F1A" text-anchor="middle">0.58 → 72</text>
+  <path d="M1262 370H1288" stroke="#B9A894" stroke-width="2" stroke-linecap="round"/>
+  <path d="M1296 370l-12 -7v14z" fill="#B9A894"/>
+
+  <!-- Recovery ring, 72% -->
+  <circle cx="1410" cy="370" r="96" fill="#FFFFFF" fill-opacity="0.85"/>
+  <circle cx="1410" cy="370" r="82" fill="none" stroke="#E9E2D3" stroke-width="18"/>
+  <path d="M1410 288 A 82 82 0 1 1 1333.5 340.4" fill="none" stroke="#33B378" stroke-width="18" stroke-linecap="round"/>
+  <text x="1410" y="384" font-size="58" font-weight="600" fill="#2B1F1A" text-anchor="middle">72</text>
+  <text x="1410" y="410" font-size="16" fill="#7A6A5C" text-anchor="middle">recovery</text>
+  <text x="1410" y="500" font-size="16" font-weight="600" fill="#33B378" text-anchor="middle">Good</text>
+
+  <!-- Formula -->
+  <text x="80" y="578" font-size="18" fill="#7A6A5C">recovery = 100 · Φ(0.55 z<tspan font-size="13" baseline-shift="sub">HRV</tspan> − 0.20 z<tspan font-size="13" baseline-shift="sub">RHR</tspan> − 0.10 z<tspan font-size="13" baseline-shift="sub">RR</tspan> + 0.15 z<tspan font-size="13" baseline-shift="sub">Sleep</tspan>)</text>
+
+  <path d="M80 610H1520" stroke="#E6DDCD" stroke-width="1.5"/>
+
+  <!-- Bottom band: Shapley waterfall. x = 476 + (score - 50) * 34 -->
+  <text x="80" y="656" font-size="26" font-weight="600" fill="#2B1F1A">Exact Shapley values, the idea behind SHAP</text>
+
+  <g font-size="17" fill="#2B1F1A">
+    <text x="80" y="728">Your normal</text>
+    <text x="80" y="760">HRV</text>
+    <text x="80" y="792">Resting heart rate</text>
+    <text x="80" y="824">Breathing rate</text>
+    <text x="80" y="856">Sleep</text>
+  </g>
+  <path d="M476 708V866" stroke="#B9A894" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <circle cx="476" cy="722" r="7" fill="#2B1F1A"/>
+  <text x="492" y="728" font-size="17" font-weight="600" fill="#2B1F1A">50</text>
+
+  <rect x="476" y="742" width="567" height="22" rx="6" fill="#33B378"/>
+  <rect x="1043" y="774" width="127" height="22" rx="6" fill="#33B378"/>
+  <rect x="1107" y="806" width="63" height="22" rx="6" fill="#DB454D"/>
+  <rect x="1107" y="838" width="114" height="22" rx="6" fill="#33B378"/>
+  <g stroke="#B9A894" stroke-width="1.5">
+    <path d="M1043 764V774M1170 796V806M1107 828V838"/>
+  </g>
+  <g font-size="17" font-weight="600">
+    <text x="1055" y="760" fill="#33B378">+16.7</text>
+    <text x="1233" y="792" fill="#33B378">+3.7</text>
+    <text x="1233" y="824" fill="#DB454D">−1.9</text>
+    <text x="1233" y="856" fill="#33B378">+3.4</text>
+  </g>
+  <path d="M1221 860V722" stroke="#33B378" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <circle cx="1221" cy="722" r="7" fill="#33B378"/>
+  <text x="1237" y="728" font-size="17" font-weight="600" fill="#2B1F1A">72 today</text>
+</svg>
