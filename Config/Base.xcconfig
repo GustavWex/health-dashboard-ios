@@ -1,0 +1,2 @@
+// Shared build settings. Secrets.xcconfig is gitignored and optional: without it, Withings stays unconfigured.
+#include? "Secrets.xcconfig"
