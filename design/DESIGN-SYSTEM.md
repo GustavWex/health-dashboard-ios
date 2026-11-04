@@ -8,6 +8,9 @@ the code, and wins where the two differ.
 Pictures referred to below are in `design/sheets/` (construction: `final.png`, system overview: `system.png`,
 brand colour: `coral.png`, icons: `icons.png`). Ready-made brand files are in `design/brand/`.
 
+**Assets for the code:** [`ASSETS.md`](ASSETS.md) lists every icon, face, wordmark, token file and mockup, what is
+already in the asset catalogs (`Brand` folder), and the reference SwiftUI in `design/app/swift/ThruBrand.swift`.
+
 ## Principles
 
 thru should look built, not drawn: bars, squares and true circles on one grid, with a single cut that lets you see
@@ -180,7 +183,7 @@ are drawn in this style in `design/lab/screens-mockup.html`.
 | Chips and segmented controls | System capsules and pickers | Keep system controls; selected state uses ink, not accent |
 | Charts | Swift Charts in area colours | Square-ended bars 6 pt apart, 1 pt grid lines at ink 8%, 13 pt labels; current value full colour, history 35% |
 | Buttons | `glassButton`: Liquid Glass on iOS 26 | One prominent button per screen: solid salmon, ink label, radius 24, 48 tall. Other buttons keep Liquid Glass |
-| Tab bar | System: Today, Trends, Workouts, Nutrition, Info | Keep the five tabs and system glass; selected tint ink. Replace the Today heart icon with a mood face glyph |
+| Tab bar | System: Today, Trends, Workouts, Nutrition, Info | Keep the five tabs and system glass; selected tint ink. Use the `Brand` tab icons (`TabToday` is the mood face glyph) in place of the SF Symbols |
 | Why rows | Arrow icon plus coloured sentence | Ink text with a 6 pt dot in the zone colour; the number in Value style |
 
 **Do not**
