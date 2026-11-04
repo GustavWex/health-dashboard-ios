@@ -1,15 +1,8 @@
-<p align="center"><img src="docs/hero.png" alt="thru on iPhone and Apple Watch: intelligent recovery, sleep and strain you can see right through" width="100%"></p>
-
 # thru
 
 ***Intelligent*** **recovery, sleep and strain you can see right through.**
 
 A personal, Whoop-style health app for iPhone and Apple Watch. It reads Apple Watch, smart scale, food logging and lifting data and turns it into recovery, sleep, strain, nutrition and body composition scores, with explanations for every number. Everything is computed on the device: no server and no accounts.
-
-<p align="center"><img src="docs/architecture.png" alt="Data flow: Apple Watch, scale and food apps into Apple Health and HealthKit, Withings and CSV imports, all computed on the iPhone, out to the watch app and widgets" width="100%"></p>
-
-<details>
-<summary>The same data flow as text</summary>
 
 ```
 Apple Watch ─────────────┐
@@ -19,7 +12,6 @@ Withings API (body composition) ────────────────
 Scale app CSV (Renpho, Eufy, Garmin, Fitbit, Zepp, Withings) ──────────┤
 Strong or Hevy CSV (sets, reps, weights) ──────────────────────────────┘
 ```
-</details>
 
 ## Highlights
 - **Recovery, sleep and strain scores** from overnight HRV, resting heart rate, breathing rate and sleep, scored against your own 60-day baseline, with personal zones and safety gates.
@@ -30,15 +22,6 @@ Strong or Hevy CSV (sets, reps, weights) ─────────────
 - **Strength log.** Strong and Hevy exports, with volume load, estimated 1RM progress and each session matched to its watch workout.
 - **Apple Watch app.** Complications, a movement-based smart alarm, a smart nap that counts from sleep onset, and a desk mode that taps you when you start nodding off.
 - **Every formula has a citation and a golden-vector test.** 139 tests in the `HealthCore` package.
-
-<p align="center"><img src="docs/science.png" alt="Method tiles: personal 60-day baseline, 10% false discovery rate, forecast shown only when it beats a naive guess, 139 golden-vector tests" width="100%"></p>
-
-## Screens
-<p align="center"><img src="docs/slides/sleep-wide.png" alt="Sleep: see where your sleep points went" width="100%"></p>
-<p align="center"><img src="docs/slides/nutrition-wide.png" alt="Nutrition: know what your food is doing" width="100%"></p>
-<p align="center"><img src="docs/slides/training-wide.png" alt="Training: train hard on the right days" width="100%"></p>
-
-App Store sized versions (1290 x 2796) are in [`docs/slides/`](docs/slides/).
 
 ## Tech
 SwiftUI, Swift Charts, SwiftData, HealthKit, WidgetKit, WatchKit and WatchConnectivity, App Intents, Core Motion, Swift 6 concurrency. iOS 17 and watchOS 10. The project is generated with XcodeGen.
@@ -83,8 +66,6 @@ cd HealthCore && swift test
 The Simulator has no Health data, so debug builds there show 180 days of made-up data instead, plus a made-up Strong log.
 
 ## How the numbers work
-
-<p align="center"><img src="docs/recovery.png" alt="Recovery pipeline: inputs compared with your 60-day baseline, weighted, mapped to 0 to 100, then zones, safety gates and the Shapley breakdown" width="100%"></p>
 
 **Recovery (0 to 100).** Log transformed HRV, resting HR, breathing rate and sleep duration are each compared with your previous 60 days as z-scores, weighted 55 / 20 / 10 / 15, then mapped through the normal CDF. HRV and breathing rate only count readings taken while you slept. Missing inputs get their weight redistributed. Needs 14 nights before it shows a score. Weights from GenieMax.
 
@@ -142,8 +123,6 @@ The Simulator has no Health data, so debug builds there show 180 days of made-up
 - Wellness tool, not medical advice.
 
 ## Apple Watch
-<p align="center"><img src="docs/watch.png" alt="Apple Watch: smart alarm, smart nap and desk mode" width="100%"></p>
-
 The watch app shows the day's status, sleep and strain from the phone, with complications for each. It also has a smart alarm that wakes you at the first sign of light sleep in a window before your wake time, a smart nap that counts from when you fall asleep and caps at 30 minutes, and a desk mode that taps you to stand up when your wrist goes still and your heart rate drops. The phone's Start desk mode shortcut can start desk mode from a Shortcuts automation.
 
 ## Roadmap ideas
@@ -151,9 +130,6 @@ The watch app shows the day's status, sleep and strain from the phone, with comp
 2. An own set logger to replace the Strong CSV import.
 3. Bayesian personal recovery curves per muscle group.
 4. Live bedroom air readings from the room monitor.
-
-## Logo
-The wordmark is Instrument Sans SemiBold with a see-through cut, next to the glass heart icon. SVG files (ink, paper, bold, italic) and the lockup are in [`docs/brand/logo/`](docs/brand/logo/); [`docs/brand/lockups.png`](docs/brand/lockups.png) shows how the icon and wordmark combine from 160 px down to 20 px.
 
 ## License
 MIT, see `LICENSE`.

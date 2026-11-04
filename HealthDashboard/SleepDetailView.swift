@@ -56,7 +56,7 @@ extension SleepComponentKind {
         case .heartRate:
             "Average heart rate while asleep, compared with your last 60 nights. At or below your usual level scores 100, 3 SD above scores 0."
         case .depth:
-            "Share of sleep in the deep and REM stages, compared with your own usual share. Watch stage estimates are rough, so this part has the smallest weight."
+            "Share of sleep in the deep and REM stages, compared with your own usual share. Watch stage estimates are rough, so this marker has the smallest weight."
         }
     }
 }
@@ -155,7 +155,7 @@ struct NightView: View {
                     Text(SleepPlanText.clock(SleepPlan.clock(night.start)) + " to "
                          + SleepPlanText.clock(SleepPlan.clock(night.end)))
                         .foregroundStyle(.secondary)
-                    Text("Our own score, built from the same parts as the Withings one.")
+                    Text("Our own score, built from the same markers as the Withings one.")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -185,7 +185,7 @@ struct NightView: View {
                         .font(.subheadline)
                     }
                 }
-                Text("Each part's cost against a perfect 100. They add up to the gap, because the score is a weighted average.")
+                Text("Each marker's cost against a perfect 100. They add up to the gap, because the score is a weighted average.")
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
