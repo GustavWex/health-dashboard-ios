@@ -1,6 +1,7 @@
 # thru design files
 
-Source files for the thru wordmark, the mood face and the README visuals. The rules behind them are in the
+Source files for the thru wordmark, the mood face and the README visuals. The rules for redesigning the app are in
+[`DESIGN-SYSTEM.md`](DESIGN-SYSTEM.md); the illustrated version is the
 [thru design system](https://claude.ai/artifact/11uT4DxLLf4UCY2wVuzKxD) doc.
 
 ## What is here
