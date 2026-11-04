@@ -11,7 +11,7 @@ Source files for the thru wordmark, the mood face and the README visuals. The ru
 | `source/` | Bash build scripts (`build-*.sh`) that write SVG sources (`*.src.svg`), shared helpers in `lib.sh`, and VectorCraft documents (`*.vectorcraft`) for the visuals that needed effects |
 | `source/parts/` | Vector parts: the wordmark masters and every earlier version, the eased t foot and u bowl paths, watch parts and grain |
 | `sheets/` | Exploration and construction sheets as PNG, from the first heart and font studies to the final wordmark |
-| `lab/` | Two interactive pages: `mood-face.html` (recovery score drives the face) and `bowl.html` (curvature combs for the t foot and u bowl) |
+| `lab/` | Interactive pages: `mood-face.html` (recovery score drives the face), `bowl.html` (curvature combs for the t foot and u bowl) and `today-mockup.html` (Today in glass and flat cards; built from `today-mockup.src.html` with the wordmark parts filled in) |
 | `assets/` | The app icon and framed screenshots the build scripts read |
 | `brand/` | The salmon brand set: app icons (light, dark, tinted), mark, lockup and wordmarks, see `brand/README.md` |
 
